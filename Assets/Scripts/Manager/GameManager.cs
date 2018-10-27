@@ -14,7 +14,9 @@ public class GameManager : MonoBehaviour, IManager
 
     [SerializeField] private GameObject[] headquarters = new GameObject[2];
     [SerializeField] private GameObject[] unitPrefabs = new GameObject[2];
-    private Transform unitList;
+    public Transform unitList;
+    public List<GameObject> catObjects = new List<GameObject>();
+    public List<GameObject> dogObjects = new List<GameObject>();
     //public Transform[] playerMap;
 
     public void Init()
@@ -42,14 +44,26 @@ public class GameManager : MonoBehaviour, IManager
         //Instantiate(unitPrefabs[(int)playerSide], unitList);
         Transform unit = Instantiate(unitPrefabs[(int)playerSide], charPosition, charRotation, unitList).transform;
 
+        switch(playerSide)
+        {
+            case PlayerSide.Cats:
+                catObjects.Add(unit.gameObject);
+                break;
+
+            case PlayerSide.Dogs:
+                dogObjects.Add(unit.gameObject);
+                break;
+        }
+
+
         HPBarHandler handler = Instantiate(HPBar, HPBarCanvases.transform).GetComponent<HPBarHandler>();
         handler.Init(unit, cam);
     }
 
-    //public void DeadUnit()
-    //{
-        
-    //}
+    public void DeadUnit()
+    {
+
+    }
 
     public void StartGame()
     {
