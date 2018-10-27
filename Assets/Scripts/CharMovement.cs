@@ -13,11 +13,14 @@ public class CharMovement : MonoBehaviour
     enum AttackStage { chase, attack, cooldown};
     AttackStage attckStage = AttackStage.chase;
     public GameObject myHouse;
-
+    public Sprite Normal, Hurt;
+    SpriteRenderer charSprite;
+    Transform childSprite;
 
     int hp = 100;
     public int attackDamage = 10;
-    float attackCooldown = 2.0f;
+    float attackCooldown = 0.1f;
+    float animCooldown = 0.0f;
 
     int targetIndex = 0;
     public GameObject[] target;
@@ -26,7 +29,10 @@ public class CharMovement : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-
+        childSprite = this.gameObject.transform.GetChild(0);
+        charSprite = childSprite.GetComponent<SpriteRenderer>();
+        Debug.Log(charSprite);
+        charSprite.sprite = Normal;
     }
 
     // Update is called once per frame
@@ -70,6 +76,15 @@ public class CharMovement : MonoBehaviour
         if (hp < 0)
         {
             Destroy(gameObject);
+        }
+
+        if (animCooldown > 0)
+        {
+            animCooldown -= Time.deltaTime * 1.0f;
+        }
+        else
+        {
+            charSprite.sprite = Normal;
         }
     }
     
@@ -162,6 +177,7 @@ public class CharMovement : MonoBehaviour
     public void hurt()
     {
         hp -= 10;
-        Debug.Log("I'm hurt");
+        charSprite.sprite = Hurt;
+        animCooldown = 0.5f;
     }
 }
