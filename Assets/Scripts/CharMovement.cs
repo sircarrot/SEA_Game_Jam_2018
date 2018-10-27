@@ -12,10 +12,11 @@ public class CharMovement : MonoBehaviour
     NavMeshAgent agent;
     enum AttackStage { chase, attack, cooldown};
     AttackStage attckStage = AttackStage.chase;
+    public GameObject myHouse;
 
     int hp = 100;
     int attackDamage = 10;
-    float attackCooldown = 5.0f;
+    float attackCooldown = 2.0f;
 
     // Use this for initialization
     void Start()
@@ -27,6 +28,24 @@ public class CharMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //temp setting to change mode
+        if(Input.GetKeyDown(KeyCode.X))
+        {
+            currentJob = Jobs.Free;
+        }
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            currentJob = Jobs.Attack;
+        }
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            currentJob = Jobs.Heal;
+        }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            currentJob = Jobs.Harvest;
+        }
+
         if (currentJob == Jobs.Free)
         {
             freeMode();
@@ -52,10 +71,7 @@ public class CharMovement : MonoBehaviour
 
     void attackMode()
     {
-        if (enemyArray == null)
-        {
-            enemyArray = GameObject.FindGameObjectsWithTag("Dog");
-        }
+        enemyArray = GameObject.FindGameObjectsWithTag("Dog");
         float closestDistance = 100000000;
         foreach (GameObject dog in enemyArray)
         {
@@ -77,7 +93,7 @@ public class CharMovement : MonoBehaviour
             else
             {
                 attckStage = AttackStage.attack;
-                attackCooldown = 5.0f;
+                attackCooldown = 2.0f;
             }
         }
         else
@@ -114,6 +130,16 @@ public class CharMovement : MonoBehaviour
 
     void harvestMode()
     {
-
+        Vector3 currentPosition = transform.position;
+        float distToTarget = Vector3.Distance(myHouse.transform.position, currentPosition);
+        if (distToTarget > 5.0f)
+        {
+            agent.isStopped = false;
+            agent.destination = myHouse.transform.position;
+        }
+        else
+        {
+            agent.isStopped = true;
+        }
     }
 }

@@ -22,7 +22,7 @@ public class DogMove : MonoBehaviour
 
     public void hurt()
     {
-        hp -= 10;
+        hp -= 25;
         Debug.Log("I'm hurt");
     }
 }
