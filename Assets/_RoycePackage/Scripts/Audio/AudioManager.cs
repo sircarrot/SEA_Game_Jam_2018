@@ -16,7 +16,7 @@ public class AudioManager : MonoBehaviour, IManager
     {
         if(soundEffectManager == null)
         {
-            soundEffectManager = new GameObject("SEManager");
+            soundEffectManager = new GameObject("SE Manager");
             soundEffectManager.transform.parent = Toolbox.Instance.transform;
         }
 
