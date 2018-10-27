@@ -1,12 +1,18 @@
 fileFormatVersion: 2
-guid: c6b7d65587d565840b4658f7eba6238e
+guid: 3b49302cfc925fa40adf4716e1c2bbb2
 TextureImporter:
   fileIDToRecycleName:
     21300000: Cat_Normal
     21300002: Cat_Hurt
-    21300004: Cat_Knight
-    21300006: Cat_Medic
-    21300008: Cat_Producer
+    21300004: Cat_PatternA
+    21300006: Cat_PatternB
+    21300008: Cat_PatternC
+    21300010: Cat_PatternD
+    21300012: Cat_PatternE
+    21300014: Cat_PatternF
+    21300016: Cat_Knight
+    21300018: Cat_Healer
+    21300020: Cat_Producer
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -36,7 +42,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -93,9 +99,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 181
-        width: 75
-        height: 75
+        y: 401
+        width: 138
+        height: 111
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -103,7 +109,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 66b2a211ab25f034aac2361719f228ce
+      spriteID: 661a127d8823d2e4eb72b2afaf0093ea
       vertices: []
       indices: 
       edges: []
@@ -112,10 +118,10 @@ TextureImporter:
       name: Cat_Hurt
       rect:
         serializedVersion: 2
-        x: 75
-        y: 181
-        width: 75
-        height: 75
+        x: 138
+        y: 401
+        width: 138
+        height: 111
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -123,7 +129,127 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 61b857f864bb79b478c953e418591d93
+      spriteID: 52d6b9451bfbc4e4a8b85274f90dfa89
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat_PatternA
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 401
+        width: 138
+        height: 111
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2853bf9908d41244998ee5eb1a548c4
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat_PatternB
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 290
+        width: 138
+        height: 111
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 595268b5e17ea6045bc7b2d32ba4117f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat_PatternC
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 290
+        width: 138
+        height: 111
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31a6b27f86dd8fa4298591f73f246ee0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat_PatternD
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 290
+        width: 138
+        height: 111
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a440d7893831c2f469113f030c77d575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat_PatternE
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 179
+        width: 138
+        height: 111
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0c151d0c08b8df4d8b8660bf728e6e6
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat_PatternF
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 179
+        width: 138
+        height: 111
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 538775d3b137b914a82299f06003774c
       vertices: []
       indices: 
       edges: []
@@ -132,10 +258,10 @@ TextureImporter:
       name: Cat_Knight
       rect:
         serializedVersion: 2
-        x: 150
-        y: 181
-        width: 75
-        height: 75
+        x: 276
+        y: 179
+        width: 138
+        height: 111
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -143,19 +269,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e68674b59860eee4bbc1529c23ebbf81
+      spriteID: 5e2f1e2fc87faab468ec8a18f1c79a4d
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cat_Medic
+      name: Cat_Healer
       rect:
         serializedVersion: 2
         x: 0
-        y: 106
-        width: 75
-        height: 75
+        y: 68
+        width: 138
+        height: 111
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -163,7 +289,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3599e82f563f8ec44957c3f097241a7d
+      spriteID: 13d1634858bda5d4abe52727f83716a8
       vertices: []
       indices: 
       edges: []
@@ -172,10 +298,10 @@ TextureImporter:
       name: Cat_Producer
       rect:
         serializedVersion: 2
-        x: 75
-        y: 106
-        width: 75
-        height: 75
+        x: 138
+        y: 68
+        width: 138
+        height: 111
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -183,7 +309,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 67dcfb128b5b00f478dfbcd881faaa5c
+      spriteID: 5828a80fada5209468a4893c938bb236
       vertices: []
       indices: 
       edges: []
@@ -191,7 +317,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: bafa987c1d285f248825bbaf8ebc1987
+    spriteID: ed1b5d4bd2730044cb341f65e33d9910
     vertices: []
     indices: 
     edges: []
