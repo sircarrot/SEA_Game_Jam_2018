@@ -23,13 +23,19 @@ public class GameManager : MonoBehaviour, IManager
         StartGame();
     }
 
-    public void SpawnUnit(PlayerSide playerSide)
+    public void SpawnUnit(PlayerSide playerSide,int spawnSeq)
     {
         Debug.Log("Spawn Unit: " + playerSide.ToString());
         Debug.Log((int)playerSide);
-        Vector3 charPosition = new Vector3(headquarters[(int)playerSide].transform.position.x - 10.0f, headquarters[(int)playerSide].transform.position.y, headquarters[(int)playerSide].transform.position.z);
+        int xOffset = 1;
+        if (((int)playerSide) > 0)
+        {
+            xOffset = -1;
+        }
+        Vector3 charPosition = new Vector3(headquarters[(int)playerSide].transform.position.x + xOffset * 1.3f, headquarters[(int)playerSide].transform.position.y, headquarters[(int)playerSide].transform.position.z + 2.2f -  spawnSeq*1.2f);
         Quaternion charRotation = new Quaternion(0, 0, 0, 0);
-        Instantiate(unitPrefabs[(int)playerSide], unitList);
+        //Instantiate(unitPrefabs[(int)playerSide], unitList);
+        Instantiate(unitPrefabs[(int)playerSide], charPosition, charRotation, unitList);
     }
 
     //public void DeadUnit()
@@ -44,8 +50,8 @@ public class GameManager : MonoBehaviour, IManager
         // Spawn 5 units each
         for(int i = 0; i < initialUnitSpawn; ++i)
         {
-            SpawnUnit(PlayerSide.Cats);
-            SpawnUnit(PlayerSide.Dogs);
+            SpawnUnit(PlayerSide.Cats,i);
+            SpawnUnit(PlayerSide.Dogs,i);
         }
 
         inGame = true;
