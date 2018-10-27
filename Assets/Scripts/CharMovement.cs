@@ -18,6 +18,9 @@ public class CharMovement : MonoBehaviour
     int attackDamage = 10;
     float attackCooldown = 2.0f;
 
+    int targetIndex = 0;
+    public GameObject[] target;
+
     // Use this for initialization
     void Start()
     {
