@@ -69,7 +69,6 @@ public class CharMovement : MonoBehaviour
     void Update()
     {
         HPInd.text = hp.ToString();
-
         if (currentJob == UnitTypes.Free)
         {
             freeMode();           
@@ -99,7 +98,17 @@ public class CharMovement : MonoBehaviour
     
     void freeMode()
     {
-        agent.isStopped = true;
+        Vector3 currentPosition = transform.position;
+        float distToTarget = Vector3.Distance(myHouse.transform.position, currentPosition);
+        if (distToTarget < 3.0f)
+        {
+            agent.isStopped = true;
+        }
+        else
+        {
+            agent.isStopped = false;
+            agent.destination = myHouse.transform.position;
+        }
     }
 
     void attackMode()
@@ -227,13 +236,14 @@ public class CharMovement : MonoBehaviour
         Vector3 currentPosition = transform.position;
         float distToTarget = Vector3.Distance(target[randomNumber].transform.position, currentPosition);
 
-        if (distToTarget < 2.0f)
+        if (distToTarget < 3.0f)
         {
             agent.isStopped = true;
             roamCountdown -= Time.deltaTime;
             if (roamCountdown < 0)
             {
                 randomNumber = Random.Range(0, numOfTargetPoints - 1);
+
                 roamCountdown = Random.Range(2, 5);
                 gameManager.AddHarvestPoint(playerSide);
             }
@@ -250,9 +260,8 @@ public class CharMovement : MonoBehaviour
     public void hurt()
     {
         hp -= 10;
-        if (hp <= 0)
+        if (hp <= 20)
         {
-            
             Destroy(gameObject);
         }
         //charSprite.sprite = Hurt;
