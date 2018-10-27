@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour, IManager
 {
-    public Transform unitList;
-    public bool inGame = false;
+    public int initialUnitSpawn = 5;
+    [HideInInspector] public bool inGame = false;
 
+    [SerializeField] private GameObject[] headquarters = new GameObject[2];
     [SerializeField] private GameObject[] unitPrefabs = new GameObject[2];
-    private PlayerData[] playerData = new PlayerData[2];
-
+    private Transform unitList;
 
     public void Init()
     {
@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour, IManager
     public void SpawnUnit(PlayerSide playerSide)
     {
         Debug.Log("Spawn Unit: " + playerSide.ToString());
-        Instantiate(unitPrefabs[(int)playerSide], unitList);
+        Instantiate(unitPrefabs[(int)playerSide],  unitList);
     }
 
     //public void DeadUnit()
@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour, IManager
         // SetMap
 
         // Spawn 5 units each
-        for(int i = 0; i < 5; ++i)
+        for(int i = 0; i < initialUnitSpawn; ++i)
         {
             SpawnUnit(PlayerSide.Cats);
             SpawnUnit(PlayerSide.Dogs);
@@ -55,16 +55,12 @@ public class GameManager : MonoBehaviour, IManager
     public void RestartGame()
     {
         // Destroy/Pool all units
+        foreach(Transform child in unitList)
+        {
+            Destroy(child);
+        }
 
         StartGame();
-    }
-
-    public class PlayerData
-    {
-        public int[] unitList = new int[5];
-        //public int kills;
-
-
     }
 
     public enum PlayerSide
