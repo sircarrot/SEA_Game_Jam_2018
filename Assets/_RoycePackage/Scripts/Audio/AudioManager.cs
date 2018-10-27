@@ -6,9 +6,11 @@ public class AudioManager : MonoBehaviour, IManager
 {
     private GameObject bgmManager;
     private GameObject soundEffectManager;
+    private GameObject voiceLineManager;
 
     private AudioSource bgmAudioSource;
     private List<AudioSource> audioSourcesSE = new List<AudioSource>();
+    private List<AudioSource> audioSourcesVoice = new List<AudioSource>();
 
     private IEnumerator bgmCoroutine;
 
@@ -39,7 +41,6 @@ public class AudioManager : MonoBehaviour, IManager
             else
             {
                 Debug.Log("Play SE");
-                //audioSourcesSE[i].clip = audioClip;
                 audioSourcesSE[i].PlayOneShot(audioClip);
                 return;
             }
@@ -51,6 +52,30 @@ public class AudioManager : MonoBehaviour, IManager
         newAudioSource.transform.parent = soundEffectManager.transform;
 
         Debug.Log("Play SE");
+    }
+
+    public void PlayVoiceLine(AudioClip audioClip = null)
+    {
+        for (int i = 0; i < audioSourcesVoice.Count; ++i)
+        {
+            if (audioSourcesVoice[i].isPlaying)
+            {
+                continue;
+            }
+            else
+            {
+                Debug.Log("Play Voice Line");
+                audioSourcesVoice[i].PlayOneShot(audioClip);
+                return;
+            }
+        }
+
+        Debug.Log("Instantiating new audio source");
+        GameObject newAudioSource = new GameObject();
+        audioSourcesVoice.Add(newAudioSource.AddComponent<AudioSource>());
+        newAudioSource.transform.parent = voiceLineManager.transform;
+
+        Debug.Log("Play Voice Line");
     }
 
     public void BGMPlayer(AudioClip audioClip = null, PlayBGMType type = PlayBGMType.Repeat, float volume = 1f, float fadeDuration = 1f)
