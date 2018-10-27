@@ -34,7 +34,7 @@ public class TestMusic : MonoBehaviour {
             audioManager.PlaySoundEffect(click);
             timer -= baseTimer;
 
-            UIManager.TestFunction();
+            //UIManager.TestFunction();
         }
 
         timer += Time.deltaTime;

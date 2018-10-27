@@ -161,9 +161,14 @@ public class CharMovement : MonoBehaviour
 
     void harvestMode()
     {
+        int numOfTargetPoints = target.Length;
+        //int randomNumber = Random.Range(0, numOfTargetPoints - 1);
+        int randomNumber = 0;
+
         Vector3 currentPosition = transform.position;
-        float distToTarget = Vector3.Distance(myHouse.transform.position, currentPosition);
-        if (distToTarget > 5.0f)
+        float distToTarget = Vector3.Distance(target[randomNumber].transform.position, currentPosition);
+
+        if (distToTarget < 1.0f)
         {
             agent.isStopped = false;
             agent.destination = myHouse.transform.position;
@@ -172,6 +177,7 @@ public class CharMovement : MonoBehaviour
         {
             agent.isStopped = true;
         }
+        //agent.destination = myHouse.transform.position;
     }
 
     public void hurt()
