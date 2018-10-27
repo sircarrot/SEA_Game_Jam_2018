@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4553401094369348}
   - component: {fileID: 212390483320944830}
   m_Layer: 0
-  m_Name: DogColor
+  m_Name: DogLine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 212720435367553386}
   - component: {fileID: 114822257921907644}
   m_Layer: 0
-  m_Name: DogLine
+  m_Name: DogColor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -302,8 +302,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f93b5b71b03adb43831d85666416ba5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseSprite: {fileID: 212720435367553386}
-  baseColor: {fileID: 212390483320944830}
+  baseSprite: {fileID: 212390483320944830}
+  baseColor: {fileID: 212720435367553386}
   unitJob: {fileID: 212955955002547020}
   lineArt: {fileID: 21300000, guid: 0aa490b29aaaf7b4eb11e8c1f724ba65, type: 3}
   hurtArt: {fileID: 21300002, guid: 0aa490b29aaaf7b4eb11e8c1f724ba65, type: 3}
@@ -372,7 +372,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
