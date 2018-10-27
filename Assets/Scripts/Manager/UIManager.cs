@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour {
 
-    public Text player1point, player2point;
+    //public Text player1point, player2point;
     private Text centerText;
     private List<PlayerUI> playerUIList = new List<PlayerUI>();
 

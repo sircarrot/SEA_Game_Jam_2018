@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class CharMovement : MonoBehaviour
 {
     public GameManager gameManager;
+    public UIManager uiManager;
     public UnitSpriteHandler unitSpriteHandler;
 
     private GameObject enemy;
@@ -64,7 +65,7 @@ public class CharMovement : MonoBehaviour
 
         numOfTargetPoints = target.Length;
         randomNumber = Random.Range(0, numOfTargetPoints - 1);
-
+        countUnit();
     }
 
     // Update is called once per frame
@@ -305,6 +306,48 @@ public class CharMovement : MonoBehaviour
             currentJob = UnitTypes.Harvester;
             unitSpriteHandler.ChangeJob(UnitTypes.Harvester);
         }
+        countUnit();
+    }
+
+    private void countUnit()
+    {
+        int totFreeUnit = countUnitType(UnitTypes.Free,false);
+        int totAttackUnit = countUnitType(UnitTypes.Attacker, false);
+        int totHarvestUnit = countUnitType(UnitTypes.Harvester, false);
+        int totHealUnit = countUnitType(UnitTypes.Healer, false);
+        int injuredFreeUnit = countUnitType(UnitTypes.Free, true);
+        int injuredAttackUnit = countUnitType(UnitTypes.Attacker, true);
+        int injuredHarvestUnit = countUnitType(UnitTypes.Harvester, true);
+        int injuredHealUnit = countUnitType(UnitTypes.Healer, true);
+        uiManager.UpdateText(playerSide, UnitTypes.Free, totFreeUnit, injuredFreeUnit);
+        uiManager.UpdateText(playerSide, UnitTypes.Attacker, totAttackUnit, injuredAttackUnit);
+        uiManager.UpdateText(playerSide, UnitTypes.Harvester, totHarvestUnit, injuredHarvestUnit);
+        uiManager.UpdateText(playerSide, UnitTypes.Healer, totHealUnit, injuredHealUnit);
+    }
+
+    private int countUnitType(UnitTypes unitType, bool injured)
+    {
+        int totUnit = 0;
+        GameObject[] teamMembersArray = GameObject.FindGameObjectsWithTag(gameObject.tag);
+        foreach (GameObject teamMember in teamMembersArray)
+        {
+            CharMovement unit = teamMember.GetComponent<CharMovement>();
+            if (unit.currentJob == unitType)
+            {
+                if (injured)
+                {
+                    if (unit.hp < 100)
+                    {
+                        totUnit++;
+                    }
+                }
+                else
+                {
+                    totUnit++;
+                }
+            }
+        }
+        return totUnit;
     }
 
     private enum AttackStage
