@@ -288,22 +288,22 @@ public class CharMovement : MonoBehaviour
         if (newJob == UnitTypes.Free)
         {
             currentJob = UnitTypes.Free;
-            childSprite.GetComponent<UnitSpriteHandler>().ChangeJob(UnitTypes.Free);
+            unitSpriteHandler.ChangeJob(UnitTypes.Free);
         }
         else if (newJob == UnitTypes.Attacker)
         {
             currentJob = UnitTypes.Attacker;
-            childSprite.GetComponent<UnitSpriteHandler>().ChangeJob(UnitTypes.Attacker);
+            unitSpriteHandler.ChangeJob(UnitTypes.Attacker);
         }
         else if (newJob == UnitTypes.Healer)
         {
             currentJob = UnitTypes.Healer;
-            childSprite.GetComponent<UnitSpriteHandler>().ChangeJob(UnitTypes.Healer);
+            unitSpriteHandler.ChangeJob(UnitTypes.Healer);
         }
         else if (newJob == UnitTypes.Harvester)
         {
             currentJob = UnitTypes.Harvester;
-            childSprite.GetComponent<UnitSpriteHandler>().ChangeJob(UnitTypes.Harvester);
+            unitSpriteHandler.ChangeJob(UnitTypes.Harvester);
         }
     }
 
