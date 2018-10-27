@@ -2,18 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InputManager : MonoBehaviour {
+public class InputManager : MonoBehaviour, IManager {
 
+    private GameManager gameManager;
     private bool initComplete;
 
     public void Init()
     {
+        gameManager = Toolbox.Instance.GetManager<GameManager>();
         initComplete = true;
     }
 
     private void Update()
     {
         if (!initComplete) return;
+        if (!gameManager.inGame) return;
         
         if(Input.GetKeyDown(KeyCode.A))
         {
