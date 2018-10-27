@@ -4,15 +4,15 @@ TextureImporter:
   fileIDToRecycleName:
     21300000: Cat_Normal
     21300002: Cat_Hurt
-    21300004: Cat_PatternA
-    21300006: Cat_PatternB
-    21300008: Cat_PatternC
-    21300010: Cat_PatternD
-    21300012: Cat_PatternE
-    21300014: Cat_PatternF
+    21300004: Cat_Pattern01
+    21300006: Cat_Pattern02
+    21300008: Cat_Pattern03
+    21300010: Cat_Pattern04
+    21300012: Cat_Pattern05
+    21300014: Cat_Pattern06
     21300016: Cat_Knight
     21300018: Cat_Healer
-    21300020: Cat_Producer
+    21300020: Cat_Farmer
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -42,7 +42,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: -1
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -58,7 +58,7 @@ TextureImporter:
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 1
+  spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -109,7 +109,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 661a127d8823d2e4eb72b2afaf0093ea
+      spriteID: 1d1ae619f62726740882968c773cbc4a
       vertices: []
       indices: 
       edges: []
@@ -129,13 +129,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 52d6b9451bfbc4e4a8b85274f90dfa89
+      spriteID: 8b566a75777397b4eaaa44d63cfa4e22
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cat_PatternA
+      name: Cat_Pattern01
       rect:
         serializedVersion: 2
         x: 276
@@ -149,17 +149,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d2853bf9908d41244998ee5eb1a548c4
+      spriteID: 2e463a9fb18604a419b527f42663a198
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cat_PatternB
+      name: Cat_Pattern02
       rect:
         serializedVersion: 2
         x: 0
-        y: 290
+        y: 291
         width: 138
         height: 111
       alignment: 0
@@ -169,13 +169,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 595268b5e17ea6045bc7b2d32ba4117f
+      spriteID: b31eb388cfb00234084a6519cc1a3603
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cat_PatternC
+      name: Cat_Pattern03
       rect:
         serializedVersion: 2
         x: 138
@@ -189,13 +189,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 31a6b27f86dd8fa4298591f73f246ee0
+      spriteID: 12401fae68238f74caf029cd4d35e7c7
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cat_PatternD
+      name: Cat_Pattern04
       rect:
         serializedVersion: 2
         x: 276
@@ -209,13 +209,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a440d7893831c2f469113f030c77d575
+      spriteID: 82f365f2dc7526d45a67493242c01175
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cat_PatternE
+      name: Cat_Pattern05
       rect:
         serializedVersion: 2
         x: 0
@@ -229,13 +229,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c0c151d0c08b8df4d8b8660bf728e6e6
+      spriteID: 72fb291506fb4c3469d8552345ed26b4
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cat_PatternF
+      name: Cat_Pattern06
       rect:
         serializedVersion: 2
         x: 138
@@ -249,7 +249,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 538775d3b137b914a82299f06003774c
+      spriteID: 89000468509ff5645a3226f283aeb388
       vertices: []
       indices: 
       edges: []
@@ -269,7 +269,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5e2f1e2fc87faab468ec8a18f1c79a4d
+      spriteID: d98eddf98cb855f45845d8428cfad7a9
       vertices: []
       indices: 
       edges: []
@@ -289,13 +289,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 13d1634858bda5d4abe52727f83716a8
+      spriteID: 9ee332741822b8c40b5b122c75b8558e
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cat_Producer
+      name: Cat_Farmer
       rect:
         serializedVersion: 2
         x: 138
@@ -309,7 +309,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5828a80fada5209468a4893c938bb236
+      spriteID: 8b911c2d5a9a4df49befdd5e6c684038
       vertices: []
       indices: 
       edges: []
@@ -317,7 +317,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: ed1b5d4bd2730044cb341f65e33d9910
+    spriteID: 05a76f02a49e44f4ba5d1b946a78fd9e
     vertices: []
     indices: 
     edges: []
