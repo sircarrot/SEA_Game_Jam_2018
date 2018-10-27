@@ -5,16 +5,17 @@ using UnityEngine.AI;
 
 public class CharMovement : MonoBehaviour
 {
-    //enum Jobs { Free, Attack, Heal, Harvest };
-    public UnitTypes currentJob = UnitTypes.Free;
+    public GameManager gameManager;
+
     private GameObject enemy;
     private GameObject[] enemyArray;
     NavMeshAgent agent;
-    enum AttackStage { chase, attack, cooldown};
-    enum HealStage { chase, heal, cooldown };
+    public UnitTypes currentJob = UnitTypes.Free;
+
+
     AttackStage attckStage = AttackStage.chase;
     HealStage healStage = HealStage.chase;
-    //public Sprite Normal, Hurt;
+
     SpriteRenderer charSprite;
     Transform childSprite;
     Transform HPTemp;
@@ -31,13 +32,12 @@ public class CharMovement : MonoBehaviour
     float roamCountdown;
     private int numOfTargetPoints, randomNumber;
 
-    private GameObject toolbox, myHouse;
+    private GameObject myHouse;
     private int playerSide;
 
     // Use this for initialization
     void Start()
     {
-        toolbox = Toolbox.Instance.gameObject;
         roamCountdown = Random.Range(2, 5);
         agent = GetComponent<NavMeshAgent>();
         childSprite = this.gameObject.transform.GetChild(0);
@@ -235,7 +235,7 @@ public class CharMovement : MonoBehaviour
             {
                 randomNumber = Random.Range(0, numOfTargetPoints - 1);
                 roamCountdown = Random.Range(2, 5);
-                toolbox.GetComponent<GameManager>().addHarvestPoint(playerSide);
+                gameManager.addHarvestPoint(playerSide);
             }
         }
         else
@@ -252,6 +252,7 @@ public class CharMovement : MonoBehaviour
         hp -= 10;
         if (hp <= 0)
         {
+            
             Destroy(gameObject);
         }
         //charSprite.sprite = Hurt;
@@ -294,4 +295,18 @@ public class CharMovement : MonoBehaviour
             childSprite.GetComponent<unitSpriteHandler>().ChangeJob(UnitTypes.Harvester);
         }
     }
+
+    private enum AttackStage
+    {
+        chase,
+        attack,
+        cooldown
+    };
+
+    private enum HealStage
+    {
+        chase,
+        heal,
+        cooldown
+    };
 }
