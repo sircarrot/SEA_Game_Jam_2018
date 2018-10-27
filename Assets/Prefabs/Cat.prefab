@@ -212,15 +212,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f93b5b71b03adb43831d85666416ba5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseSprite: {fileID: 0}
-  baseColor: {fileID: 0}
-  unitJob: {fileID: 0}
-  lineArt: {fileID: 0}
-  hurtArt: {fileID: 0}
-  attacker: {fileID: 0}
-  healer: {fileID: 0}
-  harvester: {fileID: 0}
-  spriteColor: []
+  baseSprite: {fileID: 212712202120438548}
+  baseColor: {fileID: 212337514947944420}
+  unitJob: {fileID: 212354786523391450}
+  lineArt: {fileID: 21300000, guid: 3b49302cfc925fa40adf4716e1c2bbb2, type: 3}
+  hurtArt: {fileID: 21300002, guid: 3b49302cfc925fa40adf4716e1c2bbb2, type: 3}
+  attacker: {fileID: 21300016, guid: 3b49302cfc925fa40adf4716e1c2bbb2, type: 3}
+  healer: {fileID: 21300018, guid: 3b49302cfc925fa40adf4716e1c2bbb2, type: 3}
+  harvester: {fileID: 21300020, guid: 3b49302cfc925fa40adf4716e1c2bbb2, type: 3}
+  spriteColor:
+  - {fileID: 21300004, guid: 3b49302cfc925fa40adf4716e1c2bbb2, type: 3}
+  - {fileID: 21300006, guid: 3b49302cfc925fa40adf4716e1c2bbb2, type: 3}
+  - {fileID: 21300008, guid: 3b49302cfc925fa40adf4716e1c2bbb2, type: 3}
+  - {fileID: 21300010, guid: 3b49302cfc925fa40adf4716e1c2bbb2, type: 3}
+  - {fileID: 21300012, guid: 3b49302cfc925fa40adf4716e1c2bbb2, type: 3}
+  - {fileID: 21300014, guid: 3b49302cfc925fa40adf4716e1c2bbb2, type: 3}
 --- !u!195 &195104210839526574
 NavMeshAgent:
   m_ObjectHideFlags: 1

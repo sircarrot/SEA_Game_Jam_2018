@@ -36,6 +36,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4087816086971922}
+  - component: {fileID: 212196463695543226}
   m_Layer: 0
   m_Name: DogJob
   m_TagString: Untagged
@@ -71,6 +72,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4099073959792956}
+  - component: {fileID: 212251496085955548}
   m_Layer: 0
   m_Name: DogColor
   m_TagString: Untagged
@@ -198,15 +200,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f93b5b71b03adb43831d85666416ba5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseSprite: {fileID: 0}
-  baseColor: {fileID: 0}
-  unitJob: {fileID: 0}
-  lineArt: {fileID: 0}
-  hurtArt: {fileID: 0}
-  attacker: {fileID: 0}
-  healer: {fileID: 0}
-  harvester: {fileID: 0}
-  spriteColor: []
+  baseSprite: {fileID: 212172097617424972}
+  baseColor: {fileID: 212251496085955548}
+  unitJob: {fileID: 212196463695543226}
+  lineArt: {fileID: 21300000, guid: 0aa490b29aaaf7b4eb11e8c1f724ba65, type: 3}
+  hurtArt: {fileID: 21300002, guid: 0aa490b29aaaf7b4eb11e8c1f724ba65, type: 3}
+  attacker: {fileID: 21300018, guid: 0aa490b29aaaf7b4eb11e8c1f724ba65, type: 3}
+  healer: {fileID: 21300020, guid: 0aa490b29aaaf7b4eb11e8c1f724ba65, type: 3}
+  harvester: {fileID: 21300022, guid: 0aa490b29aaaf7b4eb11e8c1f724ba65, type: 3}
+  spriteColor:
+  - {fileID: 21300004, guid: 0aa490b29aaaf7b4eb11e8c1f724ba65, type: 3}
+  - {fileID: 21300006, guid: 0aa490b29aaaf7b4eb11e8c1f724ba65, type: 3}
+  - {fileID: 21300008, guid: 0aa490b29aaaf7b4eb11e8c1f724ba65, type: 3}
+  - {fileID: 21300010, guid: 0aa490b29aaaf7b4eb11e8c1f724ba65, type: 3}
+  - {fileID: 21300012, guid: 0aa490b29aaaf7b4eb11e8c1f724ba65, type: 3}
+  - {fileID: 21300016, guid: 0aa490b29aaaf7b4eb11e8c1f724ba65, type: 3}
 --- !u!114 &114272768472758760
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -281,6 +289,98 @@ SpriteRenderer:
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.75, y: 0.74}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 0
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!212 &212196463695543226
+SpriteRenderer:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1732123339483190}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 0
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!212 &212251496085955548
+SpriteRenderer:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1889095974797294}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
