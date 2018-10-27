@@ -14,8 +14,9 @@ public class CharMovement : MonoBehaviour
     AttackStage attckStage = AttackStage.chase;
     public GameObject myHouse;
 
+
     int hp = 100;
-    int attackDamage = 10;
+    public int attackDamage = 10;
     float attackCooldown = 2.0f;
 
     int targetIndex = 0;
@@ -65,6 +66,11 @@ public class CharMovement : MonoBehaviour
         {
             harvestMode();
         }
+
+        if (hp < 0)
+        {
+            Destroy(gameObject);
+        }
     }
     
     void freeMode()
@@ -74,7 +80,14 @@ public class CharMovement : MonoBehaviour
 
     void attackMode()
     {
-        enemyArray = GameObject.FindGameObjectsWithTag("Dog");
+        if (gameObject.tag == "Cat")
+        {
+            enemyArray = GameObject.FindGameObjectsWithTag("Dog");
+        }
+        else
+        {
+            enemyArray = GameObject.FindGameObjectsWithTag("Cat");
+        }     
         float closestDistance = 100000000;
         foreach (GameObject dog in enemyArray)
         {
@@ -117,7 +130,7 @@ public class CharMovement : MonoBehaviour
             if (enemy != null)
             {
                 agent.isStopped = true;
-                enemy.GetComponent<DogMove>().hurt();//inflict damage
+                enemy.GetComponent<CharMovement>().hurt();//inflict damage
             }
         }
         else if (attckStage == AttackStage.cooldown)
@@ -144,5 +157,11 @@ public class CharMovement : MonoBehaviour
         {
             agent.isStopped = true;
         }
+    }
+
+    public void hurt()
+    {
+        hp -= 10;
+        Debug.Log("I'm hurt");
     }
 }
