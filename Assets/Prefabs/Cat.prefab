@@ -36,7 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4065512019716660}
   - component: {fileID: 212712202120438548}
-  - component: {fileID: 114215277325096134}
+  - component: {fileID: 114884594784025126}
   m_Layer: 0
   m_Name: CatLine
   m_TagString: Untagged
@@ -189,32 +189,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114215277325096134
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1315498392700320}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f93b5b71b03adb43831d85666416ba5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseSprite: {fileID: 212712202120438548}
-  baseColor: {fileID: 212337514947944420}
-  unitJob: {fileID: 212354786523391450}
-  lineArt: {fileID: 21300000, guid: 3b49302cfc925fa40adf4716e1c2bbb2, type: 3}
-  hurtArt: {fileID: 21300002, guid: 3b49302cfc925fa40adf4716e1c2bbb2, type: 3}
-  attacker: {fileID: 21300016, guid: 3b49302cfc925fa40adf4716e1c2bbb2, type: 3}
-  healer: {fileID: 21300018, guid: 3b49302cfc925fa40adf4716e1c2bbb2, type: 3}
-  harvester: {fileID: 21300020, guid: 3b49302cfc925fa40adf4716e1c2bbb2, type: 3}
-  spriteColor:
-  - {fileID: 21300004, guid: 3b49302cfc925fa40adf4716e1c2bbb2, type: 3}
-  - {fileID: 21300006, guid: 3b49302cfc925fa40adf4716e1c2bbb2, type: 3}
-  - {fileID: 21300008, guid: 3b49302cfc925fa40adf4716e1c2bbb2, type: 3}
-  - {fileID: 21300010, guid: 3b49302cfc925fa40adf4716e1c2bbb2, type: 3}
-  - {fileID: 21300012, guid: 3b49302cfc925fa40adf4716e1c2bbb2, type: 3}
-  - {fileID: 21300014, guid: 3b49302cfc925fa40adf4716e1c2bbb2, type: 3}
 --- !u!114 &114493746633856028
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -226,12 +200,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4339c79abad4af946a819a9a81b0837d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 0}
-  myHouse: {fileID: 0}
-  Normal: {fileID: 21300000, guid: 3b49302cfc925fa40adf4716e1c2bbb2, type: 3}
-  Hurt: {fileID: 21300002, guid: 3b49302cfc925fa40adf4716e1c2bbb2, type: 3}
   attackDamage: 10
-  target: []
+--- !u!114 &114884594784025126
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1315498392700320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f93b5b71b03adb43831d85666416ba5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseSprite: {fileID: 0}
+  baseColor: {fileID: 0}
+  unitJob: {fileID: 0}
+  lineArt: {fileID: 0}
+  hurtArt: {fileID: 0}
+  attacker: {fileID: 0}
+  healer: {fileID: 0}
+  harvester: {fileID: 0}
+  spriteColor: []
 --- !u!195 &195104210839526574
 NavMeshAgent:
   m_ObjectHideFlags: 1

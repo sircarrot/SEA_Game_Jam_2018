@@ -6,33 +6,59 @@ using UnityEngine.AI;
 public class CharMovement : MonoBehaviour
 {
     enum Jobs { Free, Attack, Heal, Harvest };
-    Jobs currentJob = Jobs.Attack;
-    public GameObject enemy;
+    Jobs currentJob = Jobs.Free;
+    private GameObject enemy;
     private GameObject[] enemyArray;
     NavMeshAgent agent;
     enum AttackStage { chase, attack, cooldown};
+    enum HealStage { chase, heal, cooldown };
     AttackStage attckStage = AttackStage.chase;
-    public GameObject myHouse;
-    public Sprite Normal, Hurt;
+    HealStage healStage = HealStage.chase;
+    //public Sprite Normal, Hurt;
     SpriteRenderer charSprite;
     Transform childSprite;
 
     int hp = 100;
     public int attackDamage = 10;
     float attackCooldown = 0.1f;
+    float healCooldown = 0.1f;
     float animCooldown = 0.0f;
 
     int targetIndex = 0;
-    public GameObject[] target;
+    private GameObject[] target;
+    float roamCountdown;
+    private int numOfTargetPoints, randomNumber;
+
+    private GameObject gameManager, myHouse;
+    private int playerSide;
 
     // Use this for initialization
     void Start()
     {
+        gameManager = GameObject.Find("gameManager");
+        roamCountdown = Random.Range(2, 5);
         agent = GetComponent<NavMeshAgent>();
         childSprite = this.gameObject.transform.GetChild(0);
         charSprite = childSprite.GetComponent<SpriteRenderer>();
-        Debug.Log(charSprite);
-        charSprite.sprite = Normal;
+        //Debug.Log(charSprite);
+        //charSprite.sprite = Normal;
+
+        if (gameObject.tag == "Cat")
+        {
+            target = GameObject.FindGameObjectsWithTag("CatPatrol");
+            playerSide = 0;
+            myHouse = GameObject.Find("CatHouse");
+        }
+        else
+        {
+            target = GameObject.FindGameObjectsWithTag("DogPatrol");
+            playerSide = 1;
+            myHouse = GameObject.Find("DogHouse");
+        }
+
+        numOfTargetPoints = target.Length;
+        randomNumber = Random.Range(0, numOfTargetPoints - 1);
+
     }
 
     // Update is called once per frame
@@ -42,23 +68,28 @@ public class CharMovement : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.X))
         {
             currentJob = Jobs.Free;
+            childSprite.GetComponent<unitSpriteHandler>().ChangeJob(UnitTypes.Free);
         }
         if (Input.GetKeyDown(KeyCode.A))
         {
             currentJob = Jobs.Attack;
+            childSprite.GetComponent<unitSpriteHandler>().ChangeJob(UnitTypes.Attacker);
         }
         if (Input.GetKeyDown(KeyCode.H))
         {
             currentJob = Jobs.Heal;
+            childSprite.GetComponent<unitSpriteHandler>().ChangeJob(UnitTypes.Healer);
         }
         if (Input.GetKeyDown(KeyCode.R))
         {
             currentJob = Jobs.Harvest;
+            childSprite.GetComponent<unitSpriteHandler>().ChangeJob(UnitTypes.Harvester);
         }
 
         if (currentJob == Jobs.Free)
         {
             freeMode();
+            
         }
         else if (currentJob == Jobs.Attack)
         {
@@ -84,13 +115,13 @@ public class CharMovement : MonoBehaviour
         }
         else
         {
-            charSprite.sprite = Normal;
+            //charSprite.sprite = Normal;
         }
     }
     
     void freeMode()
     {
-
+        agent.isStopped = true;
     }
 
     void attackMode()
@@ -156,44 +187,101 @@ public class CharMovement : MonoBehaviour
 
     void healMode()
     {
-
-    }
-
-    void harvestMode()
-    {
-        if (gameObject.tag == "Cat")
+        GameObject[] teamMembersArray = GameObject.FindGameObjectsWithTag(gameObject.tag);
+        GameObject nearestTeamMember = teamMembersArray[0];
+        float closestDistance = 100000000;
+        foreach (GameObject teamMember in teamMembersArray)
         {
-            enemyArray = GameObject.FindGameObjectsWithTag("CatPatrol");
+            Vector3 currentPosition = transform.position;
+            float distToTarget = Vector3.Distance(teamMember.transform.position, currentPosition);
+            if (distToTarget < closestDistance)
+            {
+                closestDistance = distToTarget;
+                nearestTeamMember = teamMember;
+            }
+        }
+        if (closestDistance < 1.0f)
+        {
+            if (healCooldown > 0)
+            {
+                healStage = HealStage.cooldown;
+                healCooldown -= Time.deltaTime * 1.0f;
+            }
+            else
+            {
+                healStage = HealStage.heal;
+                healCooldown = 2.0f;
+            }
         }
         else
         {
-            enemyArray = GameObject.FindGameObjectsWithTag("DogPatrol");
+            healStage = HealStage.chase;
         }
-
-
-        int numOfTargetPoints = target.Length;
-        //int randomNumber = Random.Range(0, numOfTargetPoints - 1);
-        int randomNumber = 0;
-
-        Vector3 currentPosition = transform.position;
-        float distToTarget = Vector3.Distance(target[randomNumber].transform.position, currentPosition);
-
-        if (distToTarget < 1.0f)
+        //Debug.Log(closestDistance);
+        if (healStage == HealStage.chase)
         {
-            agent.isStopped = false;
-            agent.destination = myHouse.transform.position;
+            if (nearestTeamMember != null)
+            {
+                agent.isStopped = false;
+                agent.destination = nearestTeamMember.transform.position;
+            }
         }
-        else
+        else if (healStage == HealStage.heal)
+        {
+            if (nearestTeamMember != null)
+            {
+                agent.isStopped = true;
+                nearestTeamMember.GetComponent<CharMovement>().heal();//heal
+            }
+        }
+        else if (healStage == HealStage.cooldown)
         {
             agent.isStopped = true;
         }
-        //agent.destination = myHouse.transform.position;
+    }
+
+    void harvestMode()
+    {       
+        Vector3 currentPosition = transform.position;
+        float distToTarget = Vector3.Distance(target[randomNumber].transform.position, currentPosition);
+
+        if (distToTarget < 0.8f)
+        {
+            agent.isStopped = true;
+            roamCountdown -= Time.deltaTime;
+            if (roamCountdown < 0)
+            {
+                randomNumber = Random.Range(0, numOfTargetPoints - 1);
+                roamCountdown = Random.Range(2, 5);
+                gameManager.GetComponent<TestInstantiate>().addHarvestPoint(playerSide);
+            }
+        }
+        else
+        {
+            agent.isStopped = false;
+            agent.destination = target[randomNumber].transform.position;
+        }
+        //Debug.Log(distToTarget);
+
     }
 
     public void hurt()
     {
         hp -= 10;
-        charSprite.sprite = Hurt;
-        animCooldown = 0.5f;
+        //charSprite.sprite = Hurt;
+        //animCooldown = 0.5f;
+        childSprite.GetComponent<unitSpriteHandler>().ShakingAnimation();
+    }
+
+    public void heal()
+    {
+        if (hp <= 90)
+        {
+            hp += 10;
+        }
+        else
+        {
+            hp = 100;
+        }
     }
 }

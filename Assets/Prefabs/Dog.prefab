@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4668548061831524}
   - component: {fileID: 212172097617424972}
-  - component: {fileID: 114774293202453752}
+  - component: {fileID: 114015763714055822}
   m_Layer: 0
   m_Name: DogLine
   m_TagString: Untagged
@@ -187,24 +187,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114272768472758760
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1809894759801496}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4339c79abad4af946a819a9a81b0837d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemy: {fileID: 0}
-  myHouse: {fileID: 0}
-  Normal: {fileID: 21300000, guid: 46d14055d7b3ac64b9d06bda50e1a5ef, type: 3}
-  Hurt: {fileID: 21300002, guid: 46d14055d7b3ac64b9d06bda50e1a5ef, type: 3}
-  attackDamage: 10
-  target: []
---- !u!114 &114774293202453752
+--- !u!114 &114015763714055822
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -224,6 +207,18 @@ MonoBehaviour:
   healer: {fileID: 0}
   harvester: {fileID: 0}
   spriteColor: []
+--- !u!114 &114272768472758760
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1809894759801496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4339c79abad4af946a819a9a81b0837d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackDamage: 10
 --- !u!195 &195321335200956914
 NavMeshAgent:
   m_ObjectHideFlags: 1
@@ -288,6 +283,6 @@ SpriteRenderer:
   m_Size: {x: 0.75, y: 0.74}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0

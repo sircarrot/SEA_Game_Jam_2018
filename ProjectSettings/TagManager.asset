@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Dog
   - Cat
+  - CatPatrol
+  - DogPatrol
   layers:
   - Default
   - TransparentFX
