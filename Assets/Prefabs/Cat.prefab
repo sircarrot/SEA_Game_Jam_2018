@@ -141,8 +141,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 0}
   myHouse: {fileID: 0}
-  Normal: {fileID: 21300000, guid: c6b7d65587d565840b4658f7eba6238e, type: 3}
-  Hurt: {fileID: 21300002, guid: c6b7d65587d565840b4658f7eba6238e, type: 3}
+  Normal: {fileID: 21300000, guid: 3b49302cfc925fa40adf4716e1c2bbb2, type: 3}
+  Hurt: {fileID: 21300002, guid: 3b49302cfc925fa40adf4716e1c2bbb2, type: 3}
   attackDamage: 10
   target: []
 --- !u!195 &195104210839526574
