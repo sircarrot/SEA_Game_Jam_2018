@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour, IManager
     public Camera cam;
     public GameObject HPBar;
     public GameObject HPBarCanvases;
+    public int player1point = 0, player2point = 0;
 
     public int initialUnitSpawn = 5;
     [HideInInspector] public bool inGame = false;
@@ -29,8 +30,8 @@ public class GameManager : MonoBehaviour, IManager
 
     public void SpawnUnit(PlayerSide playerSide,int spawnSeq)
     {
-        Debug.Log("Spawn Unit: " + playerSide.ToString());
-        Debug.Log((int)playerSide);
+        //Debug.Log("Spawn Unit: " + playerSide.ToString());
+        //Debug.Log((int)playerSide);
         int xOffset = 1;
         if (((int)playerSide) > 0)
         {
@@ -78,6 +79,29 @@ public class GameManager : MonoBehaviour, IManager
         }
 
         StartGame();
+    }
+
+
+    public void addHarvestPoint(int playerNum)
+    {
+        if (playerNum > 0)
+        {
+            player2point += 5;
+            if (player2point >= 100)
+            {
+                SpawnUnit(PlayerSide.Dogs, 0);
+                player2point = 0;
+            }
+        }
+        else
+        {
+            player1point += 5;
+            if (player1point >= 100)
+            {
+                SpawnUnit(PlayerSide.Cats, 0);
+                player1point = 0;
+            }
+        }
     }
 
     public enum PlayerSide
