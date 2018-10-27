@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour, IManager
     [SerializeField] private GameObject[] headquarters = new GameObject[2];
     [SerializeField] private GameObject[] unitPrefabs = new GameObject[2];
     private Transform unitList;
+    //public Transform[] playerMap;
 
     public void Init()
     {
@@ -26,6 +27,8 @@ public class GameManager : MonoBehaviour, IManager
     {
         Debug.Log("Spawn Unit: " + playerSide.ToString());
         Debug.Log((int)playerSide);
+        Vector3 charPosition = new Vector3(headquarters[(int)playerSide].transform.position.x - 10.0f, headquarters[(int)playerSide].transform.position.y, headquarters[(int)playerSide].transform.position.z);
+        Quaternion charRotation = new Quaternion(0, 0, 0, 0);
         Instantiate(unitPrefabs[(int)playerSide], unitList);
     }
 

@@ -114,7 +114,7 @@ public class CharMovement : MonoBehaviour
                 enemy = dog;
             }
         }
-        if (closestDistance < 3.0f)
+        if (closestDistance < 1.0f)
         {
             if (attackCooldown > 0)
             {
@@ -161,6 +161,16 @@ public class CharMovement : MonoBehaviour
 
     void harvestMode()
     {
+        if (gameObject.tag == "Cat")
+        {
+            enemyArray = GameObject.FindGameObjectsWithTag("CatPatrol");
+        }
+        else
+        {
+            enemyArray = GameObject.FindGameObjectsWithTag("DogPatrol");
+        }
+
+
         int numOfTargetPoints = target.Length;
         //int randomNumber = Random.Range(0, numOfTargetPoints - 1);
         int randomNumber = 0;

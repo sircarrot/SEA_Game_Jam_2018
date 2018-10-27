@@ -35,6 +35,7 @@ public class TestMusic : MonoBehaviour {
             timer -= baseTimer;
 
             //UIManager.TestFunction();
+
         }
 
         timer += Time.deltaTime;
