@@ -5,8 +5,8 @@ using UnityEngine.AI;
 
 public class CharMovement : MonoBehaviour
 {
-    enum Jobs { Free, Attack, Heal, Harvest };
-    Jobs currentJob = Jobs.Free;
+    //enum Jobs { Free, Attack, Heal, Harvest };
+    public UnitTypes currentJob = UnitTypes.Free;
     private GameObject enemy;
     private GameObject[] enemyArray;
     NavMeshAgent agent;
@@ -69,42 +69,20 @@ public class CharMovement : MonoBehaviour
     void Update()
     {
         HPInd.text = hp.ToString();
-        //temp setting to change mode
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            currentJob = Jobs.Free;
-            childSprite.GetComponent<unitSpriteHandler>().ChangeJob(UnitTypes.Free);
-        }
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            currentJob = Jobs.Attack;
-            childSprite.GetComponent<unitSpriteHandler>().ChangeJob(UnitTypes.Attacker);
-        }
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            currentJob = Jobs.Heal;
-            childSprite.GetComponent<unitSpriteHandler>().ChangeJob(UnitTypes.Healer);
-        }
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            currentJob = Jobs.Harvest;
-            childSprite.GetComponent<unitSpriteHandler>().ChangeJob(UnitTypes.Harvester);
-        }
 
-        if (currentJob == Jobs.Free)
+        if (currentJob == UnitTypes.Free)
         {
-            freeMode();
-            
+            freeMode();           
         }
-        else if (currentJob == Jobs.Attack)
+        else if (currentJob == UnitTypes.Attacker)
         {
             attackMode();
         }
-        else if (currentJob == Jobs.Heal)
+        else if (currentJob == UnitTypes.Healer)
         {
             healMode();
         }
-        else if (currentJob == Jobs.Harvest)
+        else if (currentJob == UnitTypes.Harvester)
         {
             harvestMode();
         }
@@ -290,6 +268,30 @@ public class CharMovement : MonoBehaviour
         else
         {
             hp = 100;
+        }
+    }
+
+    public void changeJob(UnitTypes newJob)
+    {
+        if (newJob == UnitTypes.Free)
+        {
+            currentJob = UnitTypes.Free;
+            childSprite.GetComponent<unitSpriteHandler>().ChangeJob(UnitTypes.Free);
+        }
+        else if (newJob == UnitTypes.Attacker)
+        {
+            currentJob = UnitTypes.Attacker;
+            childSprite.GetComponent<unitSpriteHandler>().ChangeJob(UnitTypes.Attacker);
+        }
+        else if (newJob == UnitTypes.Healer)
+        {
+            currentJob = UnitTypes.Healer;
+            childSprite.GetComponent<unitSpriteHandler>().ChangeJob(UnitTypes.Healer);
+        }
+        else if (newJob == UnitTypes.Harvester)
+        {
+            currentJob = UnitTypes.Harvester;
+            childSprite.GetComponent<unitSpriteHandler>().ChangeJob(UnitTypes.Harvester);
         }
     }
 }

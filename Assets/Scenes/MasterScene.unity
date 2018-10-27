@@ -364,6 +364,8 @@ MonoBehaviour:
   cam: {fileID: 534669904}
   HPBar: {fileID: 1174305394517898, guid: 98171c5be1138154a8343e72a458c978, type: 2}
   HPBarCanvases: {fileID: 1123365766}
+  player1point: 0
+  player2point: 0
   initialUnitSpawn: 5
   inGame: 0
   headquarters:
@@ -641,7 +643,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 604127103}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.6100001, y: 5.178322, z: -1.1700001}
+  m_LocalPosition: {x: 0.37, y: 5.178322, z: 1.07}
   m_LocalScale: {x: 0.37915, y: 1, z: 0.36363998}
   m_Children:
   - {fileID: 2036411491}
@@ -1845,7 +1847,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1630103192}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.4928913, y: 5.178322, z: 1.8090906}
+  m_LocalPosition: {x: 0.31, y: 5.178322, z: 1.21}
   m_LocalScale: {x: 0.37914693, y: 1, z: 0.36363634}
   m_Children:
   - {fileID: 1663101910}
