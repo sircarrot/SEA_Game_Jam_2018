@@ -5,16 +5,17 @@ using UnityEngine.AI;
 
 public class CharMovement : MonoBehaviour
 {
-    //enum Jobs { Free, Attack, Heal, Harvest };
-    public UnitTypes currentJob = UnitTypes.Free;
+    public GameManager gameManager;
+
     private GameObject enemy;
     private GameObject[] enemyArray;
     NavMeshAgent agent;
-    enum AttackStage { chase, attack, cooldown};
-    enum HealStage { chase, heal, cooldown };
+    public UnitTypes currentJob = UnitTypes.Free;
+
+
     AttackStage attckStage = AttackStage.chase;
     HealStage healStage = HealStage.chase;
-    //public Sprite Normal, Hurt;
+
     SpriteRenderer charSprite;
     Transform childSprite;
     Transform HPTemp;
@@ -31,13 +32,12 @@ public class CharMovement : MonoBehaviour
     float roamCountdown;
     private int numOfTargetPoints, randomNumber;
 
-    private GameObject Toolbox, myHouse;
+    private GameObject myHouse;
     private int playerSide;
 
     // Use this for initialization
     void Start()
     {
-        Toolbox = GameObject.Find("Toolbox");
         roamCountdown = Random.Range(2, 5);
         agent = GetComponent<NavMeshAgent>();
         childSprite = this.gameObject.transform.GetChild(0);
@@ -243,8 +243,9 @@ public class CharMovement : MonoBehaviour
             if (roamCountdown < 0)
             {
                 randomNumber = Random.Range(0, numOfTargetPoints - 1);
-                roamCountdown = Random.Range(1, 3);
-                Toolbox.GetComponent<GameManager>().addHarvestPoint(playerSide);
+
+                roamCountdown = Random.Range(2, 5);
+                gameManager.addHarvestPoint(playerSide);
             }
         }
         else
@@ -261,11 +262,7 @@ public class CharMovement : MonoBehaviour
         hp -= 10;
         if (hp <= 20)
         {
-            if (hp <= 0)
-            {
-                Destroy(gameObject);
-            }
-            changeJob(UnitTypes.Free);
+            Destroy(gameObject);
         }
         //charSprite.sprite = Hurt;
         //animCooldown = 0.5f;
@@ -307,4 +304,18 @@ public class CharMovement : MonoBehaviour
             childSprite.GetComponent<unitSpriteHandler>().ChangeJob(UnitTypes.Harvester);
         }
     }
+
+    private enum AttackStage
+    {
+        chase,
+        attack,
+        cooldown
+    };
+
+    private enum HealStage
+    {
+        chase,
+        heal,
+        cooldown
+    };
 }

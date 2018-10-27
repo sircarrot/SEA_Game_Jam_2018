@@ -21,26 +21,31 @@ public class InputManager : MonoBehaviour, IManager {
         if(Input.GetKeyDown(KeyCode.A))
         {
             // Healer, player 1
-            GameObject[] player1Array = GameObject.FindGameObjectsWithTag("Cat");
-            foreach (GameObject cat in player1Array)
+            GameObject[] gameObjectArray = GameObject.FindGameObjectsWithTag("Cat");
+            for(int i = 0; i < gameObjectArray.Length; ++i)
             {
-                if (cat.GetComponent<CharMovement>().currentJob == UnitTypes.Free)
+                CharMovement charMovement = gameObjectArray[i].GetComponent<CharMovement>();
+                if (charMovement.currentJob == UnitTypes.Free)
                 {
-                    cat.GetComponent<CharMovement>().changeJob(UnitTypes.Healer);
+                    charMovement.changeJob(UnitTypes.Healer);
                     break;
                 }
             }
+
+
         }
 
         if(Input.GetKeyDown(KeyCode.LeftArrow))
         {
             // Healer, player 2
-            GameObject[] player1Array = GameObject.FindGameObjectsWithTag("Dog");
-            foreach (GameObject cat in player1Array)
+            GameObject[] gameObjectArray = GameObject.FindGameObjectsWithTag("Dog");
+            for (int i = 0; i < gameObjectArray.Length; ++i)
             {
-                if (cat.GetComponent<CharMovement>().currentJob == UnitTypes.Free)
+                CharMovement charMovement = gameObjectArray[i].GetComponent<CharMovement>();
+
+                if (charMovement.currentJob == UnitTypes.Free)
                 {
-                    cat.GetComponent<CharMovement>().changeJob(UnitTypes.Healer);
+                    charMovement.changeJob(UnitTypes.Healer);
                     break;
                 }
             }
@@ -49,12 +54,14 @@ public class InputManager : MonoBehaviour, IManager {
         if (Input.GetKeyDown(KeyCode.S))
         {
             // Free, player 1
-            GameObject[] player1Array = GameObject.FindGameObjectsWithTag("Cat");
-            foreach (GameObject cat in player1Array)
+            GameObject[] gameObjectArray= GameObject.FindGameObjectsWithTag("Cat");
+            for (int i = 0; i < gameObjectArray.Length; ++i)
             {
-                if (cat.GetComponent<CharMovement>().currentJob != UnitTypes.Free)
+                CharMovement charMovement = gameObjectArray[i].GetComponent<CharMovement>();
+
+                if (charMovement.currentJob != UnitTypes.Free)
                 {
-                    cat.GetComponent<CharMovement>().changeJob(UnitTypes.Free);
+                    charMovement.changeJob(UnitTypes.Free);
                     break;
                 }
             }
@@ -63,12 +70,14 @@ public class InputManager : MonoBehaviour, IManager {
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             // Free, player 2
-            GameObject[] player1Array = GameObject.FindGameObjectsWithTag("Dog");
-            foreach (GameObject cat in player1Array)
+            GameObject[] gameObjectArray = GameObject.FindGameObjectsWithTag("Dog");
+            for (int i = 0; i < gameObjectArray.Length; ++i)
             {
-                if (cat.GetComponent<CharMovement>().currentJob != UnitTypes.Free)
+                CharMovement charMovement = gameObjectArray[i].GetComponent<CharMovement>();
+
+                if (charMovement.currentJob != UnitTypes.Free)
                 {
-                    cat.GetComponent<CharMovement>().changeJob(UnitTypes.Free);
+                    charMovement.changeJob(UnitTypes.Free);
                     break;
                 }
             }
@@ -77,12 +86,14 @@ public class InputManager : MonoBehaviour, IManager {
         if (Input.GetKeyDown(KeyCode.D))
         {
             // Harvester, player 1
-            GameObject[] player1Array = GameObject.FindGameObjectsWithTag("Cat");
-            foreach (GameObject cat in player1Array)
+            GameObject[] gameObjectArray = GameObject.FindGameObjectsWithTag("Cat");
+            for (int i = 0; i < gameObjectArray.Length; ++i)
             {
-                if (cat.GetComponent<CharMovement>().currentJob == UnitTypes.Free)
+                CharMovement charMovement = gameObjectArray[i].GetComponent<CharMovement>();
+
+                if (charMovement.currentJob == UnitTypes.Free)
                 {
-                    cat.GetComponent<CharMovement>().changeJob(UnitTypes.Harvester);
+                    charMovement.changeJob(UnitTypes.Harvester);
                     break;
                 }
             }
@@ -91,12 +102,14 @@ public class InputManager : MonoBehaviour, IManager {
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             // Harvester, player 2
-            GameObject[] player1Array = GameObject.FindGameObjectsWithTag("Dog");
-            foreach (GameObject cat in player1Array)
+            GameObject[] gameObjectArray = GameObject.FindGameObjectsWithTag("Dog");
+            for (int i = 0; i < gameObjectArray.Length; ++i)
             {
-                if (cat.GetComponent<CharMovement>().currentJob == UnitTypes.Free)
+                CharMovement charMovement = gameObjectArray[i].GetComponent<CharMovement>();
+
+                if (charMovement.currentJob == UnitTypes.Free)
                 {
-                    cat.GetComponent<CharMovement>().changeJob(UnitTypes.Harvester);
+                    charMovement.changeJob(UnitTypes.Harvester);
                     break;
                 }
             }
@@ -105,12 +118,14 @@ public class InputManager : MonoBehaviour, IManager {
         if (Input.GetKeyDown(KeyCode.W))
         {
             // Striker, player 1
-            GameObject[] player1Array = GameObject.FindGameObjectsWithTag("Cat");
-            foreach (GameObject cat in player1Array)
+            GameObject[] gameObjectArray = GameObject.FindGameObjectsWithTag("Cat");
+            for (int i = 0; i < gameObjectArray.Length; ++i)
             {
-                if (cat.GetComponent<CharMovement>().currentJob == UnitTypes.Free)
+                CharMovement charMovement = gameObjectArray[i].GetComponent<CharMovement>();
+
+                if (charMovement.currentJob == UnitTypes.Free)
                 {
-                    cat.GetComponent<CharMovement>().changeJob(UnitTypes.Attacker);
+                    charMovement.changeJob(UnitTypes.Attacker);
                     break;
                 }
             }
@@ -119,12 +134,14 @@ public class InputManager : MonoBehaviour, IManager {
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             // Striker, player 2
-            GameObject[] player1Array = GameObject.FindGameObjectsWithTag("Dog");
-            foreach (GameObject cat in player1Array)
+            GameObject[] gameObjectArray = GameObject.FindGameObjectsWithTag("Dog");
+            for (int i = 0; i < gameObjectArray.Length; ++i)
             {
-                if (cat.GetComponent<CharMovement>().currentJob == UnitTypes.Free)
+                CharMovement charMovement = gameObjectArray[i].GetComponent<CharMovement>();
+
+                if (charMovement.currentJob == UnitTypes.Free)
                 {
-                    cat.GetComponent<CharMovement>().changeJob(UnitTypes.Attacker);
+                    charMovement.changeJob(UnitTypes.Attacker);
                     break;
                 }
             }
