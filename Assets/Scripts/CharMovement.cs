@@ -31,13 +31,13 @@ public class CharMovement : MonoBehaviour
     float roamCountdown;
     private int numOfTargetPoints, randomNumber;
 
-    private GameObject Toolbox, myHouse;
+    private GameObject toolbox, myHouse;
     private int playerSide;
 
     // Use this for initialization
     void Start()
     {
-        Toolbox = GameObject.Find("Toolbox");
+        toolbox = Toolbox.Instance.gameObject;
         roamCountdown = Random.Range(2, 5);
         agent = GetComponent<NavMeshAgent>();
         childSprite = this.gameObject.transform.GetChild(0);
@@ -235,7 +235,7 @@ public class CharMovement : MonoBehaviour
             {
                 randomNumber = Random.Range(0, numOfTargetPoints - 1);
                 roamCountdown = Random.Range(2, 5);
-                Toolbox.GetComponent<GameManager>().addHarvestPoint(playerSide);
+                toolbox.GetComponent<GameManager>().addHarvestPoint(playerSide);
             }
         }
         else
