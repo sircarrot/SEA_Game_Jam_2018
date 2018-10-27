@@ -1,10 +1,12 @@
 fileFormatVersion: 2
-guid: a22edd3c14ca9fa4eb743c790b175a27
+guid: c6b7d65587d565840b4658f7eba6238e
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Cat_Hurt
-    21300002: Cat_Normal
-    21300004: Cat_Sprite_Sheet_2
+    21300000: Cat_Normal
+    21300002: Cat_Hurt
+    21300004: Cat_Knight
+    21300006: Cat_Medic
+    21300008: Cat_Producer
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -87,11 +89,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Cat_Hurt
+      name: Cat_Normal
       rect:
         serializedVersion: 2
         x: 0
-        y: 53
+        y: 181
         width: 75
         height: 75
       alignment: 0
@@ -101,17 +103,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6a49e9614ec6dad4aae3700e750a2477
+      spriteID: 66b2a211ab25f034aac2361719f228ce
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cat_Normal
+      name: Cat_Hurt
       rect:
         serializedVersion: 2
         x: 75
-        y: 53
+        y: 181
         width: 75
         height: 75
       alignment: 0
@@ -121,7 +123,67 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 85c1bfdd08c61e340b1bfcbefbc202f3
+      spriteID: 61b857f864bb79b478c953e418591d93
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat_Knight
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 181
+        width: 75
+        height: 75
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e68674b59860eee4bbc1529c23ebbf81
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat_Medic
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 106
+        width: 75
+        height: 75
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3599e82f563f8ec44957c3f097241a7d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat_Producer
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 106
+        width: 75
+        height: 75
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67dcfb128b5b00f478dfbcd881faaa5c
       vertices: []
       indices: 
       edges: []
@@ -129,7 +191,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 96d4f85897530694ca4859fa5ad92011
+    spriteID: bafa987c1d285f248825bbaf8ebc1987
     vertices: []
     indices: 
     edges: []
