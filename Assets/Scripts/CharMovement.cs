@@ -235,7 +235,7 @@ public class CharMovement : MonoBehaviour
             {
                 randomNumber = Random.Range(0, numOfTargetPoints - 1);
                 roamCountdown = Random.Range(2, 5);
-                gameManager.addHarvestPoint(playerSide);
+                gameManager.AddHarvestPoint(playerSide);
             }
         }
         else

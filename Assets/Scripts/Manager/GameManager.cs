@@ -98,7 +98,7 @@ public class GameManager : MonoBehaviour, IManager
     }
 
 
-    public void addHarvestPoint(int playerNum)
+    public void AddHarvestPoint(int playerNum)
     {
         if (playerNum > 0)
         {
