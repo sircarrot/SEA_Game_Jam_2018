@@ -25,7 +25,8 @@ public class GameManager : MonoBehaviour, IManager
     public void SpawnUnit(PlayerSide playerSide)
     {
         Debug.Log("Spawn Unit: " + playerSide.ToString());
-        Instantiate(unitPrefabs[(int)playerSide],  unitList);
+        Debug.Log((int)playerSide);
+        Instantiate(unitPrefabs[(int)playerSide], unitList);
     }
 
     //public void DeadUnit()

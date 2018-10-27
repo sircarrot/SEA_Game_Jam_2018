@@ -21,8 +21,13 @@ public class Toolbox : Singleton<Toolbox>
         foreach(IManager manager in gameObject.GetComponents<IManager>())
         {
             managerList.Add(manager);
-            manager.Init();
         }
+
+        for(int i = 0; i < managerList.Count; ++i)
+        {
+            managerList[i].Init();
+        }
+
 
         // To initialize manager to toolbox on run time example:
         //GetManager<CameraManager>();
