@@ -287,6 +287,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4339c79abad4af946a819a9a81b0837d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
+  unitSpriteHandler: {fileID: 114822257921907644}
   currentJob: 3
   attackDamage: 10
 --- !u!114 &114822257921907644

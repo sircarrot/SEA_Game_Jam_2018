@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class CharMovement : MonoBehaviour
 {
     public GameManager gameManager;
+    public UnitSpriteHandler unitSpriteHandler;
 
     private GameObject enemy;
     private GameObject[] enemyArray;
@@ -40,12 +41,13 @@ public class CharMovement : MonoBehaviour
     {
         roamCountdown = Random.Range(2, 5);
         agent = GetComponent<NavMeshAgent>();
-        childSprite = this.gameObject.transform.GetChild(0);
-        HPTemp = this.gameObject.transform.GetChild(1);
+        childSprite = gameObject.transform.GetChild(0);
+        HPTemp = gameObject.transform.GetChild(1);
         charSprite = childSprite.GetComponent<SpriteRenderer>();
         HPInd = HPTemp.GetComponent<TextMesh>();
         //Debug.Log(charSprite);
         //charSprite.sprite = Normal;
+        unitSpriteHandler.Init();
 
         if (gameObject.tag == "Cat")
         {
@@ -266,7 +268,7 @@ public class CharMovement : MonoBehaviour
         }
         //charSprite.sprite = Hurt;
         //animCooldown = 0.5f;
-        //childSprite.GetComponent<unitSpriteHandler>().ShakingAnimation();
+        unitSpriteHandler.ShakingAnimation();
     }
 
     public void heal()
@@ -286,22 +288,22 @@ public class CharMovement : MonoBehaviour
         if (newJob == UnitTypes.Free)
         {
             currentJob = UnitTypes.Free;
-            childSprite.GetComponent<unitSpriteHandler>().ChangeJob(UnitTypes.Free);
+            childSprite.GetComponent<UnitSpriteHandler>().ChangeJob(UnitTypes.Free);
         }
         else if (newJob == UnitTypes.Attacker)
         {
             currentJob = UnitTypes.Attacker;
-            childSprite.GetComponent<unitSpriteHandler>().ChangeJob(UnitTypes.Attacker);
+            childSprite.GetComponent<UnitSpriteHandler>().ChangeJob(UnitTypes.Attacker);
         }
         else if (newJob == UnitTypes.Healer)
         {
             currentJob = UnitTypes.Healer;
-            childSprite.GetComponent<unitSpriteHandler>().ChangeJob(UnitTypes.Healer);
+            childSprite.GetComponent<UnitSpriteHandler>().ChangeJob(UnitTypes.Healer);
         }
         else if (newJob == UnitTypes.Harvester)
         {
             currentJob = UnitTypes.Harvester;
-            childSprite.GetComponent<unitSpriteHandler>().ChangeJob(UnitTypes.Harvester);
+            childSprite.GetComponent<UnitSpriteHandler>().ChangeJob(UnitTypes.Harvester);
         }
     }
 
