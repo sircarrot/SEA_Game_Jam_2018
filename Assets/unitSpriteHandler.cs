@@ -19,6 +19,7 @@ public class UnitSpriteHandler : MonoBehaviour {
     private IEnumerator spriteCoroutine;
     private float duration = 0.5f;
     private float scale = 0.1f;
+    private Vector3 originalPos;
 
     public void Init()
     {
@@ -61,15 +62,17 @@ public class UnitSpriteHandler : MonoBehaviour {
 
     public IEnumerator ShakingCoroutine()
     {
-        Vector3 originalPos = shakeObject.localPosition;
+        originalPos = shakeObject.localPosition;
         float timer = duration;
         while (timer > 0)
         {
             Vector3 newPos = (Random.insideUnitSphere - new Vector3(0.5f, 0.5f, 0.5f)) * scale;
-            newPos = new Vector3(newPos.x, newPos.y, 1);
+            newPos = new Vector3(newPos.x, 1, 1);
             shakeObject.localPosition = originalPos + newPos;
+            Debug.Log(newPos);
             yield return null;
             timer -= Time.deltaTime;
         }
+        shakeObject.localPosition = originalPos;
     }
 }
