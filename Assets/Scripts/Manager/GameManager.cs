@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour, IManager
 {
+    public Camera cam;
+    public GameObject HPBar;
+    public GameObject HPBarCanvases;
+
     public int initialUnitSpawn = 5;
     [HideInInspector] public bool inGame = false;
 
@@ -35,7 +39,10 @@ public class GameManager : MonoBehaviour, IManager
         Vector3 charPosition = new Vector3(headquarters[(int)playerSide].transform.position.x + xOffset * 1.3f, headquarters[(int)playerSide].transform.position.y, headquarters[(int)playerSide].transform.position.z + 2.2f -  spawnSeq*1.2f);
         Quaternion charRotation = new Quaternion(0, 0, 0, 0);
         //Instantiate(unitPrefabs[(int)playerSide], unitList);
-        Instantiate(unitPrefabs[(int)playerSide], charPosition, charRotation, unitList);
+        Transform unit = Instantiate(unitPrefabs[(int)playerSide], charPosition, charRotation, unitList).transform;
+
+        HPBarHandler handler = Instantiate(HPBar, HPBarCanvases.transform).GetComponent<HPBarHandler>();
+        handler.Init(unit, cam);
     }
 
     //public void DeadUnit()

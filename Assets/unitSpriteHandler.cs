@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class unitSpriteHandler : MonoBehaviour {
+public class UnitSpriteHandler : MonoBehaviour {
 
     [SerializeField] private SpriteRenderer baseSprite;
     [SerializeField] private SpriteRenderer baseColor;
