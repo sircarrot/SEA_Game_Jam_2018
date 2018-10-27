@@ -17,6 +17,8 @@ public class CharMovement : MonoBehaviour
     //public Sprite Normal, Hurt;
     SpriteRenderer charSprite;
     Transform childSprite;
+    Transform HPTemp;
+    TextMesh HPInd;
 
     int hp = 100;
     public int attackDamage = 10;
@@ -29,17 +31,19 @@ public class CharMovement : MonoBehaviour
     float roamCountdown;
     private int numOfTargetPoints, randomNumber;
 
-    private GameObject gameManager, myHouse;
+    private GameObject Toolbox, myHouse;
     private int playerSide;
 
     // Use this for initialization
     void Start()
     {
-        gameManager = GameObject.Find("gameManager");
+        Toolbox = GameObject.Find("Toolbox");
         roamCountdown = Random.Range(2, 5);
         agent = GetComponent<NavMeshAgent>();
         childSprite = this.gameObject.transform.GetChild(0);
+        HPTemp = this.gameObject.transform.GetChild(1);
         charSprite = childSprite.GetComponent<SpriteRenderer>();
+        HPInd = HPTemp.GetComponent<TextMesh>();
         //Debug.Log(charSprite);
         //charSprite.sprite = Normal;
 
@@ -47,13 +51,13 @@ public class CharMovement : MonoBehaviour
         {
             target = GameObject.FindGameObjectsWithTag("CatPatrol");
             playerSide = 0;
-            myHouse = GameObject.Find("CatHouse");
+            myHouse = GameObject.Find("Player1");
         }
         else
         {
             target = GameObject.FindGameObjectsWithTag("DogPatrol");
             playerSide = 1;
-            myHouse = GameObject.Find("DogHouse");
+            myHouse = GameObject.Find("Player2");
         }
 
         numOfTargetPoints = target.Length;
@@ -64,8 +68,9 @@ public class CharMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        HPInd.text = hp.ToString();
         //temp setting to change mode
-        if(Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.X))
         {
             currentJob = Jobs.Free;
             childSprite.GetComponent<unitSpriteHandler>().ChangeJob(UnitTypes.Free);
@@ -102,11 +107,6 @@ public class CharMovement : MonoBehaviour
         else if (currentJob == Jobs.Harvest)
         {
             harvestMode();
-        }
-
-        if (hp < 0)
-        {
-            Destroy(gameObject);
         }
 
         if (animCooldown > 0)
@@ -192,12 +192,15 @@ public class CharMovement : MonoBehaviour
         float closestDistance = 100000000;
         foreach (GameObject teamMember in teamMembersArray)
         {
-            Vector3 currentPosition = transform.position;
-            float distToTarget = Vector3.Distance(teamMember.transform.position, currentPosition);
-            if (distToTarget < closestDistance)
-            {
-                closestDistance = distToTarget;
-                nearestTeamMember = teamMember;
+            if (teamMember.GetComponent<CharMovement>().hp < 100)
+            { 
+                Vector3 currentPosition = transform.position;
+                float distToTarget = Vector3.Distance(teamMember.transform.position, currentPosition);
+                if (distToTarget < closestDistance)
+                {
+                    closestDistance = distToTarget;
+                    nearestTeamMember = teamMember;
+                }
             }
         }
         if (closestDistance < 1.0f)
@@ -224,6 +227,7 @@ public class CharMovement : MonoBehaviour
             {
                 agent.isStopped = false;
                 agent.destination = nearestTeamMember.transform.position;
+                //Debug.Log("trigger this");
             }
         }
         else if (healStage == HealStage.heal)
@@ -245,7 +249,7 @@ public class CharMovement : MonoBehaviour
         Vector3 currentPosition = transform.position;
         float distToTarget = Vector3.Distance(target[randomNumber].transform.position, currentPosition);
 
-        if (distToTarget < 0.8f)
+        if (distToTarget < 2.0f)
         {
             agent.isStopped = true;
             roamCountdown -= Time.deltaTime;
@@ -253,7 +257,7 @@ public class CharMovement : MonoBehaviour
             {
                 randomNumber = Random.Range(0, numOfTargetPoints - 1);
                 roamCountdown = Random.Range(2, 5);
-                gameManager.GetComponent<TestInstantiate>().addHarvestPoint(playerSide);
+                Toolbox.GetComponent<GameManager>().addHarvestPoint(playerSide);
             }
         }
         else
@@ -268,9 +272,13 @@ public class CharMovement : MonoBehaviour
     public void hurt()
     {
         hp -= 10;
+        if (hp <= 0)
+        {
+            Destroy(gameObject);
+        }
         //charSprite.sprite = Hurt;
         //animCooldown = 0.5f;
-        childSprite.GetComponent<unitSpriteHandler>().ShakingAnimation();
+        //childSprite.GetComponent<unitSpriteHandler>().ShakingAnimation();
     }
 
     public void heal()
