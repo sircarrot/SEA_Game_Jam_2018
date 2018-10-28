@@ -97,9 +97,9 @@ public class CharMovement : MonoBehaviour
         gameSpeedCountdown -= Time.deltaTime;
         if (gameSpeedCountdown <= 0)
         {
-            gameSpeedCountdown = 0;
-            if (attackSpeed >= 0.4) { attackSpeed -= 0.2f; }
-            if (movementSpeed <= 10.0f) { movementSpeed += 2.0f; }
+            gameSpeedCountdown = 30;
+            if (attackSpeed >= 0.5) { attackSpeed -= 0.1f; }
+            if (movementSpeed <= 8.0f) { movementSpeed += 1.0f; }
         }
 
     }
