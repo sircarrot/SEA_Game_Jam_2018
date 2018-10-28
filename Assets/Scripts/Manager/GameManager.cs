@@ -45,12 +45,15 @@ public class GameManager : MonoBehaviour, IManager
     {
         //Debug.Log("Spawn Unit: " + playerSide.ToString());
         //Debug.Log((int)playerSide);
+        GameObject[] target = GameObject.FindGameObjectsWithTag("CatPatrol");
         int xOffset = 1;
         if (((int)playerSide) > 0)
         {
             xOffset = -1;
+            target = GameObject.FindGameObjectsWithTag("DogPatrol");
         }
-        Vector3 charPosition = new Vector3(headquarters[(int)playerSide].transform.position.x + xOffset * 1.3f, headquarters[(int)playerSide].transform.position.y, headquarters[(int)playerSide].transform.position.z + 2.2f -  spawnSeq*1.2f);
+        //Vector3 charPosition = new Vector3(headquarters[(int)playerSide].transform.position.x + xOffset * 1.3f, headquarters[(int)playerSide].transform.position.y, headquarters[(int)playerSide].transform.position.z + 2.2f -  spawnSeq*1.2f);
+        Vector3 charPosition = new Vector3(target[spawnSeq].transform.position.x, target[spawnSeq].transform.position.y, target[spawnSeq].transform.position.z);
         Quaternion charRotation = new Quaternion(0, 0, 0, 0);
         //Instantiate(unitPrefabs[(int)playerSide], unitList);
         Transform unit = Instantiate(unitPrefabs[(int)playerSide], charPosition, charRotation, unitList).transform;
