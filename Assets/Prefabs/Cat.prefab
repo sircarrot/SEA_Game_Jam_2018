@@ -284,7 +284,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1533078037482806}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f93b5b71b03adb43831d85666416ba5, type: 3}
+  m_Script: {fileID: 11500000, guid: 3eae2ca6983eb934fb53b60de20c5baf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   baseSprite: {fileID: 212018766371190902}
@@ -313,7 +313,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4339c79abad4af946a819a9a81b0837d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UICanvas: {fileID: 0}
   uiManager: {fileID: 114203397445440906, guid: 77076ddb602140141a95e68a8a998f24,
     type: 2}
   unitSpriteHandler: {fileID: 114532799583292442}
@@ -378,16 +377,16 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
-  m_Sprite: {fileID: 0}
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 21300002, guid: 3b49302cfc925fa40adf4716e1c2bbb2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.38, y: 1.11}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!212 &212483330208187574
@@ -470,8 +469,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3b49302cfc925fa40adf4716e1c2bbb2, type: 3}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300012, guid: 3b49302cfc925fa40adf4716e1c2bbb2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

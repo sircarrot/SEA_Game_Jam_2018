@@ -287,7 +287,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4339c79abad4af946a819a9a81b0837d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UICanvas: {fileID: 0}
   uiManager: {fileID: 0}
   unitSpriteHandler: {fileID: 114822257921907644}
   gameManager: {fileID: 0}
@@ -304,7 +303,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1777296372579114}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f93b5b71b03adb43831d85666416ba5, type: 3}
+  m_Script: {fileID: 11500000, guid: 3eae2ca6983eb934fb53b60de20c5baf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   baseSprite: {fileID: 212390483320944830}
