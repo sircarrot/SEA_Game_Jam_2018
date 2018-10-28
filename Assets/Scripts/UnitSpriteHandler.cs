@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class UnitSpriteHandler : MonoBehaviour
 {
+    [Header("For Death")]
+    public GameObject wings;
+    public GameObject baseColorObject;
 
+    [Header("Sprites")]
     [SerializeField] private SpriteRenderer baseSprite;
     [SerializeField] private SpriteRenderer baseColor;
     [SerializeField] private SpriteRenderer unitJob;
@@ -75,5 +79,25 @@ public class UnitSpriteHandler : MonoBehaviour
             timer -= Time.deltaTime;
         }
         shakeObject.localPosition = originalPos;
+    }
+
+    public void DeathAnimation(GameObject unit)
+    {
+        StartCoroutine(DeathCoroutine(unit));
+    }
+
+    public IEnumerator DeathCoroutine(GameObject unit)
+    {
+        float timer = 1f;
+        while (timer > 0)
+        {
+            Vector3 newPos = new Vector3(0, 0, 0.1f);
+            wings.SetActive(true);
+            baseColorObject.transform.localPosition += newPos;
+            timer -= Time.deltaTime;
+            yield return null;
+        }
+
+        Destroy(unit);
     }
 }

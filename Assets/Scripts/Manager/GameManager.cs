@@ -98,8 +98,8 @@ public class GameManager : MonoBehaviour, IManager
                 break;
         }
 
+        unit.unitSpriteHandler.DeathAnimation(unit.gameObject);
         Destroy(unit);
-
     }
 
     public void StartGame()
