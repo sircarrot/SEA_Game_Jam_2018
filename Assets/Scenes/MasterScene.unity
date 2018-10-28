@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -616,20 +616,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c918249ef48a0504eba28b40e236cf8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioLibrary: {fileID: 11400000, guid: e104b9b000a11ec449568882ef409b24, type: 2}
   cam: {fileID: 534669904}
   HPBar: {fileID: 1174305394517898, guid: 98171c5be1138154a8343e72a458c978, type: 2}
   HPBarCanvases: {fileID: 1123365766}
-  uiManager: {fileID: 0}
-  player1point: 0
-  player2point: 0
-  initialUnitSpawn: 5
-  inGame: 0
+  uiManager: {fileID: 353431250}
   headquarters:
   - {fileID: 1147093269}
   - {fileID: 1473956755}
   unitPrefabs:
   - {fileID: 1118145223118042, guid: 9796f0a37a5f3c940b0bf076049be70b, type: 2}
   - {fileID: 1715200007077462, guid: fccf15f7bb41aef4f87bad201bdab632, type: 2}
+  player1point: 0
+  player2point: 0
+  initialUnitSpawn: 5
+  inGame: 0
   unitList: {fileID: 0}
   catObjects: []
   dogObjects: []
@@ -888,6 +889,11 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 300191083}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &353431250 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1236793603319660, guid: 77076ddb602140141a95e68a8a998f24,
+    type: 2}
+  m_PrefabInternal: {fileID: 892419848}
 --- !u!224 &491360977 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 224025917085503940, guid: 77076ddb602140141a95e68a8a998f24,
@@ -2322,7 +2328,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1326090444
 MonoBehaviour:
   m_ObjectHideFlags: 0
