@@ -313,10 +313,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4339c79abad4af946a819a9a81b0837d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
+  UICanvas: {fileID: 0}
+  uiManager: {fileID: 114203397445440906, guid: 77076ddb602140141a95e68a8a998f24,
+    type: 2}
   unitSpriteHandler: {fileID: 114532799583292442}
+  gameManager: {fileID: 0}
   currentJob: 3
+  healRange: 5
   attackDamage: 10
+  attackSpeed: 1
+  movementSpeed: 5
 --- !u!195 &195426771991619032
 NavMeshAgent:
   m_ObjectHideFlags: 1
