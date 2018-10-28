@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour, IManager
 
     [SerializeField] private GameObject[] headquarters = new GameObject[2];
     [SerializeField] private GameObject[] unitPrefabs = new GameObject[2];
+    [SerializeField] private GameObject[] harvestPie = new GameObject[2];
 
     [Header("Producer Points")]
     public int player1point = 0, player2point = 0;
@@ -186,7 +187,7 @@ public class GameManager : MonoBehaviour, IManager
                 if (dogObjects.Count < 50) { SpawnUnit(PlayerSide.Dogs, 0); }
                 player2point = 0;
             }
-            uiManager.HarvestPointUpdate(playerNum, player2point);
+            harvestPie[playerNum].GetComponent<HarvestTimerScript>().Fill((float)player2point / 100);
         }
         else if (playerNum < 1 && catObjects.Count < 50)
         {
@@ -196,7 +197,7 @@ public class GameManager : MonoBehaviour, IManager
                 if (catObjects.Count < 50) { SpawnUnit(PlayerSide.Cats, 0); }
                 player1point = 0;
             }
-            uiManager.HarvestPointUpdate(playerNum, player1point);
+            harvestPie[playerNum].GetComponent<HarvestTimerScript>().Fill((float)player1point / 100);
         }
         
     }

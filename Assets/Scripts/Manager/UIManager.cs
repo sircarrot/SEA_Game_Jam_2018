@@ -10,18 +10,11 @@ public class UIManager : MonoBehaviour {
     public GameObject movingCanvas;
 
     [SerializeField] private List<PlayerUI> playerUIList = new List<PlayerUI>();
-
-    [SerializeField] private List<Text> playerPoints = new List<Text>();
     private Text centerText;
 
     public void CenterTextUpdate(string value)
     {
         centerText.text = value;
-    }
-
-    public void HarvestPointUpdate(int playerNumber, int harvestPoints)
-    {
-        playerPoints[playerNumber].text = "Harvest: " + harvestPoints.ToString();
     }
 
     public void UpdateText(int playerNumber, UnitTypes unitType, int number, int injured = 0)
