@@ -20,7 +20,7 @@ public class InputManager : MonoBehaviour, IManager {
         
         if(Input.GetKeyDown(KeyCode.A))
         {
-            ChangeJob(gameManager.dogObjects, UnitTypes.Healer);
+            ChangeJob(gameManager.catObjects, UnitTypes.Healer);
         }
 
         if (Input.GetKeyDown(KeyCode.LeftArrow))
@@ -30,7 +30,7 @@ public class InputManager : MonoBehaviour, IManager {
 
         if (Input.GetKeyDown(KeyCode.S))
         {
-            ChangeJob(gameManager.dogObjects, UnitTypes.Free);
+            ChangeJob(gameManager.catObjects, UnitTypes.Free);
         }
 
         if (Input.GetKeyDown(KeyCode.DownArrow))
@@ -158,7 +158,10 @@ public class InputManager : MonoBehaviour, IManager {
                 break;
         }
         return false;
+    }
 
+    public void RearrangeList()
+    {
 
     }
 }
