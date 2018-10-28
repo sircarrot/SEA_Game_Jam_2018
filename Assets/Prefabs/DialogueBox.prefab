@@ -117,6 +117,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e386ccac3827b8f408b7221fd9dde3fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camera: {fileID: 0}
+  dialogueBox: {fileID: 114546641996662316}
+  referenceUnit: {fileID: 0}
 --- !u!222 &222222579398472584
 CanvasRenderer:
   m_ObjectHideFlags: 1

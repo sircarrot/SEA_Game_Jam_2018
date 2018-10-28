@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour {
 
+    public Camera camera;
     public GameObject speechBubble;
     public GameObject movingCanvas;
 
@@ -36,11 +37,13 @@ public class UIManager : MonoBehaviour {
         }
     }
 
-    public void CreateCaption()
+    public void CreateCaption(string captionString, Transform unit)
     {
-        GameObject bubble = Instantiate(speechBubble, movingCanvas.transform);
+        CaptionScript caption = Instantiate(speechBubble, movingCanvas.transform).GetComponent<CaptionScript>();
 
-        StartCoroutine(DestroyBubble(bubble));
+        caption.InitText(captionString, unit, camera);
+
+        StartCoroutine(DestroyBubble(caption.gameObject));
     }
 
     private IEnumerator DestroyBubble(GameObject bubble)

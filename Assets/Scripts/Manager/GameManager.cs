@@ -87,8 +87,13 @@ public class GameManager : MonoBehaviour, IManager
     public void DeadUnit(CharMovement unit)
     {
         PlayerSide playerSide = unit.playerSide;
+
+        string caption = captionsLibrary.GetCaption(CaptionsLibrary.CaptionsType.Death, playerSide);
+        uiManager.CreateCaption(caption, unit.unitSpriteHandler.baseColorObject.transform);
+
         audioManager.PlaySoundEffect(audioLibrary.death[(int)playerSide]);
-        switch(playerSide)
+
+        switch (playerSide)
         {
             case PlayerSide.Cats:
                 catObjects.Remove(unit);

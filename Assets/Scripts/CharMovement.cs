@@ -438,6 +438,12 @@ public class CharMovement : MonoBehaviour
         return finalPosition;
     }
 
+    private IEnumerator BubbleCoroutine()
+    {
+        yield return null;
+    }
+
+
     private enum AttackStage
     {
         chase,

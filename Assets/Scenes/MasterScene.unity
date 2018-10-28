@@ -771,7 +771,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioLibrary: {fileID: 11400000, guid: e104b9b000a11ec449568882ef409b24, type: 2}
-  captionsLibrary: {fileID: 0}
+  captionsLibrary: {fileID: 11400000, guid: a2367b55cb293214da128495b9574001, type: 2}
   cam: {fileID: 534669904}
   HPBar: {fileID: 1174305394517898, guid: 98171c5be1138154a8343e72a458c978, type: 2}
   HPBarCanvases: {fileID: 1123365766}
@@ -2186,6 +2186,11 @@ Prefab:
       propertyPath: movingCanvas
       value: 
       objectReference: {fileID: 1123365766}
+    - target: {fileID: 114203397445440906, guid: 77076ddb602140141a95e68a8a998f24,
+        type: 2}
+      propertyPath: camera
+      value: 
+      objectReference: {fileID: 534669904}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77076ddb602140141a95e68a8a998f24, type: 2}
   m_IsPrefabAsset: 0

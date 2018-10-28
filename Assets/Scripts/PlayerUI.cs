@@ -60,8 +60,6 @@ public class PlayerUI : MonoBehaviour {
     
     private IEnumerator SizeAnimation(Transform textbox)
     {
-        Debug.Log("Animating");
-
         float timer = animationDuration;
         textbox.localScale = new Vector3(animationScale, animationScale, 1);
 

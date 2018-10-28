@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67d813b2b56cb5b41afd7a9ae562a8ad, type: 3}
+  m_Name: DefaultCaptionsLibrary
+  m_EditorClassIdentifier: 
+  freeCaptions:
+  - Lazy..., Sleepy..., Chill..., Is this real life?, Is this fantasy?
+  - Meow..., Catnap!, Purr..., Cough... furball..., Time to groom...
+  - Need to pee!, SQUIRREL!, Got a bone?, I have a tail!, Smells good...
+  strikerCaptions:
+  - To battle!,  No mercy!,  Smash them!,  Attack!,  Charge!
+  - For the Cats!,  Whiskers unite!,  Beat them Dogs!,  Cats are cooler!,  Claws out!
+  - Dogs must win!,  BARK!,  Sniff them out!,  I'm so ready!,  Bury them!
+  healerCaptions:
+  - Hang in there!,  I'm here!,  Hold still!,  You're fine!,  Feeling better?,  All
+    good!,  Following!
+  - Lick that wound!,  Catnip anyone?,  Dr. Cat's in!,  Healing-nyaa
+  - Feel better dawg!,  On your paws!,  Stand strong!,  Dog-tor is here!
+  producerCaptions:
+  - We'll make it!,  Faster!,  Let's do this!,  Feel the love!,  We need more!,  Farming...,  Food
+    on the table!
+  - Need more milk...,  More kittens!,  Kitten litter!,  It smells!
+  - Puppy love!,  Fresh food!,  Good luck!,  Hard day of work...
+  deathCaptions:
+  - 'Sorry...,  No!,  Avenge me!,  I''ll be back!,  Tell my wife I love her!,  Tell
+    my wife I love pie!,  Respawning... '
+  - Me-ouch!,  No fair!,  Not enough milk...,  8 more lives...
+  - Dog heaven...,  I see... bones...,  White light?,  Ruff....
