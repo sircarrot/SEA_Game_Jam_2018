@@ -18,4 +18,8 @@ public class AudioLibrary : ScriptableObject {
     public AudioClip[] spawned = new AudioClip[2];
 
     public AudioClip gameStart;
+    public AudioClip gameEnd;
+
+    public AudioClip[] dogCaption = new AudioClip[8];
+    public AudioClip[] catCaption = new AudioClip[8];
 }
