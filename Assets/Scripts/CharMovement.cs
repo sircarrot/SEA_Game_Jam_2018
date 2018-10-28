@@ -296,7 +296,7 @@ public class CharMovement : MonoBehaviour
         Vector3 currentPosition = transform.position;
         float distToTarget = Vector3.Distance(target[randomNumber].transform.position, currentPosition);
 
-        if (distToTarget < 3.0f)
+        if (distToTarget < 4.0f)
         {
             agent.isStopped = true;
             roamCountdown -= Time.deltaTime;
