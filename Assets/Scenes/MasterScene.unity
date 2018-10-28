@@ -1587,11 +1587,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1326090447}
     m_Modifications:
-    - target: {fileID: 114203397445440906, guid: 77076ddb602140141a95e68a8a998f24,
-        type: 2}
-      propertyPath: playerPoints.Array.size
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 224344470913162854, guid: 77076ddb602140141a95e68a8a998f24,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -1684,22 +1679,9 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114203397445440906, guid: 77076ddb602140141a95e68a8a998f24,
         type: 2}
-      propertyPath: playerPoints.Array.data[0]
+      propertyPath: movingCanvas
       value: 
-      objectReference: {fileID: 1362877817}
-    - target: {fileID: 114203397445440906, guid: 77076ddb602140141a95e68a8a998f24,
-        type: 2}
-      propertyPath: playerPoints.Array.data[1]
-      value: 
-      objectReference: {fileID: 1670970607}
-    - target: {fileID: 1687837471817190, guid: 77076ddb602140141a95e68a8a998f24, type: 2}
-      propertyPath: m_Name
-      value: Harvest1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1277869552291038, guid: 77076ddb602140141a95e68a8a998f24, type: 2}
-      propertyPath: m_Name
-      value: Harvest2
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1123365766}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77076ddb602140141a95e68a8a998f24, type: 2}
   m_IsPrefabAsset: 0
@@ -2132,7 +2114,7 @@ GameObject:
   - component: {fileID: 1123365768}
   - component: {fileID: 1123365767}
   m_Layer: 5
-  m_Name: HPBarCanvases
+  m_Name: MovingCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2653,12 +2635,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1326852742}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1362877817 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114334150719446970, guid: 77076ddb602140141a95e68a8a998f24,
-    type: 2}
-  m_PrefabInternal: {fileID: 892419848}
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &1368587255
 GameObject:
   m_ObjectHideFlags: 0
@@ -3371,12 +3347,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1663101909}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1670970607 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114526720361759374, guid: 77076ddb602140141a95e68a8a998f24,
-    type: 2}
-  m_PrefabInternal: {fileID: 892419848}
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &1752857794
 GameObject:
   m_ObjectHideFlags: 0

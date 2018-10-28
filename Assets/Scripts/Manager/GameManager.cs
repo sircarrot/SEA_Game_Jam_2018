@@ -49,10 +49,10 @@ public class GameManager : MonoBehaviour, IManager
         //Debug.Log("Spawn Unit: " + playerSide.ToString());
         //Debug.Log((int)playerSide);
         GameObject[] target = GameObject.FindGameObjectsWithTag("CatPatrol");
-        int xOffset = 1;
+        //int xOffset = 1;
         if (((int)playerSide) > 0)
         {
-            xOffset = -1;
+            //xOffset = -1;
             target = GameObject.FindGameObjectsWithTag("DogPatrol");
         }
         //Vector3 charPosition = new Vector3(headquarters[(int)playerSide].transform.position.x + xOffset * 1.3f, headquarters[(int)playerSide].transform.position.y, headquarters[(int)playerSide].transform.position.z + 2.2f -  spawnSeq*1.2f);
@@ -143,7 +143,7 @@ public class GameManager : MonoBehaviour, IManager
             player2point += 5;
             if (player2point >= 100)
             {
-                SpawnUnit(PlayerSide.Dogs, 0);
+                if (dogObjects.Count < 50) { SpawnUnit(PlayerSide.Dogs, 0); }
                 player2point = 0;
             }
             playerPoints = player2point;
@@ -153,7 +153,7 @@ public class GameManager : MonoBehaviour, IManager
             player1point += 5;
             if (player1point >= 100)
             {
-                SpawnUnit(PlayerSide.Cats, 0);
+                if (catObjects.Count < 50) { SpawnUnit(PlayerSide.Cats, 0); }
                 player1point = 0;
             }
             playerPoints = player1point;

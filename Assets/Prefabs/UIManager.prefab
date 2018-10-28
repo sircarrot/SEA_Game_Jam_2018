@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 222229550097763192}
   - component: {fileID: 114526720361759374}
   m_Layer: 5
-  m_Name: Harvest
+  m_Name: Harvest2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -325,7 +325,7 @@ GameObject:
   - component: {fileID: 222778261323367582}
   - component: {fileID: 114334150719446970}
   m_Layer: 5
-  m_Name: Harvest
+  m_Name: Harvest1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -549,9 +549,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2258fbddc6259f645b0109739c134321, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speechBubble: {fileID: 1948507204809658, guid: 988163dcfd73e3a45b417e76f54276ed,
+    type: 2}
+  movingCanvas: {fileID: 0}
   playerUIList:
   - {fileID: 114240954650502702}
   - {fileID: 114050724231380684}
+  playerPoints:
+  - {fileID: 114334150719446970}
+  - {fileID: 114526720361759374}
 --- !u!114 &114222928415245390
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -211,7 +211,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 2100000, guid: b3d9e475ae8abf748844f867bf03dda2, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -302,7 +302,7 @@ TextMesh:
   m_FontSize: 0
   m_FontStyle: 0
   m_RichText: 1
-  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Font: {fileID: 12800000, guid: b3d9e475ae8abf748844f867bf03dda2, type: 3}
   m_Color:
     serializedVersion: 2
     rgba: 4293790742
@@ -343,14 +343,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4339c79abad4af946a819a9a81b0837d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiManager: {fileID: 114203397445440906, guid: 77076ddb602140141a95e68a8a998f24,
-    type: 2}
+  uiManager: {fileID: 0}
   unitSpriteHandler: {fileID: 114532799583292442}
   gameManager: {fileID: 0}
   attckEffect: {fileID: 1527058388603562, guid: 6e0d5b064e1c9ba42af047dac1b31bf8,
     type: 2}
   healEffect: {fileID: 1277698391441992, guid: 2993525338a586041879bde5f67769ce, type: 2}
   currentJob: 3
+  playerSide: 0
   healRange: 5
   attackDamage: 10
   attackSpeed: 1
