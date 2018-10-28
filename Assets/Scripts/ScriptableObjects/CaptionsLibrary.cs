@@ -54,11 +54,11 @@ public class CaptionsLibrary : ScriptableObject {
                 break;
         }
 
-        Debug.LogWarning("CAPTIONS SIDE: " + index);
-        Debug.LogWarning("Captions length: " + captionChoices.Length);
+        //Debug.LogWarning("CAPTIONS SIDE: " + index);
+        //Debug.LogWarning("Captions length: " + captionChoices.Length);
         index = Random.Range(0, captionChoices.Length);
-        Debug.LogWarning("CAPTIONS RANDOM: " + index);
-        Debug.LogWarning("CAPTIONS: " + captionChoices[index]);
+        //Debug.LogWarning("CAPTIONS RANDOM: " + index);
+        //Debug.LogWarning("CAPTIONS: " + captionChoices[index]);
 
         return captionChoices[index].Trim(' ');
         
