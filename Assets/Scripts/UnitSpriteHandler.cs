@@ -144,8 +144,7 @@ public class UnitSpriteHandler : MonoBehaviour
         producing = false;
 
         ResetTransform();
-
-        StopCoroutine(spriteCoroutine);
+        if(spriteCoroutine != null) StopCoroutine(spriteCoroutine);
     }
 
     public void ResetTransform()

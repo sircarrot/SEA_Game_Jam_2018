@@ -11,16 +11,21 @@ public class PlayerUI : MonoBehaviour {
     public Text freeTxt;
     public Text totalTxt;
 
+    public int attackerNum = -1;
+    public int harvesterNum = -1;
+    public int healerNum = -1;
+    public int freeNum = -1;
+
     private float animationScale = 1.3f;
     private float animationDuration = 0.3f;
     private IEnumerator[] textAnimationCoroutine = new IEnumerator[5];
 
     public void ResetText()
     {
-        attackerTxt.text = "";
-        harvesterTxt.text = "";
-        healerTxt.text = "";
-        freeTxt.text = "";
+        attackerTxt.text = "0";
+        harvesterTxt.text = "0";
+        healerTxt.text = "0";
+        freeTxt.text = "0";
     }
 
     public void UpdateText(UnitTypes unitType, int number ,int injured = 0)
@@ -33,23 +38,31 @@ public class PlayerUI : MonoBehaviour {
         {
             case UnitTypes.Attacker:
                 targetText = attackerTxt;
+                if (attackerNum == number) return;
+                attackerNum = number;
                 break;
 
             case UnitTypes.Harvester:
                 targetText = harvesterTxt;
+                if (harvesterNum == number) return;
+                harvesterNum = number;
                 break;
 
             case UnitTypes.Healer:
                 targetText = healerTxt;
+                if (healerNum == number) return;
+                healerNum = number;
                 break;
 
             case UnitTypes.Free:
                 targetText = freeTxt;
+                if (freeNum == number) return;
+                freeNum = number;
                 break;
 
             case UnitTypes.Total:
-                targetText = totalTxt;
-                targetString = "Total: ";
+                //targetText = totalTxt;
+                //targetString = "";
                 return;
         }
 

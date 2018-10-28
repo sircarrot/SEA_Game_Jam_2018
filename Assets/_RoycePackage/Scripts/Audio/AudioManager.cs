@@ -22,6 +22,12 @@ public class AudioManager : MonoBehaviour, IManager
             soundEffectManager.transform.parent = Toolbox.Instance.transform;
         }
 
+        if (voiceLineManager == null)
+        {
+            voiceLineManager = new GameObject("Voice Line Manager");
+            voiceLineManager.transform.parent = Toolbox.Instance.transform;
+        }
+
         if (bgmManager == null)
         {
             bgmManager = new GameObject("BGM Manager");
