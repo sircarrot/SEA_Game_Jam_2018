@@ -149,6 +149,7 @@ public class InputManager : MonoBehaviour, IManager {
                     {
                         gameObjectArray[i].changeJob(unitTypes);
                         result = true;
+                        break;
                     }
                 }
                 break;
@@ -167,15 +168,16 @@ public class InputManager : MonoBehaviour, IManager {
                     {
                         target = gameObjectArray[i];
                     }
+                }
 
-                    if (target != null)
-                    {
-                        target.changeJob(unitTypes);
-                        result = true;
-                    }
+                if (target != null)
+                {
+                    target.changeJob(unitTypes);
+                    result = true;
                 }
                 break;
         }
+
         if(result)
         {
             RearrangeList(gameObjectArray, target);
