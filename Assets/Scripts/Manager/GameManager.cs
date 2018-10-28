@@ -121,6 +121,7 @@ public class GameManager : MonoBehaviour, IManager
 
     public void AddHarvestPoint(int playerNum)
     {
+        int playerPoints = 0;
         if (playerNum > 0)
         {
             player2point += 5;
@@ -129,6 +130,7 @@ public class GameManager : MonoBehaviour, IManager
                 SpawnUnit(PlayerSide.Dogs, 0);
                 player2point = 0;
             }
+            playerPoints = player2point;
         }
         else
         {
@@ -138,7 +140,10 @@ public class GameManager : MonoBehaviour, IManager
                 SpawnUnit(PlayerSide.Cats, 0);
                 player1point = 0;
             }
+            playerPoints = player1point;
         }
+        UIManager uiMan = uiManager.GetComponent<UIManager>();
+        uiMan.HarvestPointUpdate(playerNum, playerPoints);
     }
 }
 

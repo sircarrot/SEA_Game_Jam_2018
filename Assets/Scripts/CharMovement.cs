@@ -62,7 +62,7 @@ public class CharMovement : MonoBehaviour
         else
         {
             target = GameObject.FindGameObjectsWithTag("DogPatrol");
-            playerSide = PlayerSide.Cats;
+            playerSide = PlayerSide.Dogs;
             myHouse = GameObject.Find("Player2");
         }
 
@@ -361,12 +361,10 @@ public class CharMovement : MonoBehaviour
         int injuredAttackUnit = countUnitType(UnitTypes.Attacker, true);
         int injuredHarvestUnit = countUnitType(UnitTypes.Harvester, true);
         int injuredHealUnit = countUnitType(UnitTypes.Healer, true);
-        //uiManager.test();
-        //uiManager.UpdateText(playerSide, UnitTypes.Free, totFreeUnit);
-        //uiManager.UpdateText(playerSide, UnitTypes.Free, totFreeUnit, injuredFreeUnit);
-        //uiManager.UpdateText(playerSide, UnitTypes.Attacker, totAttackUnit, injuredAttackUnit);
-        //uiManager.UpdateText(playerSide, UnitTypes.Harvester, totHarvestUnit, injuredHarvestUnit);
-        //uiManager.UpdateText(playerSide, UnitTypes.Healer, totHealUnit, injuredHealUnit);
+        uiManager.UpdateText((int)playerSide, UnitTypes.Free, totFreeUnit, injuredFreeUnit);
+        uiManager.UpdateText((int)playerSide, UnitTypes.Attacker, totAttackUnit, injuredAttackUnit);
+        uiManager.UpdateText((int)playerSide, UnitTypes.Harvester, totHarvestUnit, injuredHarvestUnit);
+        uiManager.UpdateText((int)playerSide, UnitTypes.Healer, totHealUnit, injuredHealUnit);
     }
 
     private int countUnitType(UnitTypes unitType, bool injured)

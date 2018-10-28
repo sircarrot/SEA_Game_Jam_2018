@@ -895,11 +895,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1236793603319660, guid: 77076ddb602140141a95e68a8a998f24,
     type: 2}
   m_PrefabInternal: {fileID: 892419848}
---- !u!224 &491360977 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 224025917085503940, guid: 77076ddb602140141a95e68a8a998f24,
-    type: 2}
-  m_PrefabInternal: {fileID: 892419848}
 --- !u!1 &534669902
 GameObject:
   m_ObjectHideFlags: 0
@@ -1516,6 +1511,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1326090447}
     m_Modifications:
+    - target: {fileID: 114203397445440906, guid: 77076ddb602140141a95e68a8a998f24,
+        type: 2}
+      propertyPath: playerPoints.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 224344470913162854, guid: 77076ddb602140141a95e68a8a998f24,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -1606,13 +1606,23 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 1236793603319660, guid: 77076ddb602140141a95e68a8a998f24, type: 2}
-      propertyPath: m_IsActive
-      value: 1
+    - target: {fileID: 114203397445440906, guid: 77076ddb602140141a95e68a8a998f24,
+        type: 2}
+      propertyPath: playerPoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 1362877817}
+    - target: {fileID: 114203397445440906, guid: 77076ddb602140141a95e68a8a998f24,
+        type: 2}
+      propertyPath: playerPoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 1670970607}
+    - target: {fileID: 1687837471817190, guid: 77076ddb602140141a95e68a8a998f24, type: 2}
+      propertyPath: m_Name
+      value: Harvest1
       objectReference: {fileID: 0}
-    - target: {fileID: 1965842068956602, guid: 77076ddb602140141a95e68a8a998f24, type: 2}
-      propertyPath: m_IsActive
-      value: 1
+    - target: {fileID: 1277869552291038, guid: 77076ddb602140141a95e68a8a998f24, type: 2}
+      propertyPath: m_Name
+      value: Harvest2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77076ddb602140141a95e68a8a998f24, type: 2}
@@ -2491,85 +2501,12 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1326852742}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1362877815
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 1147304852790886, guid: 77076ddb602140141a95e68a8a998f24,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1362877816}
-  - component: {fileID: 1362877818}
-  - component: {fileID: 1362877817}
-  m_Layer: 5
-  m_Name: Harvest
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1362877816
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 224376121788371692, guid: 77076ddb602140141a95e68a8a998f24,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1362877815}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1857910173}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 566, y: -30}
-  m_SizeDelta: {x: 210.9, y: 55.5}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1362877817
+--- !u!114 &1362877817 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114279454213325436, guid: 77076ddb602140141a95e68a8a998f24,
+  m_CorrespondingSourceObject: {fileID: 114334150719446970, guid: 77076ddb602140141a95e68a8a998f24,
     type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1362877815}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
+  m_PrefabInternal: {fileID: 892419848}
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
-    m_FontStyle: 0
-    m_BestFit: 1
-    m_MinSize: 10
-    m_MaxSize: 50
-    m_Alignment: 0
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 1
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: 'Harvest: 0'
---- !u!222 &1362877818
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 222863720983368358, guid: 77076ddb602140141a95e68a8a998f24,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1362877815}
-  m_CullTransparentMesh: 0
 --- !u!1 &1368587255
 GameObject:
   m_ObjectHideFlags: 0
@@ -3281,85 +3218,12 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1663101909}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1670970605
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 1147304852790886, guid: 77076ddb602140141a95e68a8a998f24,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1670970606}
-  - component: {fileID: 1670970608}
-  - component: {fileID: 1670970607}
-  m_Layer: 5
-  m_Name: Harvest
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1670970606
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 224376121788371692, guid: 77076ddb602140141a95e68a8a998f24,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1670970605}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 491360977}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 48, y: -164}
-  m_SizeDelta: {x: 210.9, y: 55.5}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1670970607
+--- !u!114 &1670970607 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114279454213325436, guid: 77076ddb602140141a95e68a8a998f24,
+  m_CorrespondingSourceObject: {fileID: 114526720361759374, guid: 77076ddb602140141a95e68a8a998f24,
     type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1670970605}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
+  m_PrefabInternal: {fileID: 892419848}
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
-    m_FontStyle: 0
-    m_BestFit: 1
-    m_MinSize: 10
-    m_MaxSize: 50
-    m_Alignment: 0
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 1
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: 'Harvest: 0'
---- !u!222 &1670970608
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 222863720983368358, guid: 77076ddb602140141a95e68a8a998f24,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1670970605}
-  m_CullTransparentMesh: 0
 --- !u!1 &1752857794
 GameObject:
   m_ObjectHideFlags: 0
@@ -3785,11 +3649,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1847649549}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!224 &1857910173 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 224850495576180280, guid: 77076ddb602140141a95e68a8a998f24,
-    type: 2}
-  m_PrefabInternal: {fileID: 892419848}
 --- !u!1 &1942194220
 GameObject:
   m_ObjectHideFlags: 0
