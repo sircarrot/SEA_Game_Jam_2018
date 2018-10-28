@@ -219,10 +219,12 @@ public class CharMovement : MonoBehaviour
         GameObject[] teamMembersArray = GameObject.FindGameObjectsWithTag(gameObject.tag);
         GameObject nearestTeamMember = teamMembersArray[0];
         float closestDistance = 100000000;
+        bool hasInjured = false;
         foreach (GameObject teamMember in teamMembersArray)
         {
             if (teamMember.GetComponent<CharMovement>().hp < 100)
             {
+                hasInjured = true;
                 Vector3 currentPosition = transform.position;
                 float distToTarget = Vector3.Distance(teamMember.transform.position, currentPosition);
                 if (distToTarget < closestDistance)
@@ -232,29 +234,32 @@ public class CharMovement : MonoBehaviour
                 }
             }
         }
-        if (closestDistance < healRange)
+        if (hasInjured)
         {
-            if (healCooldown > 0)
+            if (closestDistance < healRange)
             {
-                healStage = HealStage.cooldown;
-                healCooldown -= Time.deltaTime * 1.0f;
+                if (healCooldown > 0)
+                {
+                    healStage = HealStage.cooldown;
+                    healCooldown -= Time.deltaTime * 1.0f;
+                }
+                else
+                {
+                    healStage = HealStage.heal;
+                    healCooldown = 2.0f;
+                }
             }
             else
             {
-                healStage = HealStage.heal;
-                healCooldown = 2.0f;
+                healStage = HealStage.chase;
             }
-        }
-        else
-        {
-            healStage = HealStage.chase;
         }
 
         if (healStage == HealStage.chase)
         {
-            if (nearestTeamMember != null)
+            if (nearestTeamMember != null || !hasInjured)
             {
-                if (closestDistance < healRange)
+                if (closestDistance < healRange + 2.0f)
                 {
                     agent.isStopped = true;
                 }
@@ -262,7 +267,7 @@ public class CharMovement : MonoBehaviour
                 {
                     agent.isStopped = false;
                     agent.destination = nearestTeamMember.transform.position;
-                }               
+                }
             }
             else
             {
@@ -285,6 +290,7 @@ public class CharMovement : MonoBehaviour
         {
             agent.isStopped = true;
         }
+        Debug.Log(healStage);
     }
 
     void harvestMode()
@@ -325,6 +331,7 @@ public class CharMovement : MonoBehaviour
             }
         }
         unitSpriteHandler.ShakingAnimation();
+        countUnit();
     }
 
     public void heal()
@@ -337,6 +344,7 @@ public class CharMovement : MonoBehaviour
         {
             hp = 100;
         }
+        countUnit();
     }
 
     public void changeJob(UnitTypes newJob)
