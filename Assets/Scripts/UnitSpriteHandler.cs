@@ -5,7 +5,7 @@ using UnityEngine;
 public class UnitSpriteHandler : MonoBehaviour
 {
     [Header("For Death")]
-    public GameObject wings;
+    public SpriteRenderer wings;
     public GameObject baseColorObject;
 
     [Header("Sprites")]
@@ -115,8 +115,12 @@ public class UnitSpriteHandler : MonoBehaviour
         while (timer > 0)
         {
             Vector3 newPos = new Vector3(0, 0, 0.1f);
-            wings.SetActive(true);
-            baseColorObject.transform.localPosition += newPos;
+            wings.gameObject.SetActive(true);
+            baseColor.color = new Color(1, 1, 1, timer);
+            baseSprite.color = new Color(1, 1, 1, timer);
+            wings.color = new Color(1, 1, 1, timer);
+            
+            baseColor.transform.localPosition += newPos;
             timer -= Time.deltaTime;
             yield return null;
         }
