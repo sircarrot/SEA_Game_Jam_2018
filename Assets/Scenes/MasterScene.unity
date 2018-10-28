@@ -713,6 +713,9 @@ MonoBehaviour:
   unitPrefabs:
   - {fileID: 1118145223118042, guid: 9796f0a37a5f3c940b0bf076049be70b, type: 2}
   - {fileID: 1715200007077462, guid: fccf15f7bb41aef4f87bad201bdab632, type: 2}
+  harvestPie:
+  - {fileID: 0}
+  - {fileID: 0}
   player1point: 0
   player2point: 0
   initialUnitSpawn: 5
@@ -1955,7 +1958,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
-  m_FillAmount: 1
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 2
 --- !u!222 &844009559
@@ -4359,7 +4362,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
-  m_FillAmount: 1
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 2
 --- !u!222 &1939800091

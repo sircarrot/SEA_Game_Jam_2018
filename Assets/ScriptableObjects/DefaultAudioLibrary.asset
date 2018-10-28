@@ -31,3 +31,22 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c9fb5fdd08efa4f4bbdb6345932f7e36, type: 3}
   - {fileID: 8300000, guid: 81330f7b2c3c9f54d992bca6b38e77ae, type: 3}
   gameStart: {fileID: 8300000, guid: f8cc9d77a20ff2b4280cc54b535d3009, type: 3}
+  gameEnd: {fileID: 8300000, guid: d675fad51e1cd734bb6f5217172a42d1, type: 3}
+  dogCaption:
+  - {fileID: 8300000, guid: 643ee3bb7e47c454098e6c4fe93975a9, type: 3}
+  - {fileID: 8300000, guid: e0a2fa147ea3b7e4a86b57a00d459bef, type: 3}
+  - {fileID: 8300000, guid: 17e7eacb2f88c21419a23a3a542dad03, type: 3}
+  - {fileID: 8300000, guid: b54feb474044ace4aae7650113437dce, type: 3}
+  - {fileID: 8300000, guid: 0f08ac034198802479ae6869a0aef5e2, type: 3}
+  - {fileID: 8300000, guid: 554fe571220c77744824fd586dd5bd75, type: 3}
+  - {fileID: 8300000, guid: 240c1f887861b57438b7bc4da26202df, type: 3}
+  - {fileID: 8300000, guid: 020a9d937f800ff48b9dc923f82f149d, type: 3}
+  catCaption:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
