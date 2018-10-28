@@ -17,6 +17,17 @@ public class InputManager : MonoBehaviour, IManager {
     private void Update()
     {
         if (!initComplete) return;
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (!gameManager.inGame) gameManager.RestartGame();
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            gameManager.RestartGame();
+        }
+
         if (!gameManager.inGame) return;
 
         if (Input.GetKeyDown(KeyCode.A))
@@ -81,11 +92,6 @@ public class InputManager : MonoBehaviour, IManager {
             {
                 return;
             }
-        }
-
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            gameManager.RestartGame();
         }
         /*
         if (Input.GetKeyDown(KeyCode.Space) && gameManager.inGame == false)
