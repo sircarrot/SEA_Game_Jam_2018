@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -775,7 +775,7 @@ MonoBehaviour:
   cam: {fileID: 534669904}
   HPBar: {fileID: 1174305394517898, guid: 98171c5be1138154a8343e72a458c978, type: 2}
   HPBarCanvases: {fileID: 1123365766}
-  uiManager: {fileID: 353431250}
+  uiManager: {fileID: 353431251}
   headquarters:
   - {fileID: 1147093269}
   - {fileID: 1473956755}
@@ -1183,11 +1183,12 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 300191083}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &353431250 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1236793603319660, guid: 77076ddb602140141a95e68a8a998f24,
+--- !u!114 &353431251 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114203397445440906, guid: 77076ddb602140141a95e68a8a998f24,
     type: 2}
   m_PrefabInternal: {fileID: 892419848}
+  m_Script: {fileID: 11500000, guid: 2258fbddc6259f645b0109739c134321, type: 3}
 --- !u!1 &404515070
 GameObject:
   m_ObjectHideFlags: 0
@@ -3986,7 +3987,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1496374332
 RectTransform:
   m_ObjectHideFlags: 0
