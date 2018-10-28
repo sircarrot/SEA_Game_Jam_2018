@@ -104,6 +104,7 @@ public class GameManager : MonoBehaviour, IManager
                 break;
         }
 
+        Destroy(unit.hPBar.gameObject);
         unit.unitSpriteHandler.DeathAnimation(unit.gameObject);
         Destroy(unit);
     }
