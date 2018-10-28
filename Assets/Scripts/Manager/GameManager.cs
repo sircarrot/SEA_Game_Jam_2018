@@ -46,8 +46,6 @@ public class GameManager : MonoBehaviour, IManager
 
     public void SpawnUnit(PlayerSide playerSide,int spawnSeq)
     {
-        //Debug.Log("Spawn Unit: " + playerSide.ToString());
-        //Debug.Log((int)playerSide);
         GameObject[] target = GameObject.FindGameObjectsWithTag("CatPatrol");
         //int xOffset = 1;
         if (((int)playerSide) > 0)
@@ -107,6 +105,9 @@ public class GameManager : MonoBehaviour, IManager
     {
         // SetMap
 
+        catObjects.Clear();
+        dogObjects.Clear();
+
         // Spawn 5 units each
         for(int i = 0; i < initialUnitSpawn; ++i)
         {
@@ -129,7 +130,7 @@ public class GameManager : MonoBehaviour, IManager
         // Destroy/Pool all units
         foreach(Transform child in unitList)
         {
-            Destroy(child);
+            Destroy(child.gameObject);
         }
 
         StartGame();
