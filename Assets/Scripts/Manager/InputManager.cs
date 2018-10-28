@@ -191,7 +191,7 @@ public class InputManager : MonoBehaviour, IManager {
             List<CharMovement> gameObjectArray = gameManager.catObjects;
             for (int i = 0; i < gameObjectArray.Count; ++i)
             {
-                if (gameObjectArray[i].currentJob == UnitTypes.Free)
+                if (gameObjectArray[i].currentJob == UnitTypes.Free || gameObjectArray[i].hp >= 20)
                 {
                     gameObjectArray[i].changeJob(UnitTypes.Attacker);
                     break;
@@ -217,7 +217,7 @@ public class InputManager : MonoBehaviour, IManager {
             List<CharMovement> gameObjectArray = gameManager.dogObjects;
             for (int i = 0; i < gameObjectArray.Count; ++i)
             {
-                if (gameObjectArray[i].currentJob == UnitTypes.Free)
+                if (gameObjectArray[i].currentJob == UnitTypes.Free || gameObjectArray[i].hp >= 20)
                 {
                     gameObjectArray[i].changeJob(UnitTypes.Attacker);
                     break;
