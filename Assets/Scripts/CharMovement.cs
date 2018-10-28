@@ -24,7 +24,7 @@ public class CharMovement : MonoBehaviour
     Transform HPTemp;
     TextMesh HPInd;
 
-    int hp = 100;
+    public int hp = 100;
     float attackCooldown = 0.1f;
     float healCooldown = 0.1f;
     float lazyCooldown = 10.0f;
