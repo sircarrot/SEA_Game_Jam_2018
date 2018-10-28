@@ -230,6 +230,7 @@ public class CharMovement : MonoBehaviour
             {
                 agent.isStopped = true;
                 nearestTeamMember.GetComponent<CharMovement>().heal();//heal
+                gameManager.audioManager.PlaySoundEffect(gameManager.audioLibrary.heal[(int) playerSide]);
             }
         }
         else if (healStage == HealStage.cooldown)
