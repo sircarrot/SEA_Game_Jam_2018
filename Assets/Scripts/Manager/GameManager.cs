@@ -146,6 +146,7 @@ public class GameManager : MonoBehaviour, IManager
     {
         if (playerNum > 0 && dogObjects.Count < 50)
         {
+            player2point += 2;
             if (player2point >= 100)
             {
                 if (dogObjects.Count < 50) { SpawnUnit(PlayerSide.Dogs, 0); }
@@ -155,7 +156,7 @@ public class GameManager : MonoBehaviour, IManager
         }
         else if (playerNum < 1 && catObjects.Count < 50)
         {
-            player1point += 5;
+            player1point += 2;
             if (player1point >= 100)
             {
                 if (catObjects.Count < 50) { SpawnUnit(PlayerSide.Cats, 0); }
