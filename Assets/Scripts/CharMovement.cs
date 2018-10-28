@@ -28,9 +28,8 @@ public class CharMovement : MonoBehaviour
     int hp = 100;
     float attackCooldown = 0.1f;
     float healCooldown = 0.1f;
-    float animCooldown = 0.0f;
+    float gameSpeedCountdown = 30.0f;
 
-    int targetIndex = 0;
     private GameObject[] target;
     float roamCountdown;
     private int numOfTargetPoints, randomNumber;
@@ -52,8 +51,6 @@ public class CharMovement : MonoBehaviour
         HPTemp = gameObject.transform.GetChild(1);
         charSprite = childSprite.GetComponent<SpriteRenderer>();
         HPInd = HPTemp.GetComponent<TextMesh>();
-        //Debug.Log(charSprite);
-        //charSprite.sprite = Normal;
         unitSpriteHandler.Init();
 
         if (gameObject.tag == "Cat")
@@ -72,7 +69,6 @@ public class CharMovement : MonoBehaviour
         numOfTargetPoints = target.Length;
         randomNumber = Random.Range(0, numOfTargetPoints - 1);
         countUnit();
-        //UICanvas = GameObject.Find("Canvas");
     }
 
     // Update is called once per frame
@@ -96,15 +92,15 @@ public class CharMovement : MonoBehaviour
         {
             harvestMode();
         }
+        //inrease movement speed & attack speed every 30 secs
+        gameSpeedCountdown -= Time.deltaTime;
+        if (gameSpeedCountdown <= 0)
+        {
+            gameSpeedCountdown = 0;
+            if (attackSpeed >= 0.4) { attackSpeed -= 0.2f; }
+            if (movementSpeed <= 10.0f) { movementSpeed += 2.0f; }
+        }
 
-        if (animCooldown > 0)
-        {
-            animCooldown -= Time.deltaTime * 1.0f;
-        }
-        else
-        {
-            //charSprite.sprite = Normal;
-        }
     }
     
     void freeMode()
@@ -160,7 +156,7 @@ public class CharMovement : MonoBehaviour
         {
             attckStage = AttackStage.chase;
         }
-        //Debug.Log(closestDistance);
+
         if (attckStage == AttackStage.chase)
         {
             if (enemy != null)
@@ -218,14 +214,13 @@ public class CharMovement : MonoBehaviour
         {
             healStage = HealStage.chase;
         }
-        //Debug.Log(closestDistance);
+
         if (healStage == HealStage.chase)
         {
             if (nearestTeamMember != null)
             {
                 agent.isStopped = false;
                 agent.destination = nearestTeamMember.transform.position;
-                //Debug.Log("trigger this");
             }
         }
         else if (healStage == HealStage.heal)
