@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour, IManager
     public Camera cam;
     public GameObject HPBar;
     public GameObject HPBarCanvases;
+    public GameObject uiManager;
     public int player1point = 0, player2point = 0;
 
     public int initialUnitSpawn = 5;
@@ -46,6 +47,9 @@ public class GameManager : MonoBehaviour, IManager
 
         CharMovement charMovement = unit.GetComponent<CharMovement>();
         charMovement.gameManager = this;
+
+        UIManager uiMan = uiManager.GetComponent<UIManager>();
+        charMovement.uiManager = uiMan;
         switch (playerSide)
         {
             case PlayerSide.Cats:

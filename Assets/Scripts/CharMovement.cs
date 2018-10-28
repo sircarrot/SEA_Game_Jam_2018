@@ -5,9 +5,11 @@ using UnityEngine.AI;
 
 public class CharMovement : MonoBehaviour
 {
-    public GameManager gameManager;
+    public GameObject UICanvas;
+    //public GameObject uiManager;
     public UIManager uiManager;
     public UnitSpriteHandler unitSpriteHandler;
+    public GameManager gameManager;
 
     private GameObject enemy;
     private GameObject[] enemyArray;
@@ -24,7 +26,6 @@ public class CharMovement : MonoBehaviour
     TextMesh HPInd;
 
     int hp = 100;
-    public int attackDamage = 10;
     float attackCooldown = 0.1f;
     float healCooldown = 0.1f;
     float animCooldown = 0.0f;
@@ -36,6 +37,11 @@ public class CharMovement : MonoBehaviour
 
     private GameObject myHouse;
     private int playerSide;
+
+    public float healRange = 5.0f;
+    public int attackDamage = 10;
+    public float attackSpeed = 1.0f;
+    public float movementSpeed = 5.0f;
 
     // Use this for initialization
     void Start()
@@ -66,11 +72,13 @@ public class CharMovement : MonoBehaviour
         numOfTargetPoints = target.Length;
         randomNumber = Random.Range(0, numOfTargetPoints - 1);
         countUnit();
+        //UICanvas = GameObject.Find("Canvas");
     }
 
     // Update is called once per frame
     void Update()
     {
+        agent.speed = movementSpeed;
         HPInd.text = hp.ToString();
         if (currentJob == UnitTypes.Free)
         {
@@ -145,7 +153,7 @@ public class CharMovement : MonoBehaviour
             else
             {
                 attckStage = AttackStage.attack;
-                attackCooldown = 2.0f;
+                attackCooldown = attackSpeed;
             }
         }
         else
@@ -166,7 +174,7 @@ public class CharMovement : MonoBehaviour
             if (enemy != null)
             {
                 agent.isStopped = true;
-                enemy.GetComponent<CharMovement>().hurt();//inflict damage
+                enemy.GetComponent<CharMovement>().hurt(attackDamage);//inflict damage
             }
         }
         else if (attckStage == AttackStage.cooldown)
@@ -193,7 +201,7 @@ public class CharMovement : MonoBehaviour
                 }
             }
         }
-        if (closestDistance < 1.0f)
+        if (closestDistance < healRange)
         {
             if (healCooldown > 0)
             {
@@ -260,15 +268,17 @@ public class CharMovement : MonoBehaviour
 
     }
 
-    public void hurt()
+    public void hurt(int damage)
     {
-        hp -= 10;
+        hp -= damage;
         if (hp <= 20)
         {
-            Destroy(gameObject);
+            changeJob(UnitTypes.Free);
+            if (hp <= 0)
+            {
+                Destroy(gameObject);
+            }
         }
-        //charSprite.sprite = Hurt;
-        //animCooldown = 0.5f;
         unitSpriteHandler.ShakingAnimation();
     }
 
@@ -319,10 +329,12 @@ public class CharMovement : MonoBehaviour
         int injuredAttackUnit = countUnitType(UnitTypes.Attacker, true);
         int injuredHarvestUnit = countUnitType(UnitTypes.Harvester, true);
         int injuredHealUnit = countUnitType(UnitTypes.Healer, true);
-        uiManager.UpdateText(playerSide, UnitTypes.Free, totFreeUnit, injuredFreeUnit);
-        uiManager.UpdateText(playerSide, UnitTypes.Attacker, totAttackUnit, injuredAttackUnit);
-        uiManager.UpdateText(playerSide, UnitTypes.Harvester, totHarvestUnit, injuredHarvestUnit);
-        uiManager.UpdateText(playerSide, UnitTypes.Healer, totHealUnit, injuredHealUnit);
+        //uiManager.test();
+        //uiManager.UpdateText(playerSide, UnitTypes.Free, totFreeUnit);
+        //uiManager.UpdateText(playerSide, UnitTypes.Free, totFreeUnit, injuredFreeUnit);
+        //uiManager.UpdateText(playerSide, UnitTypes.Attacker, totAttackUnit, injuredAttackUnit);
+        //uiManager.UpdateText(playerSide, UnitTypes.Harvester, totHarvestUnit, injuredHarvestUnit);
+        //uiManager.UpdateText(playerSide, UnitTypes.Healer, totHealUnit, injuredHealUnit);
     }
 
     private int countUnitType(UnitTypes unitType, bool injured)

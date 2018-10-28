@@ -18,4 +18,9 @@ public class UIManager : MonoBehaviour {
     {
         playerUIList[playerNumber].UpdateText(unitType, number, injured);
     }
+
+    public void test()
+    {
+        Debug.Log("Hello");
+    }
 }
