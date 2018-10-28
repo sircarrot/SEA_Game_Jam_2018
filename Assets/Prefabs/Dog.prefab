@@ -320,6 +320,9 @@ MonoBehaviour:
   uiManager: {fileID: 0}
   unitSpriteHandler: {fileID: 114822257921907644}
   gameManager: {fileID: 0}
+  attckEffect: {fileID: 1527058388603562, guid: 6e0d5b064e1c9ba42af047dac1b31bf8,
+    type: 2}
+  healEffect: {fileID: 1277698391441992, guid: 2993525338a586041879bde5f67769ce, type: 2}
   currentJob: 3
   healRange: 5
   attackDamage: 10

@@ -8,6 +8,7 @@ public class CharMovement : MonoBehaviour
     public UIManager uiManager;
     public UnitSpriteHandler unitSpriteHandler;
     public GameManager gameManager;
+    public GameObject attckEffect, healEffect;
 
     private GameObject enemy;
     private GameObject[] enemyArray;
@@ -171,6 +172,10 @@ public class CharMovement : MonoBehaviour
             {
                 agent.isStopped = true;
                 enemy.GetComponent<CharMovement>().hurt(attackDamage);//inflict damage
+                Vector3 charPosition = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
+                Quaternion charRotation = new Quaternion(0, 0, 0, 0);
+                GameObject unit = Instantiate(attckEffect, charPosition, charRotation);
+                Destroy(unit, 0.15f);
                 lazyRandomizer();
             }
         }
@@ -249,8 +254,19 @@ public class CharMovement : MonoBehaviour
         {
             if (nearestTeamMember != null)
             {
-                agent.isStopped = false;
-                agent.destination = nearestTeamMember.transform.position;
+                if (closestDistance < healRange)
+                {
+                    agent.isStopped = true;
+                }
+                else
+                {
+                    agent.isStopped = false;
+                    agent.destination = nearestTeamMember.transform.position;
+                }               
+            }
+            else
+            {
+                agent.isStopped = true;
             }
         }
         else if (healStage == HealStage.heal)
@@ -259,6 +275,10 @@ public class CharMovement : MonoBehaviour
             {
                 agent.isStopped = true;
                 nearestTeamMember.GetComponent<CharMovement>().heal();//heal
+                Vector3 charPosition = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
+                Quaternion charRotation = new Quaternion(0, 0, 0, 0);
+                GameObject unit = Instantiate(healEffect, charPosition, charRotation);
+                Destroy(unit, 0.25f);
             }
         }
         else if (healStage == HealStage.cooldown)
