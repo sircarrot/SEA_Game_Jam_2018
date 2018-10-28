@@ -35,8 +35,6 @@ public class GameManager : MonoBehaviour, IManager
     {
         audioManager = Toolbox.Instance.GetManager<AudioManager>();
 
-        audioManager.BGMPlayer(audioLibrary.mainBGM, AudioManager.PlayBGMType.Repeat, 0.7f);
-
         if (unitList == null)
         {
             unitList = new GameObject("Unit List").transform;
@@ -168,6 +166,9 @@ public class GameManager : MonoBehaviour, IManager
 
         uiManager.UpdateText(0, UnitTypes.Total, initialUnitSpawn);
 
+        audioManager.BGMPlayer(audioLibrary.mainBGM, AudioManager.PlayBGMType.Repeat, 0.7f);
+
+        Debug.Log("Playing Game Start");
         audioManager.PlaySoundEffect(audioLibrary.gameStart);
 
         inGame = true;
@@ -186,6 +187,8 @@ public class GameManager : MonoBehaviour, IManager
         {
             victoryWindow.GetComponent<VictoryWindowHandler>().TextUpdate("CATS WIN");
         }
+
+        audioManager.BGMPlayer(audioLibrary.gameEnd, AudioManager.PlayBGMType.Single);
     }
 
     public void RestartGame()
