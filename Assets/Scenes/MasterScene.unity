@@ -2412,7 +2412,7 @@ Prefab:
     - target: {fileID: 224532544478416136, guid: 77076ddb602140141a95e68a8a998f24,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: -48
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 224532544478416136, guid: 77076ddb602140141a95e68a8a998f24,
         type: 2}
@@ -2459,6 +2459,18 @@ Prefab:
       propertyPath: m_AnchoredPosition.x
       value: 113
       objectReference: {fileID: 0}
+    - target: {fileID: 114279454213325436, guid: 77076ddb602140141a95e68a8a998f24,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 334e52c46a3746644869f2b741372755,
+        type: 3}
+    - target: {fileID: 114444475273694388, guid: 77076ddb602140141a95e68a8a998f24,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 334e52c46a3746644869f2b741372755,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77076ddb602140141a95e68a8a998f24, type: 2}
   m_IsPrefabAsset: 0
