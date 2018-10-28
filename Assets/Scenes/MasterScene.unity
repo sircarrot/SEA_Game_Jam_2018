@@ -617,6 +617,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioLibrary: {fileID: 11400000, guid: e104b9b000a11ec449568882ef409b24, type: 2}
+  captionsLibrary: {fileID: 0}
   cam: {fileID: 534669904}
   HPBar: {fileID: 1174305394517898, guid: 98171c5be1138154a8343e72a458c978, type: 2}
   HPBarCanvases: {fileID: 1123365766}
