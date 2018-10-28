@@ -144,18 +144,16 @@ public class GameManager : MonoBehaviour, IManager
 
     public void AddHarvestPoint(int playerNum)
     {
-        int playerPoints = 0;
-        if (playerNum > 0)
+        if (playerNum > 0 && dogObjects.Count < 50)
         {
-            player2point += 5;
             if (player2point >= 100)
             {
                 if (dogObjects.Count < 50) { SpawnUnit(PlayerSide.Dogs, 0); }
                 player2point = 0;
             }
-            playerPoints = player2point;
+            uiManager.HarvestPointUpdate(playerNum, player2point);
         }
-        else
+        else if (playerNum < 1 && catObjects.Count < 50)
         {
             player1point += 5;
             if (player1point >= 100)
@@ -163,9 +161,9 @@ public class GameManager : MonoBehaviour, IManager
                 if (catObjects.Count < 50) { SpawnUnit(PlayerSide.Cats, 0); }
                 player1point = 0;
             }
-            playerPoints = player1point;
+            uiManager.HarvestPointUpdate(playerNum, player1point);
         }
-        uiManager.HarvestPointUpdate(playerNum, playerPoints);
+        
     }
 }
 
