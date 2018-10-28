@@ -38,11 +38,11 @@ public class AudioManager : MonoBehaviour, IManager
 
     public void PlaySoundEffect(AudioClip audioClip = null)
     {
-        //if(audioClip == null)
-        //{
-        //    Debug.LogError("AudioClip Missing!");
-        //    return;
-        //}
+        if(audioClip == null)
+        {
+            Debug.LogError("AudioClip Missing!");
+            return;
+        }
 
         for(int i = 0; i < audioSourcesSE.Count; ++i)
         {
