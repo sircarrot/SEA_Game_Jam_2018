@@ -21,7 +21,6 @@ public class PlayerUI : MonoBehaviour {
         harvesterTxt.text = "";
         healerTxt.text = "";
         freeTxt.text = "";
-        totalTxt.text = "";
     }
 
     public void UpdateText(UnitTypes unitType, int number ,int injured = 0)

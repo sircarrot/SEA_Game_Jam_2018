@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour, IManager
     public Camera cam;
     public GameObject HPBar;
     public GameObject HPBarCanvases;
-    public GameObject uiManager;
+    public UIManager uiManager;
 
     [SerializeField] private GameObject[] headquarters = new GameObject[2];
     [SerializeField] private GameObject[] unitPrefabs = new GameObject[2];
@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour, IManager
         StartGame();
     }
 
-    public void SpawnUnit(PlayerSide playerSide,int spawnSeq)
+    public void SpawnUnit(PlayerSide playerSide,int spawnSeq, bool sound = true)
     {
         GameObject[] target = GameObject.FindGameObjectsWithTag("CatPatrol");
         //int xOffset = 1;
@@ -62,8 +62,7 @@ public class GameManager : MonoBehaviour, IManager
         CharMovement charMovement = unit.GetComponent<CharMovement>();
         charMovement.gameManager = this;
 
-        UIManager uiMan = uiManager.GetComponent<UIManager>();
-        charMovement.uiManager = uiMan;
+        charMovement.uiManager = uiManager;
         switch (playerSide)
         {
             case PlayerSide.Cats:
@@ -79,7 +78,10 @@ public class GameManager : MonoBehaviour, IManager
         handler.Init(unit, cam);
         charMovement.hPBar = handler;
 
-        audioManager.PlaySoundEffect(audioLibrary.spawned[(int) playerSide]);
+        if(sound)
+        {
+            audioManager.PlaySoundEffect(audioLibrary.spawned[(int)playerSide]);
+        }
     }
 
     public void DeadUnit(CharMovement unit)
@@ -107,13 +109,16 @@ public class GameManager : MonoBehaviour, IManager
 
         catObjects.Clear();
         dogObjects.Clear();
+        uiManager.ResetText();
 
         // Spawn 5 units each
         for(int i = 0; i < initialUnitSpawn; ++i)
         {
-            SpawnUnit(PlayerSide.Cats,i);
-            SpawnUnit(PlayerSide.Dogs,i);
+            SpawnUnit(PlayerSide.Cats,i, false);
+            SpawnUnit(PlayerSide.Dogs,i, false);
         }
+
+        uiManager.UpdateText(0, UnitTypes.Total, initialUnitSpawn);
 
         audioManager.PlaySoundEffect(audioLibrary.gameStart);
 
@@ -160,8 +165,7 @@ public class GameManager : MonoBehaviour, IManager
             }
             playerPoints = player1point;
         }
-        UIManager uiMan = uiManager.GetComponent<UIManager>();
-        uiMan.HarvestPointUpdate(playerNum, playerPoints);
+        uiManager.HarvestPointUpdate(playerNum, playerPoints);
     }
 }
 
