@@ -714,8 +714,8 @@ MonoBehaviour:
   - {fileID: 1118145223118042, guid: 9796f0a37a5f3c940b0bf076049be70b, type: 2}
   - {fileID: 1715200007077462, guid: fccf15f7bb41aef4f87bad201bdab632, type: 2}
   harvestPie:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 830503561}
+  - {fileID: 962251205}
   player1point: 0
   player2point: 0
   initialUnitSpawn: 5
