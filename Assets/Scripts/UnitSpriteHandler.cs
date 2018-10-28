@@ -26,7 +26,7 @@ public class UnitSpriteHandler : MonoBehaviour
     {
         shakeObject = gameObject.transform;
 
-        int colorIndex = Random.Range(0, spriteColor.Length - 1);
+        int colorIndex = Random.Range(0, spriteColor.Length);
 
         baseSprite.sprite = lineArt;
         baseColor.sprite = spriteColor[colorIndex];
