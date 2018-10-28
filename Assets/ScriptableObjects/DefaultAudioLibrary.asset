@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40161259f1b6688419dae03b9d5ff776, type: 3}
+  m_Name: DefaultAudioLibrary
+  m_EditorClassIdentifier: 
+  striker: {fileID: 8300000, guid: ef8de4ff3d3495349aac03e54763a6f4, type: 3}
+  healer: {fileID: 8300000, guid: 84e99b50327837d428f01b64915a2247, type: 3}
+  producer: {fileID: 8300000, guid: f1965415ed1797a41bdd272ec21dd6e3, type: 3}
+  freed:
+  - {fileID: 8300000, guid: 61b941fd9f2493640b1ccc19d1dc04f6, type: 3}
+  - {fileID: 8300000, guid: 6358f393f1a91e94db75c6a72ca6c278, type: 3}
+  death:
+  - {fileID: 8300000, guid: a8c2882d0ee6b734f878564b038f794a, type: 3}
+  - {fileID: 8300000, guid: 5bc76ac0aeb51c447b8d0975a2cb8f80, type: 3}
+  attack:
+  - {fileID: 8300000, guid: 041f237888858154a8b1f02ce7ce6f81, type: 3}
+  - {fileID: 8300000, guid: a31b581f09d973d4787e7916eb34b7d8, type: 3}
+  heal:
+  - {fileID: 8300000, guid: 85d8f61e0fe62f5468af3384a9f7bcaa, type: 3}
+  - {fileID: 8300000, guid: 85d8f61e0fe62f5468af3384a9f7bcaa, type: 3}
+  spawned:
+  - {fileID: 8300000, guid: c9fb5fdd08efa4f4bbdb6345932f7e36, type: 3}
+  - {fileID: 8300000, guid: 81330f7b2c3c9f54d992bca6b38e77ae, type: 3}
+  gameStart: {fileID: 8300000, guid: f8cc9d77a20ff2b4280cc54b535d3009, type: 3}

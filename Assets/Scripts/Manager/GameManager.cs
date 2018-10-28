@@ -4,24 +4,34 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour, IManager
 {
+    [Header("Serialized")]
+    public AudioLibrary audioLibrary;
+
     public Camera cam;
     public GameObject HPBar;
     public GameObject HPBarCanvases;
     public GameObject uiManager;
+
+    [SerializeField] private GameObject[] headquarters = new GameObject[2];
+    [SerializeField] private GameObject[] unitPrefabs = new GameObject[2];
+
+    [Header("Producer Points")]
     public int player1point = 0, player2point = 0;
 
     public int initialUnitSpawn = 5;
     [HideInInspector] public bool inGame = false;
 
-    [SerializeField] private GameObject[] headquarters = new GameObject[2];
-    [SerializeField] private GameObject[] unitPrefabs = new GameObject[2];
+    [Header("Script variables")]
     public Transform unitList;
     public List<CharMovement> catObjects = new List<CharMovement>();
     public List<CharMovement> dogObjects = new List<CharMovement>();
     //public Transform[] playerMap;
+    public AudioManager audioManager;
 
     public void Init()
     {
+        audioManager = Toolbox.Instance.GetManager<AudioManager>();
+
         if (unitList == null)
         {
             unitList = new GameObject("Unit List").transform;
@@ -61,13 +71,15 @@ public class GameManager : MonoBehaviour, IManager
                 break;
         }
 
-
         HPBarHandler handler = Instantiate(HPBar, HPBarCanvases.transform).GetComponent<HPBarHandler>();
         handler.Init(unit, cam);
+
+        audioManager.PlaySoundEffect(audioLibrary.spawned[(int) playerSide]);
     }
 
-    public void DeadUnit()
+    public void DeadUnit(PlayerSide playerSide)
     {
+        audioManager.PlaySoundEffect(audioLibrary.death[(int)playerSide]);
 
     }
 
@@ -81,6 +93,8 @@ public class GameManager : MonoBehaviour, IManager
             SpawnUnit(PlayerSide.Cats,i);
             SpawnUnit(PlayerSide.Dogs,i);
         }
+
+        audioManager.PlaySoundEffect(audioLibrary.gameStart);
 
         inGame = true;
     }
@@ -123,10 +137,10 @@ public class GameManager : MonoBehaviour, IManager
             }
         }
     }
+}
 
-    public enum PlayerSide
-    {
-        Cats,
-        Dogs
-    }
+public enum PlayerSide
+{
+    Cats,
+    Dogs
 }

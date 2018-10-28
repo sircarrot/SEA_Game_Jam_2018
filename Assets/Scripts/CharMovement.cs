@@ -16,6 +16,7 @@ public class CharMovement : MonoBehaviour
     NavMeshAgent agent;
     public UnitTypes currentJob = UnitTypes.Free;
 
+    private PlayerSide playerSide;
 
     AttackStage attckStage = AttackStage.chase;
     HealStage healStage = HealStage.chase;
@@ -35,7 +36,7 @@ public class CharMovement : MonoBehaviour
     private int numOfTargetPoints, randomNumber;
 
     private GameObject myHouse;
-    private int playerSide;
+    //private int playerSide;
 
     public float healRange = 5.0f;
     public int attackDamage = 10;
@@ -56,13 +57,13 @@ public class CharMovement : MonoBehaviour
         if (gameObject.tag == "Cat")
         {
             target = GameObject.FindGameObjectsWithTag("CatPatrol");
-            playerSide = 0;
+            playerSide = PlayerSide.Cats;
             myHouse = GameObject.Find("Player1");
         }
         else
         {
             target = GameObject.FindGameObjectsWithTag("DogPatrol");
-            playerSide = 1;
+            playerSide = PlayerSide.Dogs;
             myHouse = GameObject.Find("Player2");
         }
 
@@ -251,7 +252,7 @@ public class CharMovement : MonoBehaviour
                 randomNumber = Random.Range(0, numOfTargetPoints - 1);
 
                 roamCountdown = Random.Range(2, 5);
-                gameManager.AddHarvestPoint(playerSide);
+                gameManager.AddHarvestPoint((int)playerSide);
             }
         }
         else
@@ -291,26 +292,33 @@ public class CharMovement : MonoBehaviour
 
     public void changeJob(UnitTypes newJob)
     {
+        AudioClip audioClip = null;
         if (newJob == UnitTypes.Free)
         {
             currentJob = UnitTypes.Free;
             unitSpriteHandler.ChangeJob(UnitTypes.Free);
+            audioClip = gameManager.audioLibrary.freed[(int)playerSide];
         }
         else if (newJob == UnitTypes.Attacker)
         {
             currentJob = UnitTypes.Attacker;
             unitSpriteHandler.ChangeJob(UnitTypes.Attacker);
+            audioClip = gameManager.audioLibrary.striker;
         }
         else if (newJob == UnitTypes.Healer)
         {
             currentJob = UnitTypes.Healer;
             unitSpriteHandler.ChangeJob(UnitTypes.Healer);
+            audioClip = gameManager.audioLibrary.healer;
         }
         else if (newJob == UnitTypes.Harvester)
         {
             currentJob = UnitTypes.Harvester;
             unitSpriteHandler.ChangeJob(UnitTypes.Harvester);
+            audioClip = gameManager.audioLibrary.producer;
         }
+
+        gameManager.audioManager.PlaySoundEffect(audioClip); 
         countUnit();
     }
 
