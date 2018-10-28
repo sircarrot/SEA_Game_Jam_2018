@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour, IManager
     [SerializeField] private GameObject[] headquarters = new GameObject[2];
     [SerializeField] private GameObject[] unitPrefabs = new GameObject[2];
     [SerializeField] private GameObject[] harvestPie = new GameObject[2];
+    public GameObject victoryWindow;
 
     [Header("Producer Points")]
     public int player1point = 0, player2point = 0;
@@ -108,6 +109,11 @@ public class GameManager : MonoBehaviour, IManager
         Destroy(unit.hPBar.gameObject);
         unit.unitSpriteHandler.DeathAnimation(unit.gameObject);
         Destroy(unit);
+
+        if (catObjects.Count <= 0 || dogObjects.Count <= 0)
+        {
+            EndGame();
+        }
     }
 
     public void FreeUnit(CharMovement unit)
@@ -149,7 +155,6 @@ public class GameManager : MonoBehaviour, IManager
     public void StartGame()
     {
         // SetMap
-
         catObjects.Clear();
         dogObjects.Clear();
         uiManager.ResetText();
@@ -171,12 +176,23 @@ public class GameManager : MonoBehaviour, IManager
     public void EndGame()
     {
         inGame = false;
+        //show win screen
+        victoryWindow.SetActive(true);
+        if (catObjects.Count <= 0)
+        {
+            victoryWindow.GetComponent<VictoryWindowHandler>().TextUpdate("DOGS WIN");
+        }
+        else if (dogObjects.Count <= 0)
+        {
+            victoryWindow.GetComponent<VictoryWindowHandler>().TextUpdate("CATS WIN");
+        }
     }
 
     public void RestartGame()
     {
+        victoryWindow.SetActive(false);
         // Destroy/Pool all units
-        foreach(Transform child in unitList)
+        foreach (Transform child in unitList)
         {
             Destroy(child.gameObject);
         }

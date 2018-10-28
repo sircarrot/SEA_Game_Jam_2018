@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class InputManager : MonoBehaviour, IManager {
 
@@ -17,8 +18,8 @@ public class InputManager : MonoBehaviour, IManager {
     {
         if (!initComplete) return;
         if (!gameManager.inGame) return;
-        
-        if(Input.GetKeyDown(KeyCode.A))
+
+        if (Input.GetKeyDown(KeyCode.A))
         {
             List<CharMovement> gameObjectArray = gameManager.catObjects;
             for (int i = 0; i < gameObjectArray.Count; ++i)
@@ -122,9 +123,14 @@ public class InputManager : MonoBehaviour, IManager {
             }
         }
 
-        if(Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R))
         {
             gameManager.RestartGame();
         }
+        /*
+        if (Input.GetKeyDown(KeyCode.Space) && gameManager.inGame == false)
+        {
+            SceneManager.LoadScene("MenuScene");
+        }*/
     }
 }
