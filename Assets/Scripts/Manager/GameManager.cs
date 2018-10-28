@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour, IManager
     [Header("Producer Points")]
     public int player1point = 0, player2point = 0;
 
-    public int initialUnitSpawn = 5;
+    public int initialUnitSpawn = 6;
     [HideInInspector] public bool inGame = false;
 
     [Header("Script variables")]
