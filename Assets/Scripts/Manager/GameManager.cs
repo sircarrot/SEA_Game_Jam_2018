@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour, IManager
 {
     [Header("Serialized")]
     public AudioLibrary audioLibrary;
+    public CaptionsLibrary captionsLibrary;
 
     public Camera cam;
     public GameObject HPBar;
@@ -31,6 +32,8 @@ public class GameManager : MonoBehaviour, IManager
     public void Init()
     {
         audioManager = Toolbox.Instance.GetManager<AudioManager>();
+
+        audioManager.BGMPlayer(audioLibrary.mainBGM);
 
         if (unitList == null)
         {

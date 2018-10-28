@@ -5,6 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Audio Library")]
 public class AudioLibrary : ScriptableObject {
 
+    public AudioClip mainBGM;
+
     public AudioClip striker;
     public AudioClip healer;
     public AudioClip producer;

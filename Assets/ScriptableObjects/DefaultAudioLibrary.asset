@@ -11,6 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40161259f1b6688419dae03b9d5ff776, type: 3}
   m_Name: DefaultAudioLibrary
   m_EditorClassIdentifier: 
+  mainBGM: {fileID: 8300000, guid: 852c40b7d108f4e39a7ee03add8b931a, type: 3}
   striker: {fileID: 8300000, guid: ef8de4ff3d3495349aac03e54763a6f4, type: 3}
   healer: {fileID: 8300000, guid: 84e99b50327837d428f01b64915a2247, type: 3}
   producer: {fileID: 8300000, guid: f1965415ed1797a41bdd272ec21dd6e3, type: 3}
