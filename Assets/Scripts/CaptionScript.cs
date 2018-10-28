@@ -7,9 +7,9 @@ public class CaptionScript : MonoBehaviour {
 
     public Text dialogueBox;
 
-    public InitText(string caption)
+    public void InitText(string caption)
     {
-        dialogueBox.text = caption
+        dialogueBox.text = caption;
     }
 
 }
