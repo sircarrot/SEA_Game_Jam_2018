@@ -25,6 +25,7 @@ public class PlayerUI : MonoBehaviour {
 
     public void UpdateText(UnitTypes unitType, int number ,int injured = 0)
     {
+        injured = 0; // Hard coded to never show
         string injuredText = (injured <= 0) ? "" : (" (" + injured + ")");
         Text targetText = null;
         string targetString = "";
