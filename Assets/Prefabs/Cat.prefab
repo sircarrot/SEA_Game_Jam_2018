@@ -43,6 +43,38 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1076508402026696
+GameObject:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4006835611959920}
+  - component: {fileID: 212789454748752576}
+  m_Layer: 0
+  m_Name: Wings
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!1 &1080174088595772
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4667503835888236}
+  - component: {fileID: 114948206714534916}
+  m_Layer: 0
+  m_Name: CatGroup
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1118145223118042
 GameObject:
   m_ObjectHideFlags: 0
@@ -98,14 +130,13 @@ GameObject:
   m_IsActive: 1
 --- !u!1 &1533078037482806
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4944019422985690}
   - component: {fileID: 212806133112302948}
-  - component: {fileID: 114532799583292442}
   m_Layer: 0
   m_Name: CatColor
   m_TagString: Untagged
@@ -113,6 +144,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &4006835611959920
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1076508402026696}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.16, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4944019422985690}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4266627217741182
 Transform:
   m_ObjectHideFlags: 1
@@ -136,7 +180,7 @@ Transform:
   m_LocalPosition: {x: -7.022333, y: 1.9822903, z: -11.250092}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4944019422985690}
+  - {fileID: 4667503835888236}
   - {fileID: 4266627217741182}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -160,12 +204,27 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1073145500129636}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.15, y: -0.458, z: 0}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -0.1500001, y: 0, z: -0.18799973}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4944019422985690}
+  m_Father: {fileID: 4667503835888236}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4667503835888236
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1080174088595772}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4944019422985690}
+  - {fileID: 4605102839629132}
+  m_Father: {fileID: 4275422455155522}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4773215543216890
 Transform:
@@ -188,12 +247,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1533078037482806}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0, z: 0.27000046}
+  m_LocalPosition: {x: 0, y: 0, z: 0.27000046}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4773215543216890}
-  - {fileID: 4605102839629132}
-  m_Father: {fileID: 4275422455155522}
+  - {fileID: 4006835611959920}
+  m_Father: {fileID: 4667503835888236}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!23 &23140029019524144
@@ -306,17 +365,43 @@ TextMesh:
   m_Color:
     serializedVersion: 2
     rgba: 4293790742
---- !u!114 &114532799583292442
+--- !u!114 &114897154206938470
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1533078037482806}
+  m_GameObject: {fileID: 1118145223118042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4339c79abad4af946a819a9a81b0837d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiManager: {fileID: 0}
+  unitSpriteHandler: {fileID: 114948206714534916}
+  gameManager: {fileID: 0}
+  attckEffect: {fileID: 1527058388603562, guid: 6e0d5b064e1c9ba42af047dac1b31bf8,
+    type: 2}
+  healEffect: {fileID: 1277698391441992, guid: 2993525338a586041879bde5f67769ce, type: 2}
+  currentJob: 3
+  hp: 100
+  playerSide: 0
+  healRange: 5
+  attackDamage: 10
+  attackSpeed: 1
+  movementSpeed: 5
+--- !u!114 &114948206714534916
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1080174088595772}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3eae2ca6983eb934fb53b60de20c5baf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wings: {fileID: 1076508402026696}
+  baseColorObject: {fileID: 1080174088595772}
   baseSprite: {fileID: 212018766371190902}
   baseColor: {fileID: 212806133112302948}
   unitJob: {fileID: 212483330208187574}
@@ -332,29 +417,6 @@ MonoBehaviour:
   - {fileID: 21300010, guid: 3b49302cfc925fa40adf4716e1c2bbb2, type: 3}
   - {fileID: 21300012, guid: 3b49302cfc925fa40adf4716e1c2bbb2, type: 3}
   - {fileID: 21300014, guid: 3b49302cfc925fa40adf4716e1c2bbb2, type: 3}
---- !u!114 &114897154206938470
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1118145223118042}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4339c79abad4af946a819a9a81b0837d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  uiManager: {fileID: 0}
-  unitSpriteHandler: {fileID: 114532799583292442}
-  gameManager: {fileID: 0}
-  attckEffect: {fileID: 1527058388603562, guid: 6e0d5b064e1c9ba42af047dac1b31bf8,
-    type: 2}
-  healEffect: {fileID: 1277698391441992, guid: 2993525338a586041879bde5f67769ce, type: 2}
-  currentJob: 3
-  playerSide: 0
-  healRange: 5
-  attackDamage: 10
-  attackSpeed: 1
-  movementSpeed: 5
 --- !u!195 &195426771991619032
 NavMeshAgent:
   m_ObjectHideFlags: 1
@@ -411,7 +473,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300002, guid: 3b49302cfc925fa40adf4716e1c2bbb2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3b49302cfc925fa40adf4716e1c2bbb2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -509,6 +571,52 @@ SpriteRenderer:
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.75, y: 0.32}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!212 &212789454748752576
+SpriteRenderer:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1076508402026696}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 21300000, guid: 0012ba834febeda499ab487860b7149f, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1.84, y: 1.11}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
