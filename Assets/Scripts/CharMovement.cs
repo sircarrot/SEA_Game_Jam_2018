@@ -36,7 +36,7 @@ public class CharMovement : MonoBehaviour
     private int numOfTargetPoints, randomNumber;
 
     private GameObject myHouse;
-    private PlayerSide playerSide;
+    public PlayerSide playerSide;
 
     public float healRange = 5.0f;
     public int attackDamage = 10;
@@ -321,7 +321,7 @@ public class CharMovement : MonoBehaviour
             changeJob(UnitTypes.Free);
             if (hp <= 0)
             {
-                Destroy(gameObject);
+                gameManager.DeadUnit(this);
             }
         }
         unitSpriteHandler.ShakingAnimation();

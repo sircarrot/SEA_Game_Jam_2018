@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour, IManager
     {
         audioManager = Toolbox.Instance.GetManager<AudioManager>();
 
-        audioManager.BGMPlayer(audioLibrary.mainBGM);
+        audioManager.BGMPlayer(audioLibrary.mainBGM, AudioManager.PlayBGMType.Repeat, 0.7f);
 
         if (unitList == null)
         {
@@ -83,9 +83,22 @@ public class GameManager : MonoBehaviour, IManager
         audioManager.PlaySoundEffect(audioLibrary.spawned[(int) playerSide]);
     }
 
-    public void DeadUnit(PlayerSide playerSide)
+    public void DeadUnit(CharMovement unit)
     {
+        PlayerSide playerSide = unit.playerSide;
         audioManager.PlaySoundEffect(audioLibrary.death[(int)playerSide]);
+        switch(playerSide)
+        {
+            case PlayerSide.Cats:
+                catObjects.Remove(unit);
+                break;
+
+            case PlayerSide.Dogs:
+                dogObjects.Remove(unit);
+                break;
+        }
+
+        Destroy(unit);
 
     }
 
