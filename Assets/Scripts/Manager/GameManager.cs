@@ -166,10 +166,10 @@ public class GameManager : MonoBehaviour, IManager
 
         uiManager.UpdateText(0, UnitTypes.Total, initialUnitSpawn);
 
-        audioManager.BGMPlayer(audioLibrary.mainBGM, AudioManager.PlayBGMType.Repeat, 0.7f);
-
-        Debug.Log("Playing Game Start");
         audioManager.PlaySoundEffect(audioLibrary.gameStart);
+        audioManager.PlaySoundEffect(audioLibrary.gameStart);
+
+        audioManager.BGMPlayer(audioLibrary.mainBGM, AudioManager.PlayBGMType.Repeat, 0.7f);
 
         inGame = true;
     }

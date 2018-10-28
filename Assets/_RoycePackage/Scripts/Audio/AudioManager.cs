@@ -38,11 +38,11 @@ public class AudioManager : MonoBehaviour, IManager
 
     public void PlaySoundEffect(AudioClip audioClip = null)
     {
-        if(audioClip == null)
-        {
-            Debug.LogError("AudioClip Missing!");
-            return;
-        }
+        //if(audioClip == null)
+        //{
+        //    Debug.LogError("AudioClip Missing!");
+        //    return;
+        //}
 
         for(int i = 0; i < audioSourcesSE.Count; ++i)
         {
@@ -52,7 +52,7 @@ public class AudioManager : MonoBehaviour, IManager
             }
             else
             {
-                Debug.Log("Play SE");
+                Debug.Log("Play SE: " + audioClip.name);
                 audioSourcesSE[i].PlayOneShot(audioClip);
                 return;
             }
@@ -63,7 +63,7 @@ public class AudioManager : MonoBehaviour, IManager
         audioSourcesSE.Add(newAudioSource.AddComponent<AudioSource>());
         newAudioSource.transform.parent = soundEffectManager.transform;
 
-        Debug.Log("Play SE");
+        Debug.Log("Play SE: " + audioClip.name);
     }
 
     public void PlayVoiceLine(AudioClip audioClip = null)
