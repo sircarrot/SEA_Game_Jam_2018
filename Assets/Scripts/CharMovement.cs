@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class CharMovement : MonoBehaviour
 {
+    public HPBarHandler hPBar;
     public UIManager uiManager;
     public UnitSpriteHandler unitSpriteHandler;
     public GameManager gameManager;
@@ -21,10 +22,9 @@ public class CharMovement : MonoBehaviour
 
     SpriteRenderer charSprite;
     Transform childSprite;
-    Transform HPTemp;
-    TextMesh HPInd;
 
-    public int hp = 100;
+    public int hp;
+    public int totalHp = 100;
     float attackCooldown = 0.1f;
     float healCooldown = 0.1f;
     float lazyCooldown = 10.0f;
@@ -46,12 +46,11 @@ public class CharMovement : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        hp = totalHp;
         roamCountdown = Random.Range(2, 5);
         agent = GetComponent<NavMeshAgent>();
         childSprite = gameObject.transform.GetChild(0);
-        HPTemp = gameObject.transform.GetChild(1);
         charSprite = childSprite.GetComponent<SpriteRenderer>();
-        HPInd = HPTemp.GetComponent<TextMesh>();
         unitSpriteHandler.Init();
 
         if (gameObject.tag == "Cat")
@@ -76,7 +75,6 @@ public class CharMovement : MonoBehaviour
     void Update()
     {
         agent.speed = movementSpeed;
-        HPInd.text = hp.ToString();
         if (currentJob == UnitTypes.Free)
         {
             freeMode();
@@ -322,6 +320,9 @@ public class CharMovement : MonoBehaviour
     public void hurt(int damage)
     {
         hp -= damage;
+
+        hPBar.Damage((float) hp / (float) totalHp);
+
         if (hp <= 20)
         {
             changeJob(UnitTypes.Free);
@@ -344,6 +345,9 @@ public class CharMovement : MonoBehaviour
         {
             hp = 100;
         }
+
+        hPBar.Heal((float) hp/ (float) totalHp);
+
         countUnit();
     }
 

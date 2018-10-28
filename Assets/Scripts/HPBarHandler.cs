@@ -17,6 +17,7 @@ public class HPBarHandler : MonoBehaviour
         referenceUnit = reference;
         camera = cam;
         initComplete = true;
+        visibility.SetActive(false);
     }
 
     private void Update()
@@ -27,7 +28,7 @@ public class HPBarHandler : MonoBehaviour
         else
         {
             gameObject.transform.position = camera.WorldToScreenPoint(referenceUnit.position);
-            gameObject.transform.position += new Vector3(0, 35, 0);
+            gameObject.transform.position += new Vector3(-10, 35, 0);
         }
     }
 

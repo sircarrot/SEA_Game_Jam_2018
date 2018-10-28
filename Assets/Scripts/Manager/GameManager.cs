@@ -79,6 +79,7 @@ public class GameManager : MonoBehaviour, IManager
 
         HPBarHandler handler = Instantiate(HPBar, HPBarCanvases.transform).GetComponent<HPBarHandler>();
         handler.Init(unit, cam);
+        charMovement.hPBar = handler;
 
         audioManager.PlaySoundEffect(audioLibrary.spawned[(int) playerSide]);
     }
