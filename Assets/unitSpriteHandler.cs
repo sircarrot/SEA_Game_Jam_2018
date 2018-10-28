@@ -69,7 +69,7 @@ public class UnitSpriteHandler : MonoBehaviour {
             Vector3 newPos = (Random.insideUnitSphere - new Vector3(0.5f, 0.5f, 0.5f)) * scale;
             newPos = new Vector3(newPos.x, 0, 0);
             shakeObject.localPosition = originalPos + newPos;
-            Debug.Log(newPos);
+            //Debug.Log(newPos);
             yield return null;
             timer -= Time.deltaTime;
         }

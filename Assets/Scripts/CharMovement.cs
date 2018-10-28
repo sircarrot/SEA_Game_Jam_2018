@@ -5,8 +5,6 @@ using UnityEngine.AI;
 
 public class CharMovement : MonoBehaviour
 {
-    public GameObject UICanvas;
-    //public GameObject uiManager;
     public UIManager uiManager;
     public UnitSpriteHandler unitSpriteHandler;
     public GameManager gameManager;
@@ -16,7 +14,6 @@ public class CharMovement : MonoBehaviour
     NavMeshAgent agent;
     public UnitTypes currentJob = UnitTypes.Free;
 
-    private PlayerSide playerSide;
 
     AttackStage attckStage = AttackStage.chase;
     HealStage healStage = HealStage.chase;
@@ -29,6 +26,8 @@ public class CharMovement : MonoBehaviour
     int hp = 100;
     float attackCooldown = 0.1f;
     float healCooldown = 0.1f;
+    float lazyCooldown = 10.0f;
+    float lazyDuration = 4.0f;
     float gameSpeedCountdown = 30.0f;
 
     private GameObject[] target;
@@ -36,7 +35,7 @@ public class CharMovement : MonoBehaviour
     private int numOfTargetPoints, randomNumber;
 
     private GameObject myHouse;
-    //private int playerSide;
+    private int playerSide;
 
     public float healRange = 5.0f;
     public int attackDamage = 10;
@@ -57,13 +56,13 @@ public class CharMovement : MonoBehaviour
         if (gameObject.tag == "Cat")
         {
             target = GameObject.FindGameObjectsWithTag("CatPatrol");
-            playerSide = PlayerSide.Cats;
+            playerSide = 0;
             myHouse = GameObject.Find("Player1");
         }
         else
         {
             target = GameObject.FindGameObjectsWithTag("DogPatrol");
-            playerSide = PlayerSide.Dogs;
+            playerSide = 1;
             myHouse = GameObject.Find("Player2");
         }
 
@@ -79,7 +78,7 @@ public class CharMovement : MonoBehaviour
         HPInd.text = hp.ToString();
         if (currentJob == UnitTypes.Free)
         {
-            freeMode();           
+            freeMode();
         }
         else if (currentJob == UnitTypes.Attacker)
         {
@@ -103,7 +102,7 @@ public class CharMovement : MonoBehaviour
         }
 
     }
-    
+
     void freeMode()
     {
         Vector3 currentPosition = transform.position;
@@ -128,19 +127,19 @@ public class CharMovement : MonoBehaviour
         else
         {
             enemyArray = GameObject.FindGameObjectsWithTag("Cat");
-        }     
+        }
         float closestDistance = 100000000;
         foreach (GameObject dog in enemyArray)
         {
             Vector3 currentPosition = transform.position;
-            float distToTarget = Vector3.Distance(dog.transform.position,currentPosition);
+            float distToTarget = Vector3.Distance(dog.transform.position, currentPosition);
             if (distToTarget < closestDistance)
             {
                 closestDistance = distToTarget;
                 enemy = dog;
             }
         }
-        if (closestDistance < 1.0f)
+        if (closestDistance < 1.0f && attckStage != AttackStage.lazy)
         {
             if (attackCooldown > 0)
             {
@@ -153,7 +152,7 @@ public class CharMovement : MonoBehaviour
                 attackCooldown = attackSpeed;
             }
         }
-        else
+        else if (attckStage != AttackStage.lazy)
         {
             attckStage = AttackStage.chase;
         }
@@ -172,11 +171,41 @@ public class CharMovement : MonoBehaviour
             {
                 agent.isStopped = true;
                 enemy.GetComponent<CharMovement>().hurt(attackDamage);//inflict damage
+                lazyRandomizer();
             }
         }
         else if (attckStage == AttackStage.cooldown)
         {
             agent.isStopped = true;
+        }
+        else if (attckStage == AttackStage.lazy)
+        {
+            if (lazyDuration == 4.0f)
+            {
+                agent.SetDestination(RandomNavmeshLocation(10.0f));
+            }
+            lazyDuration -= Time.deltaTime;
+            if (lazyDuration <= 0.0f)
+            {
+                lazyDuration = 4.0f;
+                lazyRandomizer();
+            }
+            agent.isStopped = false;
+        }
+    }
+
+    void lazyRandomizer()
+    {
+        //int randomTimer = Random.Range(5, 10);
+        int randomDecision = Random.Range(0, 9);
+        Debug.Log(randomDecision);
+        if (randomDecision > 7)
+        {
+            attckStage = AttackStage.lazy;
+        }
+        else
+        {
+            attckStage = AttackStage.chase;
         }
     }
 
@@ -188,7 +217,7 @@ public class CharMovement : MonoBehaviour
         foreach (GameObject teamMember in teamMembersArray)
         {
             if (teamMember.GetComponent<CharMovement>().hp < 100)
-            { 
+            {
                 Vector3 currentPosition = transform.position;
                 float distToTarget = Vector3.Distance(teamMember.transform.position, currentPosition);
                 if (distToTarget < closestDistance)
@@ -230,7 +259,6 @@ public class CharMovement : MonoBehaviour
             {
                 agent.isStopped = true;
                 nearestTeamMember.GetComponent<CharMovement>().heal();//heal
-                gameManager.audioManager.PlaySoundEffect(gameManager.audioLibrary.heal[(int) playerSide]);
             }
         }
         else if (healStage == HealStage.cooldown)
@@ -240,7 +268,7 @@ public class CharMovement : MonoBehaviour
     }
 
     void harvestMode()
-    {       
+    {
         Vector3 currentPosition = transform.position;
         float distToTarget = Vector3.Distance(target[randomNumber].transform.position, currentPosition);
 
@@ -253,7 +281,7 @@ public class CharMovement : MonoBehaviour
                 randomNumber = Random.Range(0, numOfTargetPoints - 1);
 
                 roamCountdown = Random.Range(2, 5);
-                gameManager.AddHarvestPoint((int)playerSide);
+                gameManager.AddHarvestPoint(playerSide);
             }
         }
         else
@@ -293,39 +321,32 @@ public class CharMovement : MonoBehaviour
 
     public void changeJob(UnitTypes newJob)
     {
-        AudioClip audioClip = null;
         if (newJob == UnitTypes.Free)
         {
             currentJob = UnitTypes.Free;
             unitSpriteHandler.ChangeJob(UnitTypes.Free);
-            audioClip = gameManager.audioLibrary.freed[(int)playerSide];
         }
         else if (newJob == UnitTypes.Attacker)
         {
             currentJob = UnitTypes.Attacker;
             unitSpriteHandler.ChangeJob(UnitTypes.Attacker);
-            audioClip = gameManager.audioLibrary.striker;
         }
         else if (newJob == UnitTypes.Healer)
         {
             currentJob = UnitTypes.Healer;
             unitSpriteHandler.ChangeJob(UnitTypes.Healer);
-            audioClip = gameManager.audioLibrary.healer;
         }
         else if (newJob == UnitTypes.Harvester)
         {
             currentJob = UnitTypes.Harvester;
             unitSpriteHandler.ChangeJob(UnitTypes.Harvester);
-            audioClip = gameManager.audioLibrary.producer;
         }
-
-        gameManager.audioManager.PlaySoundEffect(audioClip); 
         countUnit();
     }
 
     private void countUnit()
     {
-        int totFreeUnit = countUnitType(UnitTypes.Free,false);
+        int totFreeUnit = countUnitType(UnitTypes.Free, false);
         int totAttackUnit = countUnitType(UnitTypes.Attacker, false);
         int totHarvestUnit = countUnitType(UnitTypes.Harvester, false);
         int totHealUnit = countUnitType(UnitTypes.Healer, false);
@@ -366,11 +387,26 @@ public class CharMovement : MonoBehaviour
         return totUnit;
     }
 
+    private Vector3 RandomNavmeshLocation(float radius)
+    {
+        Vector3 randomDirection = Random.insideUnitSphere * radius;
+        randomDirection += transform.position;
+        NavMeshHit hit;
+        Vector3 finalPosition = Vector3.zero;
+        if (NavMesh.SamplePosition(randomDirection, out hit, radius, 1))
+        {
+            finalPosition = hit.position;
+        }
+        Debug.Log(finalPosition);
+        return finalPosition;
+    }
+
     private enum AttackStage
     {
         chase,
         attack,
-        cooldown
+        cooldown,
+        lazy
     };
 
     private enum HealStage
