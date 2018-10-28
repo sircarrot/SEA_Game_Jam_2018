@@ -114,6 +114,8 @@ public class GameManager : MonoBehaviour, IManager
     {
         PlayerSide playerSide = unit.playerSide;
         string caption = captionsLibrary.GetCaption(CaptionsLibrary.CaptionsType.Free, playerSide);
+        AudioClip clip = audioLibrary.RandomCaption(playerSide);
+        audioManager.PlayVoiceLine(clip);
         uiManager.CreateCaption(caption, unit.unitSpriteHandler.baseColorObject.transform);
     }
 
@@ -121,6 +123,8 @@ public class GameManager : MonoBehaviour, IManager
     {
         PlayerSide playerSide = unit.playerSide;
         string caption = captionsLibrary.GetCaption(CaptionsLibrary.CaptionsType.Striker, playerSide);
+        AudioClip clip = audioLibrary.RandomCaption(playerSide);
+        audioManager.PlayVoiceLine(clip);
         uiManager.CreateCaption(caption, unit.unitSpriteHandler.baseColorObject.transform);
     }
 
@@ -128,6 +132,8 @@ public class GameManager : MonoBehaviour, IManager
     {
         PlayerSide playerSide = unit.playerSide;
         string caption = captionsLibrary.GetCaption(CaptionsLibrary.CaptionsType.Producer, playerSide);
+        AudioClip clip = audioLibrary.RandomCaption(playerSide);
+        audioManager.PlayVoiceLine(clip);
         uiManager.CreateCaption(caption, unit.unitSpriteHandler.baseColorObject.transform);
     }
 
@@ -135,6 +141,8 @@ public class GameManager : MonoBehaviour, IManager
     {
         PlayerSide playerSide = unit.playerSide;
         string caption = captionsLibrary.GetCaption(CaptionsLibrary.CaptionsType.Healer, playerSide);
+        AudioClip clip = audioLibrary.RandomCaption(playerSide);
+        audioManager.PlayVoiceLine(clip);
         uiManager.CreateCaption(caption, unit.unitSpriteHandler.baseColorObject.transform);
     }
 

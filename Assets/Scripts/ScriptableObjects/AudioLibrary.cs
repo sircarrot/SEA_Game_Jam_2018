@@ -22,4 +22,20 @@ public class AudioLibrary : ScriptableObject {
 
     public AudioClip[] dogCaption = new AudioClip[8];
     public AudioClip[] catCaption = new AudioClip[8];
+
+    public AudioClip RandomCaption(PlayerSide side)
+    {
+        int index = Random.Range(0, 8);
+        switch (side)
+        {
+            case PlayerSide.Cats:
+                return catCaption[index];
+
+            case PlayerSide.Dogs:
+                return dogCaption[index];
+
+            default:
+                return null;
+        }
+    }
 }
