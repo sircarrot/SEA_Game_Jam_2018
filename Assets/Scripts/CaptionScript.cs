@@ -8,6 +8,7 @@ public class CaptionScript : MonoBehaviour {
     public Camera camera;
     public Text dialogueBox;
     public Transform referenceUnit;
+    public CanvasGroup canvasGroup;
     private bool initComplete = false;
 
     private void Update()
@@ -17,8 +18,8 @@ public class CaptionScript : MonoBehaviour {
         if (referenceUnit == null) Destroy(gameObject);
         else
         {
-            gameObject.transform.position = camera.WorldToScreenPoint(referenceUnit.position);
-            gameObject.transform.position += new Vector3(-10, 40, 0);
+            gameObject.transform.position = camera.WorldToScreenPoint(referenceUnit.position) + new Vector3(-10, 60, 0); ;
+            canvasGroup.alpha = 1f;
         }
     }
 
