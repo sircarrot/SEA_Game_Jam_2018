@@ -87,6 +87,17 @@ public class GameManager : MonoBehaviour, IManager
     {
         PlayerSide playerSide = unit.playerSide;
         audioManager.PlaySoundEffect(audioLibrary.death[(int)playerSide]);
+        switch(playerSide)
+        {
+            case PlayerSide.Cats:
+                catObjects.Remove(unit);
+                break;
+
+            case PlayerSide.Dogs:
+                dogObjects.Remove(unit);
+                break;
+        }
+
         Destroy(unit);
 
     }
