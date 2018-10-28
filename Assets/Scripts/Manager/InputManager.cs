@@ -20,43 +20,66 @@ public class InputManager : MonoBehaviour, IManager {
         
         if(Input.GetKeyDown(KeyCode.A))
         {
-            ChangeJob(gameManager.catObjects, UnitTypes.Healer);
+            if(ChangeJob(gameManager.catObjects, UnitTypes.Healer))
+            {
+                return;
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            ChangeJob(gameManager.dogObjects, UnitTypes.Healer);
+            if(ChangeJob(gameManager.dogObjects, UnitTypes.Healer))
+            {
+                return;
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.S))
         {
-            ChangeJob(gameManager.catObjects, UnitTypes.Free);
+            if(ChangeJob(gameManager.catObjects, UnitTypes.Free))
+            {
+                return;
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            ChangeJob(gameManager.dogObjects, UnitTypes.Free);
+            if(ChangeJob(gameManager.dogObjects, UnitTypes.Free))
+            {
+                return;
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.D))
         {
-            ChangeJob(gameManager.catObjects, UnitTypes.Harvester);
+            if(ChangeJob(gameManager.catObjects, UnitTypes.Harvester))
+            {
+                return;
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            ChangeJob(gameManager.dogObjects, UnitTypes.Harvester);
+            if (ChangeJob(gameManager.dogObjects, UnitTypes.Harvester))
+            {
+                return;
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.W))
         {
-            ChangeJob(gameManager.catObjects, UnitTypes.Attacker);
-
+            if(ChangeJob(gameManager.catObjects, UnitTypes.Attacker))
+            {
+                return;
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            ChangeJob(gameManager.dogObjects, UnitTypes.Attacker);
+            if (ChangeJob(gameManager.dogObjects, UnitTypes.Attacker))
+            {
+                return;
+            }
         }
 
         if(Input.GetKeyDown(KeyCode.R))
@@ -68,7 +91,7 @@ public class InputManager : MonoBehaviour, IManager {
     public bool ChangeJob(List<CharMovement> gameObjectArray, UnitTypes unitTypes)
     {
         CharMovement target = null;
-
+        bool result = false;
         switch (unitTypes)
         {
             // Prioritizes lower HP unit to be free
@@ -91,7 +114,7 @@ public class InputManager : MonoBehaviour, IManager {
                 if (target != null)
                 {
                     target.changeJob(unitTypes);
-                    return true;
+                    result = true;
                 }
                 break;
 
@@ -110,16 +133,12 @@ public class InputManager : MonoBehaviour, IManager {
                     {
                         target = gameObjectArray[i];
                     }
-                    //else if (gameObjectArray[i].currentJob != UnitTypes.Healer)
-                    //{
-                    //    target = gameObjectArray[i];
-                    //}
                 }
 
                 if (target != null)
                 {
                     target.changeJob(unitTypes);
-                    return true;
+                    result = true;
                 }
                 break;
 
@@ -129,7 +148,7 @@ public class InputManager : MonoBehaviour, IManager {
                     if (gameObjectArray[i].currentJob == UnitTypes.Free)
                     {
                         gameObjectArray[i].changeJob(unitTypes);
-                        return true;
+                        result = true;
                     }
                 }
                 break;
@@ -152,16 +171,21 @@ public class InputManager : MonoBehaviour, IManager {
                     if (target != null)
                     {
                         target.changeJob(unitTypes);
-                        return true;
+                        result = true;
                     }
                 }
                 break;
         }
+        if(result)
+        {
+            RearrangeList(gameObjectArray, target);
+        }
         return false;
     }
 
-    public void RearrangeList()
+    public void RearrangeList(List<CharMovement> charMovements, CharMovement target)
     {
-
+        charMovements.Remove(target);
+        charMovements.Add(target);
     }
 }
