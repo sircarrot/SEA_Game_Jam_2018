@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -713,6 +713,9 @@ MonoBehaviour:
   unitPrefabs:
   - {fileID: 1118145223118042, guid: 9796f0a37a5f3c940b0bf076049be70b, type: 2}
   - {fileID: 1715200007077462, guid: fccf15f7bb41aef4f87bad201bdab632, type: 2}
+  harvestPie:
+  - {fileID: 0}
+  - {fileID: 0}
   player1point: 0
   player2point: 0
   initialUnitSpawn: 5
@@ -1409,6 +1412,16 @@ Prefab:
       value: 
       objectReference: {fileID: 12800000, guid: 334e52c46a3746644869f2b741372755,
         type: 3}
+    - target: {fileID: 114018034487684376, guid: 77076ddb602140141a95e68a8a998f24,
+        type: 2}
+      propertyPath: m_Color.a
+      value: 0.29411766
+      objectReference: {fileID: 0}
+    - target: {fileID: 114988678435954894, guid: 77076ddb602140141a95e68a8a998f24,
+        type: 2}
+      propertyPath: m_Color.a
+      value: 0.29411766
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77076ddb602140141a95e68a8a998f24, type: 2}
   m_IsPrefabAsset: 0
@@ -1945,7 +1958,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
-  m_FillAmount: 1
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 2
 --- !u!222 &844009559
@@ -4349,7 +4362,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
-  m_FillAmount: 1
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 2
 --- !u!222 &1939800091
