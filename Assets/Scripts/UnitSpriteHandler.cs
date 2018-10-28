@@ -10,7 +10,7 @@ public class UnitSpriteHandler : MonoBehaviour
 
     [Header("Sprites")]
     [SerializeField] private SpriteRenderer baseSprite;
-    [SerializeField] private SpriteRenderer baseColor;
+     public SpriteRenderer baseColor;
     [SerializeField] private SpriteRenderer unitJob;
 
     [SerializeField] private Sprite lineArt;

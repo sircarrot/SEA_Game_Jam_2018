@@ -90,7 +90,7 @@ public class GameManager : MonoBehaviour, IManager
         PlayerSide playerSide = unit.playerSide;
 
         string caption = captionsLibrary.GetCaption(CaptionsLibrary.CaptionsType.Death, playerSide);
-        uiManager.CreateCaption(caption, unit.unitSpriteHandler.baseColorObject.transform);
+        uiManager.CreateCaption(caption, unit.unitSpriteHandler.baseColor.transform);
 
         audioManager.PlaySoundEffect(audioLibrary.death[(int)playerSide]);
 
@@ -116,7 +116,7 @@ public class GameManager : MonoBehaviour, IManager
         string caption = captionsLibrary.GetCaption(CaptionsLibrary.CaptionsType.Free, playerSide);
         AudioClip clip = audioLibrary.RandomCaption(playerSide);
         audioManager.PlayVoiceLine(clip);
-        uiManager.CreateCaption(caption, unit.unitSpriteHandler.baseColorObject.transform);
+        uiManager.CreateCaption(caption, unit.unitSpriteHandler.baseColor.transform);
     }
 
     public void StrikeUnit(CharMovement unit)
@@ -125,7 +125,7 @@ public class GameManager : MonoBehaviour, IManager
         string caption = captionsLibrary.GetCaption(CaptionsLibrary.CaptionsType.Striker, playerSide);
         AudioClip clip = audioLibrary.RandomCaption(playerSide);
         audioManager.PlayVoiceLine(clip);
-        uiManager.CreateCaption(caption, unit.unitSpriteHandler.baseColorObject.transform);
+        uiManager.CreateCaption(caption, unit.unitSpriteHandler.baseColor.transform);
     }
 
     public void ProducerUnit(CharMovement unit)
@@ -134,7 +134,7 @@ public class GameManager : MonoBehaviour, IManager
         string caption = captionsLibrary.GetCaption(CaptionsLibrary.CaptionsType.Producer, playerSide);
         AudioClip clip = audioLibrary.RandomCaption(playerSide);
         audioManager.PlayVoiceLine(clip);
-        uiManager.CreateCaption(caption, unit.unitSpriteHandler.baseColorObject.transform);
+        uiManager.CreateCaption(caption, unit.unitSpriteHandler.baseColor.transform);
     }
 
     public void HealerUnit(CharMovement unit)
@@ -143,7 +143,7 @@ public class GameManager : MonoBehaviour, IManager
         string caption = captionsLibrary.GetCaption(CaptionsLibrary.CaptionsType.Healer, playerSide);
         AudioClip clip = audioLibrary.RandomCaption(playerSide);
         audioManager.PlayVoiceLine(clip);
-        uiManager.CreateCaption(caption, unit.unitSpriteHandler.baseColorObject.transform);
+        uiManager.CreateCaption(caption, unit.unitSpriteHandler.baseColor.transform);
     }
 
     public void StartGame()
