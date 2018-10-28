@@ -60,7 +60,7 @@ public class PlayerUI : MonoBehaviour {
         while (timer > 0)
         {
             float calcScale = textbox.localScale.x - ((animationScale - 1f) * Time.deltaTime / animationDuration);
-            Debug.Log(calcScale);
+            //Debug.Log(calcScale);
             textbox.localScale = new Vector3(calcScale, calcScale, 1);
             yield return null;
             timer -= Time.deltaTime;
