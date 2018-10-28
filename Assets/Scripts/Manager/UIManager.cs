@@ -48,7 +48,7 @@ public class UIManager : MonoBehaviour {
 
     private IEnumerator DestroyBubble(GameObject bubble)
     {
-        float duration = 1;
+        float duration = 2f;
         while(duration > 0)
         {
             yield return null;
