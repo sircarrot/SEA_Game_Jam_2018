@@ -15,6 +15,15 @@ public class PlayerUI : MonoBehaviour {
     private float animationDuration = 0.3f;
     private IEnumerator[] textAnimationCoroutine = new IEnumerator[5];
 
+    public void ResetText()
+    {
+        attackerTxt.text = "";
+        harvesterTxt.text = "";
+        healerTxt.text = "";
+        freeTxt.text = "";
+        totalTxt.text = "";
+    }
+
     public void UpdateText(UnitTypes unitType, int number ,int injured = 0)
     {
         string injuredText = (injured <= 0) ? "" : (" (" + injured + ")");

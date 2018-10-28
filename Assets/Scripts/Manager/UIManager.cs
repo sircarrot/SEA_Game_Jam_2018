@@ -28,6 +28,14 @@ public class UIManager : MonoBehaviour {
         playerUIList[playerNumber].UpdateText(unitType, number, injured);
     }
 
+    public void ResetText()
+    {
+        for(int i = 0; i < playerUIList.Count; ++i)
+        {
+            playerUIList[i].ResetText();
+        }
+    }
+
     public void CreateCaption()
     {
         GameObject bubble = Instantiate(speechBubble, movingCanvas.transform);
@@ -45,7 +53,5 @@ public class UIManager : MonoBehaviour {
         }
 
         Destroy(bubble);
-
-
     }
 }
