@@ -147,7 +147,8 @@ public class InputManager : MonoBehaviour, IManager {
                 {
                     if (gameObjectArray[i].currentJob == UnitTypes.Free)
                     {
-                        gameObjectArray[i].changeJob(unitTypes);
+                        target = gameObjectArray[i];
+                        target.changeJob(unitTypes);
                         result = true;
                         break;
                     }
