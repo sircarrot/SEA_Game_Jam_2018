@@ -30,6 +30,7 @@ public class CharMovement : MonoBehaviour
     float lazyCooldown = 10.0f;
     float lazyDuration = 4.0f;
     float gameSpeedCountdown = 30.0f;
+    float dialogCooldown;
 
     private GameObject[] target;
     float roamCountdown;
@@ -38,14 +39,16 @@ public class CharMovement : MonoBehaviour
     private GameObject myHouse;
     public PlayerSide playerSide;
 
-    public float healRange = 5.0f;
+    public float healRange = 4.0f;
     public int attackDamage = 10;
     public float attackSpeed = 1.0f;
     public float movementSpeed = 5.0f;
+    bool isAlreadyTalk = false;
 
     // Use this for initialization
     void Start()
     {
+        dialogCooldown = Random.Range(10, 15);
         hp = totalHp;
         roamCountdown = Random.Range(2, 5);
         agent = GetComponent<NavMeshAgent>();
@@ -99,11 +102,52 @@ public class CharMovement : MonoBehaviour
             if (attackSpeed >= 0.5) { attackSpeed -= 0.1f; }
             if (movementSpeed <= 8.0f) { movementSpeed += 1.0f; }
         }
+        //timer for dialog
+        dialogCooldown -= Time.deltaTime;
+        if (dialogCooldown <= 0)
+        {
+            int randomTalk = Random.Range(0, 1);
+            dialogCooldown = Random.Range(8, 18);
+            if (currentJob == UnitTypes.Free)
+            {
+                dialogCooldown = Random.Range(10, 20);
+            }
+            if (randomTalk == 0)
+            {
+                talkNow();
+            }
+        }
+    }
 
+    void talkNow()
+    {
+        if (currentJob == UnitTypes.Free)
+        {
+            gameManager.FreeUnit(this);
+        }
+        else if (currentJob == UnitTypes.Attacker)
+        {
+            if((attckStage != AttackStage.lazy))
+            {
+                gameManager.StrikeUnit(this);
+            }
+            else
+            {
+                gameManager.FreeUnit(this);
+            }
+        }
+        else if (currentJob == UnitTypes.Healer)
+        {
+            gameManager.HealerUnit(this);
+        }
+        else if (currentJob == UnitTypes.Harvester)
+        {
+            gameManager.ProducerUnit(this);
+        }
     }
 
     void freeMode()
-    {
+    {       
         Vector3 currentPosition = transform.position;
         float distToTarget = Vector3.Distance(myHouse.transform.position, currentPosition);
         if (distToTarget < 3.0f)
@@ -201,7 +245,7 @@ public class CharMovement : MonoBehaviour
     {
         //int randomTimer = Random.Range(5, 10);
         int randomDecision = Random.Range(0, 9);
-        Debug.Log(randomDecision);
+        //Debug.Log(randomDecision);
         if (randomDecision > 7)
         {
             attckStage = AttackStage.lazy;

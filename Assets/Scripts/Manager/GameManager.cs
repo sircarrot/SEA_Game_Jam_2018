@@ -108,6 +108,34 @@ public class GameManager : MonoBehaviour, IManager
         Destroy(unit);
     }
 
+    public void FreeUnit(CharMovement unit)
+    {
+        PlayerSide playerSide = unit.playerSide;
+        string caption = captionsLibrary.GetCaption(CaptionsLibrary.CaptionsType.Free, playerSide);
+        uiManager.CreateCaption(caption, unit.unitSpriteHandler.baseColorObject.transform);
+    }
+
+    public void StrikeUnit(CharMovement unit)
+    {
+        PlayerSide playerSide = unit.playerSide;
+        string caption = captionsLibrary.GetCaption(CaptionsLibrary.CaptionsType.Striker, playerSide);
+        uiManager.CreateCaption(caption, unit.unitSpriteHandler.baseColorObject.transform);
+    }
+
+    public void ProducerUnit(CharMovement unit)
+    {
+        PlayerSide playerSide = unit.playerSide;
+        string caption = captionsLibrary.GetCaption(CaptionsLibrary.CaptionsType.Producer, playerSide);
+        uiManager.CreateCaption(caption, unit.unitSpriteHandler.baseColorObject.transform);
+    }
+
+    public void HealerUnit(CharMovement unit)
+    {
+        PlayerSide playerSide = unit.playerSide;
+        string caption = captionsLibrary.GetCaption(CaptionsLibrary.CaptionsType.Healer, playerSide);
+        uiManager.CreateCaption(caption, unit.unitSpriteHandler.baseColorObject.transform);
+    }
+
     public void StartGame()
     {
         // SetMap
