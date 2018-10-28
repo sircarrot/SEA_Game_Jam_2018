@@ -20,111 +20,145 @@ public class InputManager : MonoBehaviour, IManager {
         
         if(Input.GetKeyDown(KeyCode.A))
         {
-            List<CharMovement> gameObjectArray = gameManager.catObjects;
-            for (int i = 0; i < gameObjectArray.Count; ++i)
-            {
-                if (gameObjectArray[i].currentJob == UnitTypes.Free)
-                {
-                    gameObjectArray[i].changeJob(UnitTypes.Healer);
-                    break;
-                }
-            }
+            ChangeJob(gameManager.dogObjects, UnitTypes.Healer);
         }
 
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            List<CharMovement> gameObjectArray = gameManager.dogObjects;
-            for (int i = 0; i < gameObjectArray.Count; ++i)
-            {
-                if (gameObjectArray[i].currentJob == UnitTypes.Free)
-                {
-                    gameObjectArray[i].changeJob(UnitTypes.Healer);
-                    break;
-                }
-            }
+            ChangeJob(gameManager.dogObjects, UnitTypes.Healer);
         }
 
         if (Input.GetKeyDown(KeyCode.S))
         {
-            List<CharMovement> gameObjectArray = gameManager.catObjects;
-            for (int i = 0; i < gameObjectArray.Count; ++i)
-            {
-                if (gameObjectArray[i].currentJob != UnitTypes.Free)
-                {
-                    gameObjectArray[i].changeJob(UnitTypes.Free);
-                    break;
-                }
-            }
+            ChangeJob(gameManager.dogObjects, UnitTypes.Free);
         }
 
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            List<CharMovement> gameObjectArray = gameManager.dogObjects;
-            for (int i = 0; i < gameObjectArray.Count; ++i)
-            {
-                if (gameObjectArray[i].currentJob != UnitTypes.Free)
-                {
-                    gameObjectArray[i].changeJob(UnitTypes.Free);
-                    break;
-                }
-            }
+            ChangeJob(gameManager.dogObjects, UnitTypes.Free);
         }
 
         if (Input.GetKeyDown(KeyCode.D))
         {
-            List<CharMovement> gameObjectArray = gameManager.catObjects;
-            for (int i = 0; i < gameObjectArray.Count; ++i)
-            {
-                if (gameObjectArray[i].currentJob == UnitTypes.Free)
-                {
-                    gameObjectArray[i].changeJob(UnitTypes.Harvester);
-                    break;
-                }
-            }
+            ChangeJob(gameManager.catObjects, UnitTypes.Harvester);
         }
 
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            List<CharMovement> gameObjectArray = gameManager.dogObjects;
-            for (int i = 0; i < gameObjectArray.Count; ++i)
-            {
-                if (gameObjectArray[i].currentJob == UnitTypes.Free)
-                {
-                    gameObjectArray[i].changeJob(UnitTypes.Harvester);
-                    break;
-                }
-            }
+            ChangeJob(gameManager.dogObjects, UnitTypes.Harvester);
         }
 
         if (Input.GetKeyDown(KeyCode.W))
         {
-            List<CharMovement> gameObjectArray = gameManager.catObjects;
-            for (int i = 0; i < gameObjectArray.Count; ++i)
-            {
-                if (gameObjectArray[i].currentJob == UnitTypes.Free && gameObjectArray[i].hp >= 20)
-                {
-                    gameObjectArray[i].changeJob(UnitTypes.Attacker);
-                    break;
-                }
-            }
+            ChangeJob(gameManager.catObjects, UnitTypes.Attacker);
+
         }
 
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            List<CharMovement> gameObjectArray = gameManager.dogObjects;
-            for (int i = 0; i < gameObjectArray.Count; ++i)
-            {
-                if (gameObjectArray[i].currentJob == UnitTypes.Free && gameObjectArray[i].hp >= 20)
-                {
-                    gameObjectArray[i].changeJob(UnitTypes.Attacker);
-                    break;
-                }
-            }
+            ChangeJob(gameManager.dogObjects, UnitTypes.Attacker);
         }
 
         if(Input.GetKeyDown(KeyCode.R))
         {
             gameManager.RestartGame();
         }
+    }
+
+    public bool ChangeJob(List<CharMovement> gameObjectArray, UnitTypes unitTypes)
+    {
+        CharMovement target = null;
+
+        switch (unitTypes)
+        {
+            // Prioritizes lower HP unit to be free
+            case UnitTypes.Free:
+                for (int i = 0; i < gameObjectArray.Count; ++i)
+                {
+                    if (target != null)
+                    {
+                        if (gameObjectArray[i].hp < target.hp && gameObjectArray[i].currentJob != UnitTypes.Free)
+                        {
+                            target = gameObjectArray[i];
+                        }
+                    }
+                    else if (gameObjectArray[i].currentJob != UnitTypes.Free)
+                    {
+                        target = gameObjectArray[i];
+                    }
+                }
+
+                if (target != null)
+                {
+                    target.changeJob(unitTypes);
+                    return true;
+                }
+                break;
+
+                // Prioritizes low health units, 2nd priority being free units, 3rd priority being any unit other than healer
+            case UnitTypes.Healer:
+                for (int i = 0; i < gameObjectArray.Count; ++i)
+                {
+                    if (target != null)
+                    {
+                        if (gameObjectArray[i].hp < target.hp && gameObjectArray[i].currentJob == UnitTypes.Free)
+                        {
+                            target = gameObjectArray[i];
+                        }
+                    }
+                    else if (gameObjectArray[i].currentJob == UnitTypes.Free)
+                    {
+                        target = gameObjectArray[i];
+                    }
+                    //else if (gameObjectArray[i].currentJob != UnitTypes.Healer)
+                    //{
+                    //    target = gameObjectArray[i];
+                    //}
+                }
+
+                if (target != null)
+                {
+                    target.changeJob(unitTypes);
+                    return true;
+                }
+                break;
+
+            case UnitTypes.Harvester:
+                for (int i = 0; i < gameObjectArray.Count; ++i)
+                {
+                    if (gameObjectArray[i].currentJob == UnitTypes.Free)
+                    {
+                        gameObjectArray[i].changeJob(unitTypes);
+                        return true;
+                    }
+                }
+                break;
+
+            case UnitTypes.Attacker:
+                for (int i = 0; i < gameObjectArray.Count; ++i)
+                {
+                    if (target != null)
+                    {
+                        if (gameObjectArray[i].hp > target.hp && gameObjectArray[i].currentJob == UnitTypes.Free)
+                        {
+                            target = gameObjectArray[i];
+                        }
+                    }
+                    else if (gameObjectArray[i].currentJob == UnitTypes.Free && gameObjectArray[i].hp >= 20)
+                    {
+                        target = gameObjectArray[i];
+                    }
+
+                    if (target != null)
+                    {
+                        target.changeJob(unitTypes);
+                        return true;
+                    }
+                }
+                break;
+        }
+        return false;
+
+
     }
 }
