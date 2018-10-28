@@ -297,8 +297,8 @@ MonoBehaviour:
     type: 2}
   healEffect: {fileID: 1277698391441992, guid: 2993525338a586041879bde5f67769ce, type: 2}
   currentJob: 3
-  hp: 100
-  totalHp: 100
+  hp: 75
+  totalHp: 75
   playerSide: 0
   healRange: 5
   attackDamage: 10

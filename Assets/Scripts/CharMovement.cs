@@ -24,7 +24,7 @@ public class CharMovement : MonoBehaviour
     Transform childSprite;
 
     public int hp;
-    public int totalHp = 100;
+    public int totalHp = 75;
     float attackCooldown = 0.1f;
     float healCooldown = 0.1f;
     float lazyCooldown = 10.0f;
