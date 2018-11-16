@@ -18,16 +18,17 @@ public class Toolbox : Singleton<Toolbox>
     /// </summary>
     private void Start()
     {
+        // Adds all manager to list first
         foreach(IManager manager in gameObject.GetComponents<IManager>())
         {
             managerList.Add(manager);
         }
 
+        // Separates Init to avoid manager dependency
         for(int i = 0; i < managerList.Count; ++i)
         {
             managerList[i].Init();
         }
-
 
         // To initialize manager to toolbox on run time example:
         //GetManager<CameraManager>();

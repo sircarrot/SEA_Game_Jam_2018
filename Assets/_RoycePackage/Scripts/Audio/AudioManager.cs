@@ -12,6 +12,9 @@ public class AudioManager : MonoBehaviour, IManager
     private List<AudioSource> audioSourcesSE = new List<AudioSource>();
     private List<AudioSource> audioSourcesVoice = new List<AudioSource>();
 
+    private float volumeSE = 1;
+    private float volumeVoice = 1;
+
     private IEnumerator bgmCoroutine;
 
     public void Init()
@@ -59,8 +62,10 @@ public class AudioManager : MonoBehaviour, IManager
         }
 
         Debug.Log("Instantiating new audio source");
-        GameObject newAudioSource = new GameObject();
-        audioSourcesSE.Add(newAudioSource.AddComponent<AudioSource>());
+        GameObject newAudioSourceObject = new GameObject();
+        AudioSource newAudioSource = newAudioSourceObject.AddComponent<AudioSource>();
+        newAudioSource.volume = volumeSE;
+        audioSourcesSE.Add(newAudioSource);
         newAudioSource.transform.parent = soundEffectManager.transform;
 
         Debug.Log("Play SE: " + audioClip.name);
@@ -83,11 +88,29 @@ public class AudioManager : MonoBehaviour, IManager
         }
 
         Debug.Log("Instantiating new audio source");
-        GameObject newAudioSource = new GameObject();
-        audioSourcesVoice.Add(newAudioSource.AddComponent<AudioSource>());
+        GameObject newAudioSourceObject = new GameObject();
+        AudioSource newAudioSource = newAudioSourceObject.AddComponent<AudioSource>();
+        newAudioSource.volume = volumeVoice;
+        audioSourcesVoice.Add(newAudioSource);
         newAudioSource.transform.parent = voiceLineManager.transform;
 
         Debug.Log("Play Voice Line");
+    }
+
+    public void SetVolume(AudioType audioType, float volume)
+    {
+        switch(audioType)
+        {
+            case AudioType.BGM:
+                bgmAudioSource.volume = volume;
+                break;
+
+            case AudioType.SoundEffect:
+                break;
+
+            case AudioType.VoiceLine:
+                break;
+        }
     }
 
     public void BGMPlayer(AudioClip audioClip = null, PlayBGMType type = PlayBGMType.Repeat, float volume = 1f, float fadeDuration = 1f)
@@ -185,5 +208,12 @@ public class AudioManager : MonoBehaviour, IManager
         Stop,
         FadeOut,
         FadeIn,
+    }
+
+    public enum AudioType
+    {
+        BGM,
+        SoundEffect,
+        VoiceLine
     }
 }
