@@ -264,13 +264,21 @@ public class CharMovement : MonoBehaviour
         bool hasInjured = false;
         foreach (GameObject teamMember in teamMembersArray)
         {
-            if (teamMember.GetComponent<CharMovement>().hp < 100)
+            if (teamMember.GetComponent<CharMovement>().hp < teamMember.GetComponent<CharMovement>().totalHp)
             {
                 hasInjured = true;
                 Vector3 currentPosition = transform.position;
                 float distToTarget = Vector3.Distance(teamMember.transform.position, currentPosition);
+
+                //if (distToTarget== 0)
+                //{
+                //    continue;
+                //}
+
                 if (distToTarget < closestDistance)
                 {
+                    //Debug.Log(teamMember.GetComponent<CharMovement>().hp);
+
                     closestDistance = distToTarget;
                     nearestTeamMember = teamMember;
                 }
@@ -296,6 +304,12 @@ public class CharMovement : MonoBehaviour
                 healStage = HealStage.chase;
             }
         }
+        else
+        {
+            return;
+        }
+
+        Debug.Log(healStage);
 
         if (healStage == HealStage.chase)
         {
@@ -320,11 +334,12 @@ public class CharMovement : MonoBehaviour
         {
             if (nearestTeamMember != null)
             {
+                Debug.Log(closestDistance);
+
                 agent.isStopped = true;
                 nearestTeamMember.GetComponent<CharMovement>().heal();//heal
                 Vector3 charPosition = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
-                Quaternion charRotation = new Quaternion(0, 0, 0, 0);
-                GameObject unit = Instantiate(healEffect, charPosition, charRotation);
+                GameObject unit = Instantiate(healEffect, charPosition, new Quaternion(0,0,0,0));
                 Destroy(unit, 0.25f);
             }
         }
@@ -381,13 +396,13 @@ public class CharMovement : MonoBehaviour
 
     public void heal()
     {
-        if (hp <= 90)
+        if (totalHp - hp >= 10)
         {
             hp += 10;
         }
         else
         {
-            hp = 100;
+            hp = totalHp;
         }
 
         hPBar.Heal((float) hp/ (float) totalHp);
