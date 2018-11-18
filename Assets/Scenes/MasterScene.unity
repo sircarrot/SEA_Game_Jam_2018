@@ -717,9 +717,11 @@ MonoBehaviour:
   - {fileID: 830503561}
   - {fileID: 962251205}
   victoryWindow: {fileID: 1828447510}
+  initialUnitSpawn: 6
+  spawnPoints: 100
+  pointPerTick: 5
   player1point: 0
   player2point: 0
-  initialUnitSpawn: 6
   inGame: 0
   unitList: {fileID: 0}
   catObjects: []
@@ -1651,6 +1653,16 @@ Prefab:
         type: 2}
       propertyPath: m_RootOrder
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 224850495576180280, guid: 77076ddb602140141a95e68a8a998f24,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 260
+      objectReference: {fileID: 0}
+    - target: {fileID: 224025917085503940, guid: 77076ddb602140141a95e68a8a998f24,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -265
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77076ddb602140141a95e68a8a998f24, type: 2}
