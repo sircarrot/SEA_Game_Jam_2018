@@ -39,7 +39,8 @@ public class CharMovement : MonoBehaviour
     private GameObject myHouse;
     public PlayerSide playerSide;
 
-    public float healRange = 4.0f;
+    public float healRange = 5.0f;
+    public int healAmount = 10;
     public int attackDamage = 10;
     public float attackSpeed = 1.0f;
     public float movementSpeed = 5.0f;
@@ -396,9 +397,9 @@ public class CharMovement : MonoBehaviour
 
     public void heal()
     {
-        if (totalHp - hp >= 10)
+        if (totalHp - hp >= healAmount)
         {
-            hp += 10;
+            hp += healAmount;
         }
         else
         {

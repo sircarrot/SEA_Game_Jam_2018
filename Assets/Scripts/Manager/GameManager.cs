@@ -18,10 +18,14 @@ public class GameManager : MonoBehaviour, IManager
     [SerializeField] private GameObject[] harvestPie = new GameObject[2];
     public GameObject victoryWindow;
 
-    [Header("Producer Points")]
-    public int player1point = 0, player2point = 0;
 
+    [Header("Producer Points")]
     public int initialUnitSpawn = 6;
+    public int spawnPoints = 100;
+    public int pointPerTick = 5;
+    public int player1point = 0;
+    public int player2point = 0;
+
     [HideInInspector] public bool inGame = false;
 
     [Header("Script variables")]
@@ -208,8 +212,8 @@ public class GameManager : MonoBehaviour, IManager
     {
         if (playerNum > 0 && dogObjects.Count < 50)
         {
-            player2point += 2;
-            if (player2point >= 100)
+            player2point += pointPerTick;
+            if (player2point >= spawnPoints)
             {
                 if (dogObjects.Count < 50) { SpawnUnit(PlayerSide.Dogs, 0); }
                 player2point = 0;
@@ -218,8 +222,8 @@ public class GameManager : MonoBehaviour, IManager
         }
         else if (playerNum < 1 && catObjects.Count < 50)
         {
-            player1point += 2;
-            if (player1point >= 100)
+            player1point += pointPerTick;
+            if (player1point >= spawnPoints)
             {
                 if (catObjects.Count < 50) { SpawnUnit(PlayerSide.Cats, 0); }
                 player1point = 0;
