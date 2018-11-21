@@ -157,6 +157,7 @@ public class GameManager : MonoBehaviour, IManager
     public void StartGame()
     {
         // SetMap
+        ResetHarvestPoint();
         catObjects.Clear();
         dogObjects.Clear();
         uiManager.ResetText();
@@ -231,6 +232,15 @@ public class GameManager : MonoBehaviour, IManager
             harvestPie[playerNum].GetComponent<HarvestTimerScript>().Fill((float)player1point / 100);
         }
         
+    }
+
+    public void ResetHarvestPoint()
+    {
+        player1point = 0;
+        player2point = 0;
+
+        harvestPie[0].GetComponent<HarvestTimerScript>().Fill((float)player2point / 100);
+        harvestPie[1].GetComponent<HarvestTimerScript>().Fill((float)player1point / 100);
     }
 }
 
